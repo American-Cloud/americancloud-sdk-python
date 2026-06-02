@@ -1,0 +1,14 @@
+# Files in this list are preserved between Fern generations.
+# Add any hand-written files (docs, CI, license, etc.) here.
+
+.git
+.gitignore
+.github/
+LICENSE
+NOTICE
+README.md
+CHANGELOG.md
+VERSIONING.md
+pyproject.toml
+CONTRIBUTING.md
+src/americancloud/py.typed

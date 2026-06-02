@@ -1,0 +1,56 @@
+[build-system]
+requires = ["hatchling==1.29.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "americancloud"
+version = "1.2.2-rc.1"
+description = "Official Python SDK for the American Cloud Platform API."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{ name = "American Cloud", email = "support@americancloud.com" }]
+keywords = ["americancloud", "american-cloud", "sdk", "api", "cloud", "client"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Topic :: Internet :: WWW/HTTP",
+  "Typing :: Typed",
+]
+# Runtime dependencies use compatible lower bounds (not exact pins): this is a
+# distributed library, so exact pins would force install conflicts on consumers
+# who also depend on httpx/pydantic. Build/dev tooling above IS exact-pinned.
+dependencies = [
+  "httpx>=0.23",
+  "pydantic>=1.9,<3",
+  "typing_extensions>=4.0",
+]
+
+[project.urls]
+Homepage = "https://americancloud.com"
+Documentation = "https://americancloud.docs.buildwithfern.com"
+Repository = "https://github.com/American-Cloud/americancloud-sdk-python"
+Changelog = "https://github.com/American-Cloud/americancloud-sdk-python/blob/main/CHANGELOG.md"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/americancloud"]
+exclude = [
+  "src/americancloud/tests",
+  "src/americancloud/reference.md",
+  "src/americancloud/CONTRIBUTING.md",
+  "src/americancloud/.fern",
+]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "src/americancloud",
+  "README.md",
+  "LICENSE",
+  "NOTICE",
+  "CHANGELOG.md",
+  "VERSIONING.md",
+  "pyproject.toml",
+]
