@@ -157,8 +157,8 @@ class RawVmsClient:
         vm_package: str,
         vm_specs: VmSpecsDto,
         image: str,
-        network: str,
         subscription_period: CreateVmDtoSubscriptionPeriod,
+        network: typing.Optional[str] = OMIT,
         tags: typing.Optional[typing.Sequence[str]] = OMIT,
         keypairs: typing.Optional[typing.Sequence[str]] = OMIT,
         userdata: typing.Optional[str] = OMIT,
@@ -185,11 +185,11 @@ class RawVmsClient:
         image : str
             Image label to use for the VM
 
-        network : str
-            UUID of pre-existing customer network
-
         subscription_period : CreateVmDtoSubscriptionPeriod
             Subscription period
+
+        network : typing.Optional[str]
+            UUID of a pre-existing network to attach the VM to. Omit to have an isolated network auto-created for the VM (post-create access is then configured via `networkAccess`).
 
         tags : typing.Optional[typing.Sequence[str]]
             List of tags to add to the VM
@@ -717,8 +717,8 @@ class RawVmsClient:
         vm_package: str,
         vm_specs: VmSpecsDto,
         image: str,
-        network: str,
         subscription_period: CreateVmDtoSubscriptionPeriod,
+        network: typing.Optional[str] = OMIT,
         tags: typing.Optional[typing.Sequence[str]] = OMIT,
         keypairs: typing.Optional[typing.Sequence[str]] = OMIT,
         userdata: typing.Optional[str] = OMIT,
@@ -745,11 +745,11 @@ class RawVmsClient:
         image : str
             Image label to use for the VM
 
-        network : str
-            UUID of pre-existing customer network
-
         subscription_period : CreateVmDtoSubscriptionPeriod
             Subscription period
+
+        network : typing.Optional[str]
+            UUID of a pre-existing network to attach the VM to. Omit to have an isolated network auto-created for the VM (post-create access is then configured via `networkAccess`).
 
         tags : typing.Optional[typing.Sequence[str]]
             List of tags to add to the VM
@@ -985,8 +985,8 @@ class RawVmsClient:
         self,
         id: str,
         *,
-        cpu: typing.Optional[float] = None,
-        memory_mb: typing.Optional[float] = None,
+        cpu: typing.Optional[int] = OMIT,
+        memory_mb: typing.Optional[int] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[None]:
         """
@@ -997,11 +997,11 @@ class RawVmsClient:
         id : str
             ID of the virtual machine
 
-        cpu : typing.Optional[float]
-            Number of virtual CPUs (optional, but at least one of CPU or memory must be provided)
+        cpu : typing.Optional[int]
+            Number of virtual CPUs. Optional, but at least one of CPU or memory must be provided.
 
-        memory_mb : typing.Optional[float]
-            Memory in MB (optional, but at least one of CPU or memory must be provided)
+        memory_mb : typing.Optional[int]
+            Memory in MB. Optional, but at least one of CPU or memory must be provided.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -1013,11 +1013,15 @@ class RawVmsClient:
         _response = self._client_wrapper.httpx_client.request(
             f"api/v1/compute/vms/{encode_path_param(id)}/scale",
             method="PUT",
-            params={
+            json={
                 "cpu": cpu,
                 "memoryMb": memory_mb,
             },
+            headers={
+                "content-type": "application/json",
+            },
             request_options=request_options,
+            omit=OMIT,
         )
         try:
             if 200 <= _response.status_code < 300:
@@ -1629,8 +1633,8 @@ class AsyncRawVmsClient:
         vm_package: str,
         vm_specs: VmSpecsDto,
         image: str,
-        network: str,
         subscription_period: CreateVmDtoSubscriptionPeriod,
+        network: typing.Optional[str] = OMIT,
         tags: typing.Optional[typing.Sequence[str]] = OMIT,
         keypairs: typing.Optional[typing.Sequence[str]] = OMIT,
         userdata: typing.Optional[str] = OMIT,
@@ -1657,11 +1661,11 @@ class AsyncRawVmsClient:
         image : str
             Image label to use for the VM
 
-        network : str
-            UUID of pre-existing customer network
-
         subscription_period : CreateVmDtoSubscriptionPeriod
             Subscription period
+
+        network : typing.Optional[str]
+            UUID of a pre-existing network to attach the VM to. Omit to have an isolated network auto-created for the VM (post-create access is then configured via `networkAccess`).
 
         tags : typing.Optional[typing.Sequence[str]]
             List of tags to add to the VM
@@ -2191,8 +2195,8 @@ class AsyncRawVmsClient:
         vm_package: str,
         vm_specs: VmSpecsDto,
         image: str,
-        network: str,
         subscription_period: CreateVmDtoSubscriptionPeriod,
+        network: typing.Optional[str] = OMIT,
         tags: typing.Optional[typing.Sequence[str]] = OMIT,
         keypairs: typing.Optional[typing.Sequence[str]] = OMIT,
         userdata: typing.Optional[str] = OMIT,
@@ -2219,11 +2223,11 @@ class AsyncRawVmsClient:
         image : str
             Image label to use for the VM
 
-        network : str
-            UUID of pre-existing customer network
-
         subscription_period : CreateVmDtoSubscriptionPeriod
             Subscription period
+
+        network : typing.Optional[str]
+            UUID of a pre-existing network to attach the VM to. Omit to have an isolated network auto-created for the VM (post-create access is then configured via `networkAccess`).
 
         tags : typing.Optional[typing.Sequence[str]]
             List of tags to add to the VM
@@ -2459,8 +2463,8 @@ class AsyncRawVmsClient:
         self,
         id: str,
         *,
-        cpu: typing.Optional[float] = None,
-        memory_mb: typing.Optional[float] = None,
+        cpu: typing.Optional[int] = OMIT,
+        memory_mb: typing.Optional[int] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[None]:
         """
@@ -2471,11 +2475,11 @@ class AsyncRawVmsClient:
         id : str
             ID of the virtual machine
 
-        cpu : typing.Optional[float]
-            Number of virtual CPUs (optional, but at least one of CPU or memory must be provided)
+        cpu : typing.Optional[int]
+            Number of virtual CPUs. Optional, but at least one of CPU or memory must be provided.
 
-        memory_mb : typing.Optional[float]
-            Memory in MB (optional, but at least one of CPU or memory must be provided)
+        memory_mb : typing.Optional[int]
+            Memory in MB. Optional, but at least one of CPU or memory must be provided.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -2487,11 +2491,15 @@ class AsyncRawVmsClient:
         _response = await self._client_wrapper.httpx_client.request(
             f"api/v1/compute/vms/{encode_path_param(id)}/scale",
             method="PUT",
-            params={
+            json={
                 "cpu": cpu,
                 "memoryMb": memory_mb,
             },
+            headers={
+                "content-type": "application/json",
+            },
             request_options=request_options,
+            omit=OMIT,
         )
         try:
             if 200 <= _response.status_code < 300:

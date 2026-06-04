@@ -33,9 +33,9 @@ class CreateVmDto(UniversalBaseModel):
     Image label to use for the VM
     """
 
-    network: str = pydantic.Field()
+    network: typing.Optional[str] = pydantic.Field(default=None)
     """
-    UUID of pre-existing customer network
+    UUID of a pre-existing network to attach the VM to. Omit to have an isolated network auto-created for the VM (post-create access is then configured via `networkAccess`).
     """
 
     subscription_period: typing_extensions.Annotated[

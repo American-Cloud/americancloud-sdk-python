@@ -23,7 +23,7 @@ class CreateVmResponseDto(UniversalBaseModel):
 
     status: str = pydantic.Field()
     """
-    Current lifecycle state of the VM.
+    Current lifecycle state of the VM. Observed values include CREATING, STARTING, CREATED, STARTED, STOPPING, STOPPED, and DESTROYED. Treat this as an open set — new states may be introduced over time.
     """
 
     region: str = pydantic.Field()
@@ -79,20 +79,29 @@ class CreateVmResponseDto(UniversalBaseModel):
         pydantic.Field(alias="ipAddress", description="Primary IP address assigned to the VM on its network."),
     ]
     network_name: typing_extensions.Annotated[
-        str,
+        typing.Optional[str],
         FieldMetadata(alias="networkName"),
-        pydantic.Field(alias="networkName", description="Name of the network or VPC tier this VM is attached to."),
-    ]
+        pydantic.Field(
+            alias="networkName",
+            description="Name of the network or VPC tier this VM is attached to. Null while the VM is still provisioning.",
+        ),
+    ] = None
     network_id: typing_extensions.Annotated[
-        str,
+        typing.Optional[str],
         FieldMetadata(alias="networkId"),
-        pydantic.Field(alias="networkId", description="Identifier of the network or VPC tier this VM is attached to."),
-    ]
+        pydantic.Field(
+            alias="networkId",
+            description="Identifier of the network or VPC tier this VM is attached to. Null while the VM is still provisioning.",
+        ),
+    ] = None
     root_volume_id: typing_extensions.Annotated[
-        str,
+        typing.Optional[str],
         FieldMetadata(alias="rootVolumeId"),
-        pydantic.Field(alias="rootVolumeId", description="Identifier of the VM root volume."),
-    ]
+        pydantic.Field(
+            alias="rootVolumeId",
+            description="Identifier of the VM root volume. Null while the VM is still provisioning.",
+        ),
+    ] = None
     created_at: typing_extensions.Annotated[
         dt.datetime,
         FieldMetadata(alias="createdAt"),

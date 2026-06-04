@@ -7,6 +7,7 @@ from ..core.request_options import RequestOptions
 from ..types.access_key_dto import AccessKeyDto
 from ..types.cost_estimate_response_dto import CostEstimateResponseDto
 from ..types.object_storage_success_response_dto import ObjectStorageSuccessResponseDto
+from ..types.object_storage_unit_dto import ObjectStorageUnitDto
 from .raw_client import AsyncRawObjectStorageClient, RawObjectStorageClient
 from .types.list_buckets_object_storage_response import ListBucketsObjectStorageResponse
 from .types.list_units_object_storage_response import ListUnitsObjectStorageResponse
@@ -79,9 +80,9 @@ class ObjectStorageClient:
 
     def create_unit_object_storage(
         self, *, name: str, request_options: typing.Optional[RequestOptions] = None
-    ) -> ObjectStorageSuccessResponseDto:
+    ) -> ObjectStorageUnitDto:
         """
-        Creates a new object storage unit (RGW user) for the authenticated account. To preview pricing without creating anything, use POST /object-storage/units/cost-estimate.
+        Creates a new object storage unit for the authenticated account and returns it. The returned storageUnitId identifies the unit in all other object storage requests. To preview pricing without creating anything, use POST /object-storage/units/cost-estimate.
 
         Parameters
         ----------
@@ -93,8 +94,8 @@ class ObjectStorageClient:
 
         Returns
         -------
-        ObjectStorageSuccessResponseDto
-            Storage unit created successfully
+        ObjectStorageUnitDto
+            The created storage unit
 
         Examples
         --------
@@ -312,7 +313,7 @@ class ObjectStorageClient:
         self, storage_unit_id: str, *, request_options: typing.Optional[RequestOptions] = None
     ) -> ObjectStorageSuccessResponseDto:
         """
-        Deletes an object storage unit (RGW user)
+        Deletes an object storage unit
 
         Parameters
         ----------
@@ -464,9 +465,9 @@ class AsyncObjectStorageClient:
 
     async def create_unit_object_storage(
         self, *, name: str, request_options: typing.Optional[RequestOptions] = None
-    ) -> ObjectStorageSuccessResponseDto:
+    ) -> ObjectStorageUnitDto:
         """
-        Creates a new object storage unit (RGW user) for the authenticated account. To preview pricing without creating anything, use POST /object-storage/units/cost-estimate.
+        Creates a new object storage unit for the authenticated account and returns it. The returned storageUnitId identifies the unit in all other object storage requests. To preview pricing without creating anything, use POST /object-storage/units/cost-estimate.
 
         Parameters
         ----------
@@ -478,8 +479,8 @@ class AsyncObjectStorageClient:
 
         Returns
         -------
-        ObjectStorageSuccessResponseDto
-            Storage unit created successfully
+        ObjectStorageUnitDto
+            The created storage unit
 
         Examples
         --------
@@ -745,7 +746,7 @@ class AsyncObjectStorageClient:
         self, storage_unit_id: str, *, request_options: typing.Optional[RequestOptions] = None
     ) -> ObjectStorageSuccessResponseDto:
         """
-        Deletes an object storage unit (RGW user)
+        Deletes an object storage unit
 
         Parameters
         ----------

@@ -275,8 +275,8 @@ class NetworkAclsClient:
         action: str,
         traffic_type: str,
         number: typing.Optional[str] = OMIT,
-        start_port: typing.Optional[str] = OMIT,
-        end_port: typing.Optional[str] = OMIT,
+        start_port: typing.Optional[int] = OMIT,
+        end_port: typing.Optional[int] = OMIT,
         icmp_type: typing.Optional[str] = OMIT,
         icmp_code: typing.Optional[str] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
@@ -302,10 +302,10 @@ class NetworkAclsClient:
         number : typing.Optional[str]
             Rule number (1-1000). Unique within the ACL list and determines evaluation order.
 
-        start_port : typing.Optional[str]
+        start_port : typing.Optional[int]
             Start of the port range. Used for `TCP` and `UDP` protocols.
 
-        end_port : typing.Optional[str]
+        end_port : typing.Optional[int]
             End of the port range. Used for `TCP` and `UDP` protocols.
 
         icmp_type : typing.Optional[str]
@@ -764,8 +764,8 @@ class AsyncNetworkAclsClient:
         action: str,
         traffic_type: str,
         number: typing.Optional[str] = OMIT,
-        start_port: typing.Optional[str] = OMIT,
-        end_port: typing.Optional[str] = OMIT,
+        start_port: typing.Optional[int] = OMIT,
+        end_port: typing.Optional[int] = OMIT,
         icmp_type: typing.Optional[str] = OMIT,
         icmp_code: typing.Optional[str] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
@@ -791,10 +791,10 @@ class AsyncNetworkAclsClient:
         number : typing.Optional[str]
             Rule number (1-1000). Unique within the ACL list and determines evaluation order.
 
-        start_port : typing.Optional[str]
+        start_port : typing.Optional[int]
             Start of the port range. Used for `TCP` and `UDP` protocols.
 
-        end_port : typing.Optional[str]
+        end_port : typing.Optional[int]
             End of the port range. Used for `TCP` and `UDP` protocols.
 
         icmp_type : typing.Optional[str]

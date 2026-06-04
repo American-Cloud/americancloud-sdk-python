@@ -24,7 +24,8 @@ class ObjectStorageUnitDto(UniversalBaseModel):
         typing.Optional[float],
         FieldMetadata(alias="maxBuckets"),
         pydantic.Field(
-            alias="maxBuckets", description='Maximum number of buckets the storage unit may hold, or "unlimited".'
+            alias="maxBuckets",
+            description="Maximum number of buckets the storage unit may hold. Null means no limit (unlimited).",
         ),
     ] = None
     size_kb: typing_extensions.Annotated[
@@ -36,7 +37,8 @@ class ObjectStorageUnitDto(UniversalBaseModel):
         typing.Optional[float],
         FieldMetadata(alias="limitKb"),
         pydantic.Field(
-            alias="limitKb", description='Total storage allowed on the storage unit, in kilobytes, or "unlimited".'
+            alias="limitKb",
+            description="Total storage allowed on the storage unit, in kilobytes. Null means no limit (unlimited).",
         ),
     ] = None
 

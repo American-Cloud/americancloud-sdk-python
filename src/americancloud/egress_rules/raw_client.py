@@ -140,8 +140,8 @@ class RawEgressRulesClient:
         self,
         *,
         protocol: str,
-        start_port: typing.Optional[str] = OMIT,
-        end_port: typing.Optional[str] = OMIT,
+        start_port: typing.Optional[int] = OMIT,
+        end_port: typing.Optional[int] = OMIT,
         source_cidr_list: typing.Optional[str] = OMIT,
         dest_cidr_list: typing.Optional[str] = OMIT,
         network_id: typing.Optional[str] = OMIT,
@@ -153,10 +153,10 @@ class RawEgressRulesClient:
         protocol : str
             Protocol the rule applies to. One of `TCP`, `UDP`, `ICMP`, or `ALL`.
 
-        start_port : typing.Optional[str]
+        start_port : typing.Optional[int]
             Start of the port range the rule applies to.
 
-        end_port : typing.Optional[str]
+        end_port : typing.Optional[int]
             End of the port range the rule applies to.
 
         source_cidr_list : typing.Optional[str]
@@ -480,8 +480,8 @@ class RawEgressRulesClient:
         *,
         source_cidr_list: typing.Optional[str] = OMIT,
         dest_cidr_list: typing.Optional[str] = OMIT,
-        start_port: typing.Optional[str] = OMIT,
-        end_port: typing.Optional[str] = OMIT,
+        start_port: typing.Optional[int] = OMIT,
+        end_port: typing.Optional[int] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> HttpResponse[EgressRuleResponseDto]:
         """
@@ -496,10 +496,10 @@ class RawEgressRulesClient:
         dest_cidr_list : typing.Optional[str]
             Destination CIDR the traffic is allowed to reach.
 
-        start_port : typing.Optional[str]
+        start_port : typing.Optional[int]
             Start of the port range the rule applies to.
 
-        end_port : typing.Optional[str]
+        end_port : typing.Optional[int]
             End of the port range the rule applies to.
 
         request_options : typing.Optional[RequestOptions]
@@ -803,8 +803,8 @@ class AsyncRawEgressRulesClient:
         self,
         *,
         protocol: str,
-        start_port: typing.Optional[str] = OMIT,
-        end_port: typing.Optional[str] = OMIT,
+        start_port: typing.Optional[int] = OMIT,
+        end_port: typing.Optional[int] = OMIT,
         source_cidr_list: typing.Optional[str] = OMIT,
         dest_cidr_list: typing.Optional[str] = OMIT,
         network_id: typing.Optional[str] = OMIT,
@@ -816,10 +816,10 @@ class AsyncRawEgressRulesClient:
         protocol : str
             Protocol the rule applies to. One of `TCP`, `UDP`, `ICMP`, or `ALL`.
 
-        start_port : typing.Optional[str]
+        start_port : typing.Optional[int]
             Start of the port range the rule applies to.
 
-        end_port : typing.Optional[str]
+        end_port : typing.Optional[int]
             End of the port range the rule applies to.
 
         source_cidr_list : typing.Optional[str]
@@ -1143,8 +1143,8 @@ class AsyncRawEgressRulesClient:
         *,
         source_cidr_list: typing.Optional[str] = OMIT,
         dest_cidr_list: typing.Optional[str] = OMIT,
-        start_port: typing.Optional[str] = OMIT,
-        end_port: typing.Optional[str] = OMIT,
+        start_port: typing.Optional[int] = OMIT,
+        end_port: typing.Optional[int] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> AsyncHttpResponse[EgressRuleResponseDto]:
         """
@@ -1159,10 +1159,10 @@ class AsyncRawEgressRulesClient:
         dest_cidr_list : typing.Optional[str]
             Destination CIDR the traffic is allowed to reach.
 
-        start_port : typing.Optional[str]
+        start_port : typing.Optional[int]
             Start of the port range the rule applies to.
 
-        end_port : typing.Optional[str]
+        end_port : typing.Optional[int]
             End of the port range the rule applies to.
 
         request_options : typing.Optional[RequestOptions]

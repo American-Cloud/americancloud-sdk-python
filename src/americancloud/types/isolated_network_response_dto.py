@@ -56,22 +56,6 @@ class IsolatedNetworkResponseDto(UniversalBaseModel):
     Network type
     """
 
-    vpc_id: typing_extensions.Annotated[
-        typing.Optional[str], FieldMetadata(alias="vpcId"), pydantic.Field(alias="vpcId", description="VPC ID")
-    ] = None
-    vpc_name: typing_extensions.Annotated[
-        typing.Optional[str], FieldMetadata(alias="vpcName"), pydantic.Field(alias="vpcName", description="VPC name")
-    ] = None
-    acl_id: typing_extensions.Annotated[
-        typing.Optional[str],
-        FieldMetadata(alias="aclId"),
-        pydantic.Field(alias="aclId", description="ID of the ACL list applied to this network"),
-    ] = None
-    acl_name: typing_extensions.Annotated[
-        typing.Optional[str],
-        FieldMetadata(alias="aclName"),
-        pydantic.Field(alias="aclName", description="Name of the ACL list applied to this network"),
-    ] = None
     acl_type: typing_extensions.Annotated[
         typing.Optional[str],
         FieldMetadata(alias="aclType"),

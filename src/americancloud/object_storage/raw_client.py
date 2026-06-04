@@ -20,6 +20,7 @@ from ..types.access_key_dto import AccessKeyDto
 from ..types.api_error_dto import ApiErrorDto
 from ..types.cost_estimate_response_dto import CostEstimateResponseDto
 from ..types.object_storage_success_response_dto import ObjectStorageSuccessResponseDto
+from ..types.object_storage_unit_dto import ObjectStorageUnitDto
 from .types.list_buckets_object_storage_response import ListBucketsObjectStorageResponse
 from .types.list_units_object_storage_response import ListUnitsObjectStorageResponse
 from pydantic import ValidationError
@@ -148,9 +149,9 @@ class RawObjectStorageClient:
 
     def create_unit_object_storage(
         self, *, name: str, request_options: typing.Optional[RequestOptions] = None
-    ) -> HttpResponse[ObjectStorageSuccessResponseDto]:
+    ) -> HttpResponse[ObjectStorageUnitDto]:
         """
-        Creates a new object storage unit (RGW user) for the authenticated account. To preview pricing without creating anything, use POST /object-storage/units/cost-estimate.
+        Creates a new object storage unit for the authenticated account and returns it. The returned storageUnitId identifies the unit in all other object storage requests. To preview pricing without creating anything, use POST /object-storage/units/cost-estimate.
 
         Parameters
         ----------
@@ -162,8 +163,8 @@ class RawObjectStorageClient:
 
         Returns
         -------
-        HttpResponse[ObjectStorageSuccessResponseDto]
-            Storage unit created successfully
+        HttpResponse[ObjectStorageUnitDto]
+            The created storage unit
         """
         _response = self._client_wrapper.httpx_client.request(
             "api/v1/object-storage/units",
@@ -180,9 +181,9 @@ class RawObjectStorageClient:
         try:
             if 200 <= _response.status_code < 300:
                 _data = typing.cast(
-                    ObjectStorageSuccessResponseDto,
+                    ObjectStorageUnitDto,
                     parse_obj_as(
-                        type_=ObjectStorageSuccessResponseDto,  # type: ignore
+                        type_=ObjectStorageUnitDto,  # type: ignore
                         object_=_response.json(),
                     ),
                 )
@@ -797,7 +798,7 @@ class RawObjectStorageClient:
         self, storage_unit_id: str, *, request_options: typing.Optional[RequestOptions] = None
     ) -> HttpResponse[ObjectStorageSuccessResponseDto]:
         """
-        Deletes an object storage unit (RGW user)
+        Deletes an object storage unit
 
         Parameters
         ----------
@@ -1124,9 +1125,9 @@ class AsyncRawObjectStorageClient:
 
     async def create_unit_object_storage(
         self, *, name: str, request_options: typing.Optional[RequestOptions] = None
-    ) -> AsyncHttpResponse[ObjectStorageSuccessResponseDto]:
+    ) -> AsyncHttpResponse[ObjectStorageUnitDto]:
         """
-        Creates a new object storage unit (RGW user) for the authenticated account. To preview pricing without creating anything, use POST /object-storage/units/cost-estimate.
+        Creates a new object storage unit for the authenticated account and returns it. The returned storageUnitId identifies the unit in all other object storage requests. To preview pricing without creating anything, use POST /object-storage/units/cost-estimate.
 
         Parameters
         ----------
@@ -1138,8 +1139,8 @@ class AsyncRawObjectStorageClient:
 
         Returns
         -------
-        AsyncHttpResponse[ObjectStorageSuccessResponseDto]
-            Storage unit created successfully
+        AsyncHttpResponse[ObjectStorageUnitDto]
+            The created storage unit
         """
         _response = await self._client_wrapper.httpx_client.request(
             "api/v1/object-storage/units",
@@ -1156,9 +1157,9 @@ class AsyncRawObjectStorageClient:
         try:
             if 200 <= _response.status_code < 300:
                 _data = typing.cast(
-                    ObjectStorageSuccessResponseDto,
+                    ObjectStorageUnitDto,
                     parse_obj_as(
-                        type_=ObjectStorageSuccessResponseDto,  # type: ignore
+                        type_=ObjectStorageUnitDto,  # type: ignore
                         object_=_response.json(),
                     ),
                 )
@@ -1773,7 +1774,7 @@ class AsyncRawObjectStorageClient:
         self, storage_unit_id: str, *, request_options: typing.Optional[RequestOptions] = None
     ) -> AsyncHttpResponse[ObjectStorageSuccessResponseDto]:
         """
-        Deletes an object storage unit (RGW user)
+        Deletes an object storage unit
 
         Parameters
         ----------

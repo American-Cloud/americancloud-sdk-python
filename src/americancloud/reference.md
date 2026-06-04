@@ -112,7 +112,6 @@ client.vms.create_vms(
         root_disk_gb=50,
     ),
     image="ubuntu-22.04",
-    network="network-uuid",
     subscription_period="hourly",
 )
 
@@ -476,7 +475,6 @@ client.vms.get_cost_estimate_vms(
         root_disk_gb=50,
     ),
     image="ubuntu-22.04",
-    network="network-uuid",
     subscription_period="hourly",
 )
 
@@ -644,8 +642,6 @@ client = AmericancloudApi(
 
 client.vms.scale_vms(
     id="123e4567-e89b-12d3-a456-426614174000",
-    cpu=4,
-    memory_mb=4096,
 )
 
 ```
@@ -670,7 +666,7 @@ client.vms.scale_vms(
 <dl>
 <dd>
 
-**cpu:** `typing.Optional[float]` — Number of virtual CPUs (optional, but at least one of CPU or memory must be provided)
+**cpu:** `typing.Optional[int]` — Number of virtual CPUs. Optional, but at least one of CPU or memory must be provided.
     
 </dd>
 </dl>
@@ -678,7 +674,7 @@ client.vms.scale_vms(
 <dl>
 <dd>
 
-**memory_mb:** `typing.Optional[float]` — Memory in MB (optional, but at least one of CPU or memory must be provided)
+**memory_mb:** `typing.Optional[int]` — Memory in MB. Optional, but at least one of CPU or memory must be provided.
     
 </dd>
 </dl>
@@ -2540,6 +2536,354 @@ client.vpc_networks.create_tier_vpc_networks(
 </dl>
 </details>
 
+<details><summary><code>client.vpc_networks.<a href="src/americancloud/vpc_networks/client.py">get_tier_vpc_networks</a>(...) -> VpcTierDetailResponseDto</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a single network tier of a VPC.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from americancloud import AmericancloudApi
+from americancloud.environment import AmericancloudApiEnvironment
+
+client = AmericancloudApi(
+    api_key="<value>",
+    api_client_secret="<X-API-Client-Secret>",
+    environment=AmericancloudApiEnvironment.PRODUCTION,
+)
+
+client.vpc_networks.get_tier_vpc_networks(
+    id="123e4567-e89b-12d3-a456-426614174000",
+    tier_id="123e4567-e89b-12d3-a456-426614174000",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `str` — ID of the VPC that contains the tier
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**tier_id:** `str` — ID of the network tier
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.vpc_networks.<a href="src/americancloud/vpc_networks/client.py">update_tier_vpc_networks</a>(...) -> VpcTierDetailResponseDto</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates the name and/or description of a network tier.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from americancloud import AmericancloudApi
+from americancloud.environment import AmericancloudApiEnvironment
+
+client = AmericancloudApi(
+    api_key="<value>",
+    api_client_secret="<X-API-Client-Secret>",
+    environment=AmericancloudApiEnvironment.PRODUCTION,
+)
+
+client.vpc_networks.update_tier_vpc_networks(
+    id="123e4567-e89b-12d3-a456-426614174000",
+    tier_id="123e4567-e89b-12d3-a456-426614174000",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `str` — ID of the VPC that contains the tier
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**tier_id:** `str` — ID of the network tier to update
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**name:** `typing.Optional[str]` — New name for the tier.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**description:** `typing.Optional[str]` — New description for the tier.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.vpc_networks.<a href="src/americancloud/vpc_networks/client.py">delete_tier_vpc_networks</a>(...)</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes a single network tier from a VPC, leaving the rest of the VPC intact.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from americancloud import AmericancloudApi
+from americancloud.environment import AmericancloudApiEnvironment
+
+client = AmericancloudApi(
+    api_key="<value>",
+    api_client_secret="<X-API-Client-Secret>",
+    environment=AmericancloudApiEnvironment.PRODUCTION,
+)
+
+client.vpc_networks.delete_tier_vpc_networks(
+    id="123e4567-e89b-12d3-a456-426614174000",
+    tier_id="123e4567-e89b-12d3-a456-426614174000",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `str` — ID of the VPC that contains the tier
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**tier_id:** `str` — ID of the network tier to delete
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.vpc_networks.<a href="src/americancloud/vpc_networks/client.py">restart_tier_vpc_networks</a>(...)</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Restarts a single network tier of a VPC.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from americancloud import AmericancloudApi
+from americancloud.environment import AmericancloudApiEnvironment
+
+client = AmericancloudApi(
+    api_key="<value>",
+    api_client_secret="<X-API-Client-Secret>",
+    environment=AmericancloudApiEnvironment.PRODUCTION,
+)
+
+client.vpc_networks.restart_tier_vpc_networks(
+    id="123e4567-e89b-12d3-a456-426614174000",
+    tier_id="123e4567-e89b-12d3-a456-426614174000",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `str` — ID of the VPC that contains the tier
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**tier_id:** `str` — ID of the network tier to restart
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.vpc_networks.<a href="src/americancloud/vpc_networks/client.py">restart_vpc_networks</a>(...)</code></summary>
 <dl>
 <dd>
@@ -3476,7 +3820,7 @@ client.firewall_rules.create_firewall_rules(
 <dl>
 <dd>
 
-**start_port:** `typing.Optional[str]` — Start of the port range (1-65535). Required for TCP and UDP.
+**start_port:** `typing.Optional[int]` — Start of the port range (1-65535). Required for TCP and UDP.
     
 </dd>
 </dl>
@@ -3484,7 +3828,7 @@ client.firewall_rules.create_firewall_rules(
 <dl>
 <dd>
 
-**end_port:** `typing.Optional[str]` — End of the port range (1-65535). Must be greater than or equal to `startPort`.
+**end_port:** `typing.Optional[int]` — End of the port range (1-65535). Must be greater than or equal to `startPort`.
     
 </dd>
 </dl>
@@ -4525,7 +4869,7 @@ client.egress_rules.create_egress_rules(
 <dl>
 <dd>
 
-**start_port:** `typing.Optional[str]` — Start of the port range the rule applies to.
+**start_port:** `typing.Optional[int]` — Start of the port range the rule applies to.
     
 </dd>
 </dl>
@@ -4533,7 +4877,7 @@ client.egress_rules.create_egress_rules(
 <dl>
 <dd>
 
-**end_port:** `typing.Optional[str]` — End of the port range the rule applies to.
+**end_port:** `typing.Optional[int]` — End of the port range the rule applies to.
     
 </dd>
 </dl>
@@ -4777,7 +5121,7 @@ client.egress_rules.update_egress_rules(
 <dl>
 <dd>
 
-**start_port:** `typing.Optional[str]` — Start of the port range the rule applies to.
+**start_port:** `typing.Optional[int]` — Start of the port range the rule applies to.
     
 </dd>
 </dl>
@@ -4785,7 +5129,7 @@ client.egress_rules.update_egress_rules(
 <dl>
 <dd>
 
-**end_port:** `typing.Optional[str]` — End of the port range the rule applies to.
+**end_port:** `typing.Optional[int]` — End of the port range the rule applies to.
     
 </dd>
 </dl>
@@ -5373,7 +5717,7 @@ client.network_acls.create_rule_network_acls(
 <dl>
 <dd>
 
-**start_port:** `typing.Optional[str]` — Start of the port range. Used for `TCP` and `UDP` protocols.
+**start_port:** `typing.Optional[int]` — Start of the port range. Used for `TCP` and `UDP` protocols.
     
 </dd>
 </dl>
@@ -5381,7 +5725,7 @@ client.network_acls.create_rule_network_acls(
 <dl>
 <dd>
 
-**end_port:** `typing.Optional[str]` — End of the port range. Used for `TCP` and `UDP` protocols.
+**end_port:** `typing.Optional[int]` — End of the port range. Used for `TCP` and `UDP` protocols.
     
 </dd>
 </dl>
@@ -9921,7 +10265,7 @@ client.object_storage.list_units_object_storage(
 </dl>
 </details>
 
-<details><summary><code>client.object_storage.<a href="src/americancloud/object_storage/client.py">create_unit_object_storage</a>(...) -> ObjectStorageSuccessResponseDto</code></summary>
+<details><summary><code>client.object_storage.<a href="src/americancloud/object_storage/client.py">create_unit_object_storage</a>(...) -> ObjectStorageUnitDto</code></summary>
 <dl>
 <dd>
 
@@ -9933,7 +10277,7 @@ client.object_storage.list_units_object_storage(
 <dl>
 <dd>
 
-Creates a new object storage unit (RGW user) for the authenticated account. To preview pricing without creating anything, use POST /object-storage/units/cost-estimate.
+Creates a new object storage unit for the authenticated account and returns it. The returned storageUnitId identifies the unit in all other object storage requests. To preview pricing without creating anything, use POST /object-storage/units/cost-estimate.
 </dd>
 </dl>
 </dd>
@@ -10408,7 +10752,7 @@ client.object_storage.set_user_quota_object_storage(
 <dl>
 <dd>
 
-Deletes an object storage unit (RGW user)
+Deletes an object storage unit
 </dd>
 </dl>
 </dd>

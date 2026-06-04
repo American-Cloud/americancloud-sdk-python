@@ -19,6 +19,7 @@ from ..types.api_error_dto import ApiErrorDto
 from ..types.cost_estimate_response_dto import CostEstimateResponseDto
 from ..types.detailed_vpc_network_response_dto import DetailedVpcNetworkResponseDto
 from ..types.vpc_network_response_dto import VpcNetworkResponseDto
+from ..types.vpc_tier_detail_response_dto import VpcTierDetailResponseDto
 from ..types.vpc_tier_response_dto import VpcTierResponseDto
 from .types.list_vpc_networks_response import ListVpcNetworksResponse
 from pydantic import ValidationError
@@ -744,6 +745,414 @@ class RawVpcNetworksClient:
                     ),
                 )
                 return HttpResponse(response=_response, data=_data)
+            if _response.status_code == 400:
+                raise BadRequestError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 401:
+                raise UnauthorizedError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 403:
+                raise ForbiddenError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 404:
+                raise NotFoundError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 500:
+                raise InternalServerError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            _response_json = _response.json()
+        except JSONDecodeError:
+            raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response.text)
+        except ValidationError as e:
+            raise ParsingError(
+                status_code=_response.status_code, headers=dict(_response.headers), body=_response.json(), cause=e
+            )
+        raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
+
+    def get_tier_vpc_networks(
+        self, id: str, tier_id: str, *, request_options: typing.Optional[RequestOptions] = None
+    ) -> HttpResponse[VpcTierDetailResponseDto]:
+        """
+        Returns a single network tier of a VPC.
+
+        Parameters
+        ----------
+        id : str
+            ID of the VPC that contains the tier
+
+        tier_id : str
+            ID of the network tier
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        HttpResponse[VpcTierDetailResponseDto]
+            The network tier details
+        """
+        _response = self._client_wrapper.httpx_client.request(
+            f"api/v1/networks/vpc/{encode_path_param(id)}/tiers/{encode_path_param(tier_id)}",
+            method="GET",
+            request_options=request_options,
+        )
+        try:
+            if 200 <= _response.status_code < 300:
+                _data = typing.cast(
+                    VpcTierDetailResponseDto,
+                    parse_obj_as(
+                        type_=VpcTierDetailResponseDto,  # type: ignore
+                        object_=_response.json(),
+                    ),
+                )
+                return HttpResponse(response=_response, data=_data)
+            if _response.status_code == 400:
+                raise BadRequestError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 401:
+                raise UnauthorizedError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 403:
+                raise ForbiddenError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 404:
+                raise NotFoundError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 500:
+                raise InternalServerError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            _response_json = _response.json()
+        except JSONDecodeError:
+            raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response.text)
+        except ValidationError as e:
+            raise ParsingError(
+                status_code=_response.status_code, headers=dict(_response.headers), body=_response.json(), cause=e
+            )
+        raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
+
+    def update_tier_vpc_networks(
+        self,
+        id: str,
+        tier_id: str,
+        *,
+        name: typing.Optional[str] = OMIT,
+        description: typing.Optional[str] = OMIT,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> HttpResponse[VpcTierDetailResponseDto]:
+        """
+        Updates the name and/or description of a network tier.
+
+        Parameters
+        ----------
+        id : str
+            ID of the VPC that contains the tier
+
+        tier_id : str
+            ID of the network tier to update
+
+        name : typing.Optional[str]
+            New name for the tier.
+
+        description : typing.Optional[str]
+            New description for the tier.
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        HttpResponse[VpcTierDetailResponseDto]
+            The updated network tier
+        """
+        _response = self._client_wrapper.httpx_client.request(
+            f"api/v1/networks/vpc/{encode_path_param(id)}/tiers/{encode_path_param(tier_id)}",
+            method="PUT",
+            json={
+                "name": name,
+                "description": description,
+            },
+            headers={
+                "content-type": "application/json",
+            },
+            request_options=request_options,
+            omit=OMIT,
+        )
+        try:
+            if 200 <= _response.status_code < 300:
+                _data = typing.cast(
+                    VpcTierDetailResponseDto,
+                    parse_obj_as(
+                        type_=VpcTierDetailResponseDto,  # type: ignore
+                        object_=_response.json(),
+                    ),
+                )
+                return HttpResponse(response=_response, data=_data)
+            if _response.status_code == 400:
+                raise BadRequestError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 401:
+                raise UnauthorizedError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 403:
+                raise ForbiddenError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 404:
+                raise NotFoundError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 500:
+                raise InternalServerError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            _response_json = _response.json()
+        except JSONDecodeError:
+            raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response.text)
+        except ValidationError as e:
+            raise ParsingError(
+                status_code=_response.status_code, headers=dict(_response.headers), body=_response.json(), cause=e
+            )
+        raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
+
+    def delete_tier_vpc_networks(
+        self, id: str, tier_id: str, *, request_options: typing.Optional[RequestOptions] = None
+    ) -> HttpResponse[None]:
+        """
+        Deletes a single network tier from a VPC, leaving the rest of the VPC intact.
+
+        Parameters
+        ----------
+        id : str
+            ID of the VPC that contains the tier
+
+        tier_id : str
+            ID of the network tier to delete
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        HttpResponse[None]
+        """
+        _response = self._client_wrapper.httpx_client.request(
+            f"api/v1/networks/vpc/{encode_path_param(id)}/tiers/{encode_path_param(tier_id)}",
+            method="DELETE",
+            request_options=request_options,
+        )
+        try:
+            if 200 <= _response.status_code < 300:
+                return HttpResponse(response=_response, data=None)
+            if _response.status_code == 400:
+                raise BadRequestError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 401:
+                raise UnauthorizedError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 403:
+                raise ForbiddenError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 404:
+                raise NotFoundError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 500:
+                raise InternalServerError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            _response_json = _response.json()
+        except JSONDecodeError:
+            raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response.text)
+        except ValidationError as e:
+            raise ParsingError(
+                status_code=_response.status_code, headers=dict(_response.headers), body=_response.json(), cause=e
+            )
+        raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
+
+    def restart_tier_vpc_networks(
+        self, id: str, tier_id: str, *, request_options: typing.Optional[RequestOptions] = None
+    ) -> HttpResponse[None]:
+        """
+        Restarts a single network tier of a VPC.
+
+        Parameters
+        ----------
+        id : str
+            ID of the VPC that contains the tier
+
+        tier_id : str
+            ID of the network tier to restart
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        HttpResponse[None]
+        """
+        _response = self._client_wrapper.httpx_client.request(
+            f"api/v1/networks/vpc/{encode_path_param(id)}/tiers/{encode_path_param(tier_id)}/restart",
+            method="POST",
+            request_options=request_options,
+        )
+        try:
+            if 200 <= _response.status_code < 300:
+                return HttpResponse(response=_response, data=None)
             if _response.status_code == 400:
                 raise BadRequestError(
                     headers=dict(_response.headers),
@@ -1614,6 +2023,414 @@ class AsyncRawVpcNetworksClient:
                     ),
                 )
                 return AsyncHttpResponse(response=_response, data=_data)
+            if _response.status_code == 400:
+                raise BadRequestError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 401:
+                raise UnauthorizedError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 403:
+                raise ForbiddenError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 404:
+                raise NotFoundError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 500:
+                raise InternalServerError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            _response_json = _response.json()
+        except JSONDecodeError:
+            raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response.text)
+        except ValidationError as e:
+            raise ParsingError(
+                status_code=_response.status_code, headers=dict(_response.headers), body=_response.json(), cause=e
+            )
+        raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
+
+    async def get_tier_vpc_networks(
+        self, id: str, tier_id: str, *, request_options: typing.Optional[RequestOptions] = None
+    ) -> AsyncHttpResponse[VpcTierDetailResponseDto]:
+        """
+        Returns a single network tier of a VPC.
+
+        Parameters
+        ----------
+        id : str
+            ID of the VPC that contains the tier
+
+        tier_id : str
+            ID of the network tier
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        AsyncHttpResponse[VpcTierDetailResponseDto]
+            The network tier details
+        """
+        _response = await self._client_wrapper.httpx_client.request(
+            f"api/v1/networks/vpc/{encode_path_param(id)}/tiers/{encode_path_param(tier_id)}",
+            method="GET",
+            request_options=request_options,
+        )
+        try:
+            if 200 <= _response.status_code < 300:
+                _data = typing.cast(
+                    VpcTierDetailResponseDto,
+                    parse_obj_as(
+                        type_=VpcTierDetailResponseDto,  # type: ignore
+                        object_=_response.json(),
+                    ),
+                )
+                return AsyncHttpResponse(response=_response, data=_data)
+            if _response.status_code == 400:
+                raise BadRequestError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 401:
+                raise UnauthorizedError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 403:
+                raise ForbiddenError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 404:
+                raise NotFoundError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 500:
+                raise InternalServerError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            _response_json = _response.json()
+        except JSONDecodeError:
+            raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response.text)
+        except ValidationError as e:
+            raise ParsingError(
+                status_code=_response.status_code, headers=dict(_response.headers), body=_response.json(), cause=e
+            )
+        raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
+
+    async def update_tier_vpc_networks(
+        self,
+        id: str,
+        tier_id: str,
+        *,
+        name: typing.Optional[str] = OMIT,
+        description: typing.Optional[str] = OMIT,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> AsyncHttpResponse[VpcTierDetailResponseDto]:
+        """
+        Updates the name and/or description of a network tier.
+
+        Parameters
+        ----------
+        id : str
+            ID of the VPC that contains the tier
+
+        tier_id : str
+            ID of the network tier to update
+
+        name : typing.Optional[str]
+            New name for the tier.
+
+        description : typing.Optional[str]
+            New description for the tier.
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        AsyncHttpResponse[VpcTierDetailResponseDto]
+            The updated network tier
+        """
+        _response = await self._client_wrapper.httpx_client.request(
+            f"api/v1/networks/vpc/{encode_path_param(id)}/tiers/{encode_path_param(tier_id)}",
+            method="PUT",
+            json={
+                "name": name,
+                "description": description,
+            },
+            headers={
+                "content-type": "application/json",
+            },
+            request_options=request_options,
+            omit=OMIT,
+        )
+        try:
+            if 200 <= _response.status_code < 300:
+                _data = typing.cast(
+                    VpcTierDetailResponseDto,
+                    parse_obj_as(
+                        type_=VpcTierDetailResponseDto,  # type: ignore
+                        object_=_response.json(),
+                    ),
+                )
+                return AsyncHttpResponse(response=_response, data=_data)
+            if _response.status_code == 400:
+                raise BadRequestError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 401:
+                raise UnauthorizedError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 403:
+                raise ForbiddenError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 404:
+                raise NotFoundError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 500:
+                raise InternalServerError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            _response_json = _response.json()
+        except JSONDecodeError:
+            raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response.text)
+        except ValidationError as e:
+            raise ParsingError(
+                status_code=_response.status_code, headers=dict(_response.headers), body=_response.json(), cause=e
+            )
+        raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
+
+    async def delete_tier_vpc_networks(
+        self, id: str, tier_id: str, *, request_options: typing.Optional[RequestOptions] = None
+    ) -> AsyncHttpResponse[None]:
+        """
+        Deletes a single network tier from a VPC, leaving the rest of the VPC intact.
+
+        Parameters
+        ----------
+        id : str
+            ID of the VPC that contains the tier
+
+        tier_id : str
+            ID of the network tier to delete
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        AsyncHttpResponse[None]
+        """
+        _response = await self._client_wrapper.httpx_client.request(
+            f"api/v1/networks/vpc/{encode_path_param(id)}/tiers/{encode_path_param(tier_id)}",
+            method="DELETE",
+            request_options=request_options,
+        )
+        try:
+            if 200 <= _response.status_code < 300:
+                return AsyncHttpResponse(response=_response, data=None)
+            if _response.status_code == 400:
+                raise BadRequestError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 401:
+                raise UnauthorizedError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 403:
+                raise ForbiddenError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 404:
+                raise NotFoundError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 500:
+                raise InternalServerError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            _response_json = _response.json()
+        except JSONDecodeError:
+            raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response.text)
+        except ValidationError as e:
+            raise ParsingError(
+                status_code=_response.status_code, headers=dict(_response.headers), body=_response.json(), cause=e
+            )
+        raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
+
+    async def restart_tier_vpc_networks(
+        self, id: str, tier_id: str, *, request_options: typing.Optional[RequestOptions] = None
+    ) -> AsyncHttpResponse[None]:
+        """
+        Restarts a single network tier of a VPC.
+
+        Parameters
+        ----------
+        id : str
+            ID of the VPC that contains the tier
+
+        tier_id : str
+            ID of the network tier to restart
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        AsyncHttpResponse[None]
+        """
+        _response = await self._client_wrapper.httpx_client.request(
+            f"api/v1/networks/vpc/{encode_path_param(id)}/tiers/{encode_path_param(tier_id)}/restart",
+            method="POST",
+            request_options=request_options,
+        )
+        try:
+            if 200 <= _response.status_code < 300:
+                return AsyncHttpResponse(response=_response, data=None)
             if _response.status_code == 400:
                 raise BadRequestError(
                     headers=dict(_response.headers),

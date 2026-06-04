@@ -7,6 +7,7 @@ from ..core.request_options import RequestOptions
 from ..types.cost_estimate_response_dto import CostEstimateResponseDto
 from ..types.detailed_vpc_network_response_dto import DetailedVpcNetworkResponseDto
 from ..types.vpc_network_response_dto import VpcNetworkResponseDto
+from ..types.vpc_tier_detail_response_dto import VpcTierDetailResponseDto
 from ..types.vpc_tier_response_dto import VpcTierResponseDto
 from .raw_client import AsyncRawVpcNetworksClient, RawVpcNetworksClient
 from .types.list_vpc_networks_response import ListVpcNetworksResponse
@@ -343,6 +344,170 @@ class VpcNetworksClient:
             acl_id=acl_id,
             request_options=request_options,
         )
+        return _response.data
+
+    def get_tier_vpc_networks(
+        self, id: str, tier_id: str, *, request_options: typing.Optional[RequestOptions] = None
+    ) -> VpcTierDetailResponseDto:
+        """
+        Returns a single network tier of a VPC.
+
+        Parameters
+        ----------
+        id : str
+            ID of the VPC that contains the tier
+
+        tier_id : str
+            ID of the network tier
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        VpcTierDetailResponseDto
+            The network tier details
+
+        Examples
+        --------
+        from americancloud import AmericancloudApi
+
+        client = AmericancloudApi(
+            api_client_secret="YOUR_API_CLIENT_SECRET",
+            api_key="YOUR_API_KEY",
+        )
+        client.vpc_networks.get_tier_vpc_networks(
+            id="123e4567-e89b-12d3-a456-426614174000",
+            tier_id="123e4567-e89b-12d3-a456-426614174000",
+        )
+        """
+        _response = self._raw_client.get_tier_vpc_networks(id, tier_id, request_options=request_options)
+        return _response.data
+
+    def update_tier_vpc_networks(
+        self,
+        id: str,
+        tier_id: str,
+        *,
+        name: typing.Optional[str] = OMIT,
+        description: typing.Optional[str] = OMIT,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> VpcTierDetailResponseDto:
+        """
+        Updates the name and/or description of a network tier.
+
+        Parameters
+        ----------
+        id : str
+            ID of the VPC that contains the tier
+
+        tier_id : str
+            ID of the network tier to update
+
+        name : typing.Optional[str]
+            New name for the tier.
+
+        description : typing.Optional[str]
+            New description for the tier.
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        VpcTierDetailResponseDto
+            The updated network tier
+
+        Examples
+        --------
+        from americancloud import AmericancloudApi
+
+        client = AmericancloudApi(
+            api_client_secret="YOUR_API_CLIENT_SECRET",
+            api_key="YOUR_API_KEY",
+        )
+        client.vpc_networks.update_tier_vpc_networks(
+            id="123e4567-e89b-12d3-a456-426614174000",
+            tier_id="123e4567-e89b-12d3-a456-426614174000",
+        )
+        """
+        _response = self._raw_client.update_tier_vpc_networks(
+            id, tier_id, name=name, description=description, request_options=request_options
+        )
+        return _response.data
+
+    def delete_tier_vpc_networks(
+        self, id: str, tier_id: str, *, request_options: typing.Optional[RequestOptions] = None
+    ) -> None:
+        """
+        Deletes a single network tier from a VPC, leaving the rest of the VPC intact.
+
+        Parameters
+        ----------
+        id : str
+            ID of the VPC that contains the tier
+
+        tier_id : str
+            ID of the network tier to delete
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        None
+
+        Examples
+        --------
+        from americancloud import AmericancloudApi
+
+        client = AmericancloudApi(
+            api_client_secret="YOUR_API_CLIENT_SECRET",
+            api_key="YOUR_API_KEY",
+        )
+        client.vpc_networks.delete_tier_vpc_networks(
+            id="123e4567-e89b-12d3-a456-426614174000",
+            tier_id="123e4567-e89b-12d3-a456-426614174000",
+        )
+        """
+        _response = self._raw_client.delete_tier_vpc_networks(id, tier_id, request_options=request_options)
+        return _response.data
+
+    def restart_tier_vpc_networks(
+        self, id: str, tier_id: str, *, request_options: typing.Optional[RequestOptions] = None
+    ) -> None:
+        """
+        Restarts a single network tier of a VPC.
+
+        Parameters
+        ----------
+        id : str
+            ID of the VPC that contains the tier
+
+        tier_id : str
+            ID of the network tier to restart
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        None
+
+        Examples
+        --------
+        from americancloud import AmericancloudApi
+
+        client = AmericancloudApi(
+            api_client_secret="YOUR_API_CLIENT_SECRET",
+            api_key="YOUR_API_KEY",
+        )
+        client.vpc_networks.restart_tier_vpc_networks(
+            id="123e4567-e89b-12d3-a456-426614174000",
+            tier_id="123e4567-e89b-12d3-a456-426614174000",
+        )
+        """
+        _response = self._raw_client.restart_tier_vpc_networks(id, tier_id, request_options=request_options)
         return _response.data
 
     def restart_vpc_networks(self, id: str, *, request_options: typing.Optional[RequestOptions] = None) -> None:
@@ -761,6 +926,202 @@ class AsyncVpcNetworksClient:
             acl_id=acl_id,
             request_options=request_options,
         )
+        return _response.data
+
+    async def get_tier_vpc_networks(
+        self, id: str, tier_id: str, *, request_options: typing.Optional[RequestOptions] = None
+    ) -> VpcTierDetailResponseDto:
+        """
+        Returns a single network tier of a VPC.
+
+        Parameters
+        ----------
+        id : str
+            ID of the VPC that contains the tier
+
+        tier_id : str
+            ID of the network tier
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        VpcTierDetailResponseDto
+            The network tier details
+
+        Examples
+        --------
+        import asyncio
+
+        from americancloud import AsyncAmericancloudApi
+
+        client = AsyncAmericancloudApi(
+            api_client_secret="YOUR_API_CLIENT_SECRET",
+            api_key="YOUR_API_KEY",
+        )
+
+
+        async def main() -> None:
+            await client.vpc_networks.get_tier_vpc_networks(
+                id="123e4567-e89b-12d3-a456-426614174000",
+                tier_id="123e4567-e89b-12d3-a456-426614174000",
+            )
+
+
+        asyncio.run(main())
+        """
+        _response = await self._raw_client.get_tier_vpc_networks(id, tier_id, request_options=request_options)
+        return _response.data
+
+    async def update_tier_vpc_networks(
+        self,
+        id: str,
+        tier_id: str,
+        *,
+        name: typing.Optional[str] = OMIT,
+        description: typing.Optional[str] = OMIT,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> VpcTierDetailResponseDto:
+        """
+        Updates the name and/or description of a network tier.
+
+        Parameters
+        ----------
+        id : str
+            ID of the VPC that contains the tier
+
+        tier_id : str
+            ID of the network tier to update
+
+        name : typing.Optional[str]
+            New name for the tier.
+
+        description : typing.Optional[str]
+            New description for the tier.
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        VpcTierDetailResponseDto
+            The updated network tier
+
+        Examples
+        --------
+        import asyncio
+
+        from americancloud import AsyncAmericancloudApi
+
+        client = AsyncAmericancloudApi(
+            api_client_secret="YOUR_API_CLIENT_SECRET",
+            api_key="YOUR_API_KEY",
+        )
+
+
+        async def main() -> None:
+            await client.vpc_networks.update_tier_vpc_networks(
+                id="123e4567-e89b-12d3-a456-426614174000",
+                tier_id="123e4567-e89b-12d3-a456-426614174000",
+            )
+
+
+        asyncio.run(main())
+        """
+        _response = await self._raw_client.update_tier_vpc_networks(
+            id, tier_id, name=name, description=description, request_options=request_options
+        )
+        return _response.data
+
+    async def delete_tier_vpc_networks(
+        self, id: str, tier_id: str, *, request_options: typing.Optional[RequestOptions] = None
+    ) -> None:
+        """
+        Deletes a single network tier from a VPC, leaving the rest of the VPC intact.
+
+        Parameters
+        ----------
+        id : str
+            ID of the VPC that contains the tier
+
+        tier_id : str
+            ID of the network tier to delete
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        None
+
+        Examples
+        --------
+        import asyncio
+
+        from americancloud import AsyncAmericancloudApi
+
+        client = AsyncAmericancloudApi(
+            api_client_secret="YOUR_API_CLIENT_SECRET",
+            api_key="YOUR_API_KEY",
+        )
+
+
+        async def main() -> None:
+            await client.vpc_networks.delete_tier_vpc_networks(
+                id="123e4567-e89b-12d3-a456-426614174000",
+                tier_id="123e4567-e89b-12d3-a456-426614174000",
+            )
+
+
+        asyncio.run(main())
+        """
+        _response = await self._raw_client.delete_tier_vpc_networks(id, tier_id, request_options=request_options)
+        return _response.data
+
+    async def restart_tier_vpc_networks(
+        self, id: str, tier_id: str, *, request_options: typing.Optional[RequestOptions] = None
+    ) -> None:
+        """
+        Restarts a single network tier of a VPC.
+
+        Parameters
+        ----------
+        id : str
+            ID of the VPC that contains the tier
+
+        tier_id : str
+            ID of the network tier to restart
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        None
+
+        Examples
+        --------
+        import asyncio
+
+        from americancloud import AsyncAmericancloudApi
+
+        client = AsyncAmericancloudApi(
+            api_client_secret="YOUR_API_CLIENT_SECRET",
+            api_key="YOUR_API_KEY",
+        )
+
+
+        async def main() -> None:
+            await client.vpc_networks.restart_tier_vpc_networks(
+                id="123e4567-e89b-12d3-a456-426614174000",
+                tier_id="123e4567-e89b-12d3-a456-426614174000",
+            )
+
+
+        asyncio.run(main())
+        """
+        _response = await self._raw_client.restart_tier_vpc_networks(id, tier_id, request_options=request_options)
         return _response.data
 
     async def restart_vpc_networks(self, id: str, *, request_options: typing.Optional[RequestOptions] = None) -> None:

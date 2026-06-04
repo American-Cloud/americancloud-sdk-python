@@ -80,8 +80,8 @@ class FirewallRulesClient:
         *,
         protocol: CreateFirewallRuleDtoProtocol,
         source_cidr_list: str,
-        start_port: typing.Optional[str] = OMIT,
-        end_port: typing.Optional[str] = OMIT,
+        start_port: typing.Optional[int] = OMIT,
+        end_port: typing.Optional[int] = OMIT,
         type: typing.Optional[CreateFirewallRuleDtoType] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> FirewallRuleResponseDto:
@@ -97,10 +97,10 @@ class FirewallRulesClient:
         source_cidr_list : str
             Source CIDR allowed to reach the rule target.
 
-        start_port : typing.Optional[str]
+        start_port : typing.Optional[int]
             Start of the port range (1-65535). Required for TCP and UDP.
 
-        end_port : typing.Optional[str]
+        end_port : typing.Optional[int]
             End of the port range (1-65535). Must be greater than or equal to `startPort`.
 
         type : typing.Optional[CreateFirewallRuleDtoType]
@@ -243,8 +243,8 @@ class AsyncFirewallRulesClient:
         *,
         protocol: CreateFirewallRuleDtoProtocol,
         source_cidr_list: str,
-        start_port: typing.Optional[str] = OMIT,
-        end_port: typing.Optional[str] = OMIT,
+        start_port: typing.Optional[int] = OMIT,
+        end_port: typing.Optional[int] = OMIT,
         type: typing.Optional[CreateFirewallRuleDtoType] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> FirewallRuleResponseDto:
@@ -260,10 +260,10 @@ class AsyncFirewallRulesClient:
         source_cidr_list : str
             Source CIDR allowed to reach the rule target.
 
-        start_port : typing.Optional[str]
+        start_port : typing.Optional[int]
             Start of the port range (1-65535). Required for TCP and UDP.
 
-        end_port : typing.Optional[str]
+        end_port : typing.Optional[int]
             End of the port range (1-65535). Must be greater than or equal to `startPort`.
 
         type : typing.Optional[CreateFirewallRuleDtoType]

@@ -112,6 +112,8 @@ if typing.TYPE_CHECKING:
     from .vpc_network_config_dto import VpcNetworkConfigDto
     from .vpc_network_response_dto import VpcNetworkResponseDto
     from .vpc_network_response_dto_status import VpcNetworkResponseDtoStatus
+    from .vpc_tier_detail_response_dto import VpcTierDetailResponseDto
+    from .vpc_tier_detail_response_dto_status import VpcTierDetailResponseDtoStatus
     from .vpc_tier_response_dto import VpcTierResponseDto
     from .vpc_tier_response_dto_status import VpcTierResponseDtoStatus
     from .website_info_dto import WebsiteInfoDto
@@ -228,6 +230,8 @@ _dynamic_imports: typing.Dict[str, str] = {
     "VpcNetworkConfigDto": ".vpc_network_config_dto",
     "VpcNetworkResponseDto": ".vpc_network_response_dto",
     "VpcNetworkResponseDtoStatus": ".vpc_network_response_dto_status",
+    "VpcTierDetailResponseDto": ".vpc_tier_detail_response_dto",
+    "VpcTierDetailResponseDtoStatus": ".vpc_tier_detail_response_dto_status",
     "VpcTierResponseDto": ".vpc_tier_response_dto",
     "VpcTierResponseDtoStatus": ".vpc_tier_response_dto_status",
     "WebsiteInfoDto": ".website_info_dto",
@@ -368,6 +372,8 @@ __all__ = [
     "VpcNetworkConfigDto",
     "VpcNetworkResponseDto",
     "VpcNetworkResponseDtoStatus",
+    "VpcTierDetailResponseDto",
+    "VpcTierDetailResponseDtoStatus",
     "VpcTierResponseDto",
     "VpcTierResponseDtoStatus",
     "WebsiteInfoDto",

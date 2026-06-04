@@ -29,9 +29,9 @@ class SnapshotResponseDto(UniversalBaseModel):
     Current status of the snapshot
     """
 
-    type: typing.Optional[SnapshotResponseDtoType] = pydantic.Field(default=None)
+    type: SnapshotResponseDtoType = pydantic.Field()
     """
-    Type of the snapshot. Null when the source volume has no recorded type (rare; typically legacy snapshots).
+    Type of the snapshot, indicating whether it was taken of a root or data disk.
     """
 
     volume_id: typing_extensions.Annotated[
