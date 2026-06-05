@@ -167,7 +167,7 @@ class SnapshotsClient:
         Returns
         -------
         SnapshotOperationResponseDto
-            Snapshot deletion initiated successfully
+            The snapshot has been deleted
 
         Examples
         --------
@@ -448,7 +448,7 @@ class AsyncSnapshotsClient:
         Returns
         -------
         SnapshotOperationResponseDto
-            Snapshot deletion initiated successfully
+            The snapshot has been deleted
 
         Examples
         --------
