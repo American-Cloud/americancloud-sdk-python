@@ -431,7 +431,7 @@ class RawVmsClient:
             ID of the virtual machine
 
         password : typing.Optional[str]
-            Custom password to set for the VM. If not provided, a random password will be generated.
+            Custom password to set for the VM. If not provided, a random password will be generated. May contain letters, digits, and symbols only (printable ASCII, no spaces).
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -1907,7 +1907,7 @@ class AsyncRawVmsClient:
             ID of the virtual machine
 
         password : typing.Optional[str]
-            Custom password to set for the VM. If not provided, a random password will be generated.
+            Custom password to set for the VM. If not provided, a random password will be generated. May contain letters, digits, and symbols only (printable ASCII, no spaces).
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.

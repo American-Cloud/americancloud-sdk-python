@@ -2,7 +2,7 @@
   "cliVersion": "5.44.9",
   "generatorName": "fernapi/fern-python-sdk",
   "generatorVersion": "5.14.6",
-  "originGitCommit": "16ccbaabe708618c2629924b802b7eb7ad333370",
+  "originGitCommit": "4c92f9dc77abbe2b218e2add5783c1559dc9dfb3",
   "originGitCommitIsDirty": true,
   "invokedBy": "manual"
 }

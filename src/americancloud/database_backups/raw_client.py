@@ -19,6 +19,7 @@ from ..errors.not_found_error import NotFoundError
 from ..errors.unauthorized_error import UnauthorizedError
 from ..types.api_error_dto import ApiErrorDto
 from ..types.backup_cluster_config_response_dto import BackupClusterConfigResponseDto
+from ..types.backup_config_update_response_dto import BackupConfigUpdateResponseDto
 from ..types.backup_delete_response_dto import BackupDeleteResponseDto
 from ..types.backup_details_response_dto import BackupDetailsResponseDto
 from ..types.backup_list_response_dto import BackupListResponseDto
@@ -462,6 +463,134 @@ class RawDatabaseBackupsClient:
                 )
             if _response.status_code == 404:
                 raise NotFoundError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 500:
+                raise InternalServerError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            _response_json = _response.json()
+        except JSONDecodeError:
+            raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response.text)
+        except ValidationError as e:
+            raise ParsingError(
+                status_code=_response.status_code, headers=dict(_response.headers), body=_response.json(), cause=e
+            )
+        raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
+
+    def update_config_database_backups(
+        self,
+        cluster_id: str,
+        *,
+        encryption_enabled: bool,
+        passphrase: typing.Optional[str] = OMIT,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> HttpResponse[BackupConfigUpdateResponseDto]:
+        """
+        Enable or disable encryption of this cluster’s backups. When enabling, provide a passphrase; keep it safe, as it is required to restore the resulting backups.
+
+        Parameters
+        ----------
+        cluster_id : str
+            Database cluster ID
+
+        encryption_enabled : bool
+            Whether backups for this cluster should be encrypted at rest. When enabled, backups are encrypted with AES-256-CFB.
+
+        passphrase : typing.Optional[str]
+            Passphrase used to encrypt backups. Required when enabling encryption. Must be 12–256 printable ASCII characters (letters, digits, symbols) with no spaces. Store it securely — it is required to restore encrypted backups and cannot be recovered if lost.
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        HttpResponse[BackupConfigUpdateResponseDto]
+            Backup configuration update accepted
+        """
+        _response = self._client_wrapper.httpx_client.request(
+            f"api/v1/databases/clusters/{encode_path_param(cluster_id)}/backups/config",
+            method="PATCH",
+            json={
+                "encryptionEnabled": encryption_enabled,
+                "passphrase": passphrase,
+            },
+            headers={
+                "content-type": "application/json",
+            },
+            request_options=request_options,
+            omit=OMIT,
+        )
+        try:
+            if 200 <= _response.status_code < 300:
+                _data = typing.cast(
+                    BackupConfigUpdateResponseDto,
+                    parse_obj_as(
+                        type_=BackupConfigUpdateResponseDto,  # type: ignore
+                        object_=_response.json(),
+                    ),
+                )
+                return HttpResponse(response=_response, data=_data)
+            if _response.status_code == 400:
+                raise BadRequestError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 401:
+                raise UnauthorizedError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 403:
+                raise ForbiddenError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 404:
+                raise NotFoundError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 409:
+                raise ConflictError(
                     headers=dict(_response.headers),
                     body=typing.cast(
                         ApiErrorDto,
@@ -1732,6 +1861,134 @@ class AsyncRawDatabaseBackupsClient:
                 )
             if _response.status_code == 404:
                 raise NotFoundError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 500:
+                raise InternalServerError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            _response_json = _response.json()
+        except JSONDecodeError:
+            raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response.text)
+        except ValidationError as e:
+            raise ParsingError(
+                status_code=_response.status_code, headers=dict(_response.headers), body=_response.json(), cause=e
+            )
+        raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
+
+    async def update_config_database_backups(
+        self,
+        cluster_id: str,
+        *,
+        encryption_enabled: bool,
+        passphrase: typing.Optional[str] = OMIT,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> AsyncHttpResponse[BackupConfigUpdateResponseDto]:
+        """
+        Enable or disable encryption of this cluster’s backups. When enabling, provide a passphrase; keep it safe, as it is required to restore the resulting backups.
+
+        Parameters
+        ----------
+        cluster_id : str
+            Database cluster ID
+
+        encryption_enabled : bool
+            Whether backups for this cluster should be encrypted at rest. When enabled, backups are encrypted with AES-256-CFB.
+
+        passphrase : typing.Optional[str]
+            Passphrase used to encrypt backups. Required when enabling encryption. Must be 12–256 printable ASCII characters (letters, digits, symbols) with no spaces. Store it securely — it is required to restore encrypted backups and cannot be recovered if lost.
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        AsyncHttpResponse[BackupConfigUpdateResponseDto]
+            Backup configuration update accepted
+        """
+        _response = await self._client_wrapper.httpx_client.request(
+            f"api/v1/databases/clusters/{encode_path_param(cluster_id)}/backups/config",
+            method="PATCH",
+            json={
+                "encryptionEnabled": encryption_enabled,
+                "passphrase": passphrase,
+            },
+            headers={
+                "content-type": "application/json",
+            },
+            request_options=request_options,
+            omit=OMIT,
+        )
+        try:
+            if 200 <= _response.status_code < 300:
+                _data = typing.cast(
+                    BackupConfigUpdateResponseDto,
+                    parse_obj_as(
+                        type_=BackupConfigUpdateResponseDto,  # type: ignore
+                        object_=_response.json(),
+                    ),
+                )
+                return AsyncHttpResponse(response=_response, data=_data)
+            if _response.status_code == 400:
+                raise BadRequestError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 401:
+                raise UnauthorizedError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 403:
+                raise ForbiddenError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 404:
+                raise NotFoundError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 409:
+                raise ConflictError(
                     headers=dict(_response.headers),
                     body=typing.cast(
                         ApiErrorDto,

@@ -350,10 +350,10 @@ class RawDatabaseInfrastructureClient:
             Name for the backup repository.
 
         bucket : str
-            S3 bucket backups are stored in.
+            Name of the S3 bucket backups are stored in. Provide the bucket name only — no path or account/tenant prefix.
 
         endpoint : str
-            S3-compatible endpoint URL to use for the bucket.
+            Hostname of your S3-compatible endpoint (for example, "s3.example.com"), optionally with a port. Provide the host only — connections always use HTTPS.
 
         access_key_id : str
             S3 access key identifier with access to the bucket.
@@ -485,10 +485,10 @@ class RawDatabaseInfrastructureClient:
             Name for the backup repository.
 
         bucket : str
-            S3 bucket backups are stored in.
+            Name of the S3 bucket backups are stored in. Provide the bucket name only — no path or account/tenant prefix.
 
         endpoint : str
-            S3-compatible endpoint URL to use for the bucket.
+            Hostname of your S3-compatible endpoint (for example, "s3.example.com"), optionally with a port. Provide the host only — connections always use HTTPS.
 
         access_key_id : str
             S3 access key identifier with access to the bucket.
@@ -1138,10 +1138,10 @@ class AsyncRawDatabaseInfrastructureClient:
             Name for the backup repository.
 
         bucket : str
-            S3 bucket backups are stored in.
+            Name of the S3 bucket backups are stored in. Provide the bucket name only — no path or account/tenant prefix.
 
         endpoint : str
-            S3-compatible endpoint URL to use for the bucket.
+            Hostname of your S3-compatible endpoint (for example, "s3.example.com"), optionally with a port. Provide the host only — connections always use HTTPS.
 
         access_key_id : str
             S3 access key identifier with access to the bucket.
@@ -1273,10 +1273,10 @@ class AsyncRawDatabaseInfrastructureClient:
             Name for the backup repository.
 
         bucket : str
-            S3 bucket backups are stored in.
+            Name of the S3 bucket backups are stored in. Provide the bucket name only — no path or account/tenant prefix.
 
         endpoint : str
-            S3-compatible endpoint URL to use for the bucket.
+            Hostname of your S3-compatible endpoint (for example, "s3.example.com"), optionally with a port. Provide the host only — connections always use HTTPS.
 
         access_key_id : str
             S3 access key identifier with access to the bucket.

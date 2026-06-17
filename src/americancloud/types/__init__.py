@@ -11,6 +11,7 @@ if typing.TYPE_CHECKING:
     from .api_error_dto_message import ApiErrorDtoMessage
     from .assign_vms_to_load_balancer_rule_dto import AssignVmsToLoadBalancerRuleDto
     from .backup_cluster_config_response_dto import BackupClusterConfigResponseDto
+    from .backup_config_update_response_dto import BackupConfigUpdateResponseDto
     from .backup_delete_response_dto import BackupDeleteResponseDto
     from .backup_details_response_dto import BackupDetailsResponseDto
     from .backup_list_response_dto import BackupListResponseDto
@@ -129,6 +130,7 @@ _dynamic_imports: typing.Dict[str, str] = {
     "ApiErrorDtoMessage": ".api_error_dto_message",
     "AssignVmsToLoadBalancerRuleDto": ".assign_vms_to_load_balancer_rule_dto",
     "BackupClusterConfigResponseDto": ".backup_cluster_config_response_dto",
+    "BackupConfigUpdateResponseDto": ".backup_config_update_response_dto",
     "BackupDeleteResponseDto": ".backup_delete_response_dto",
     "BackupDetailsResponseDto": ".backup_details_response_dto",
     "BackupListResponseDto": ".backup_list_response_dto",
@@ -271,6 +273,7 @@ __all__ = [
     "ApiErrorDtoMessage",
     "AssignVmsToLoadBalancerRuleDto",
     "BackupClusterConfigResponseDto",
+    "BackupConfigUpdateResponseDto",
     "BackupDeleteResponseDto",
     "BackupDetailsResponseDto",
     "BackupListResponseDto",

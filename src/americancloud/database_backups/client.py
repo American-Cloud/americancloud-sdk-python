@@ -5,6 +5,7 @@ import typing
 from ..core.client_wrapper import AsyncClientWrapper, SyncClientWrapper
 from ..core.request_options import RequestOptions
 from ..types.backup_cluster_config_response_dto import BackupClusterConfigResponseDto
+from ..types.backup_config_update_response_dto import BackupConfigUpdateResponseDto
 from ..types.backup_delete_response_dto import BackupDeleteResponseDto
 from ..types.backup_details_response_dto import BackupDetailsResponseDto
 from ..types.backup_list_response_dto import BackupListResponseDto
@@ -206,6 +207,54 @@ class DatabaseBackupsClient:
         )
         """
         _response = self._raw_client.get_config_database_backups(cluster_id, request_options=request_options)
+        return _response.data
+
+    def update_config_database_backups(
+        self,
+        cluster_id: str,
+        *,
+        encryption_enabled: bool,
+        passphrase: typing.Optional[str] = OMIT,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> BackupConfigUpdateResponseDto:
+        """
+        Enable or disable encryption of this cluster’s backups. When enabling, provide a passphrase; keep it safe, as it is required to restore the resulting backups.
+
+        Parameters
+        ----------
+        cluster_id : str
+            Database cluster ID
+
+        encryption_enabled : bool
+            Whether backups for this cluster should be encrypted at rest. When enabled, backups are encrypted with AES-256-CFB.
+
+        passphrase : typing.Optional[str]
+            Passphrase used to encrypt backups. Required when enabling encryption. Must be 12–256 printable ASCII characters (letters, digits, symbols) with no spaces. Store it securely — it is required to restore encrypted backups and cannot be recovered if lost.
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        BackupConfigUpdateResponseDto
+            Backup configuration update accepted
+
+        Examples
+        --------
+        from americancloud import AmericancloudApi
+
+        client = AmericancloudApi(
+            api_client_secret="YOUR_API_CLIENT_SECRET",
+            api_key="YOUR_API_KEY",
+        )
+        client.database_backups.update_config_database_backups(
+            cluster_id="123e4567-e89b-12d3-a456-426614174000",
+            encryption_enabled=True,
+        )
+        """
+        _response = self._raw_client.update_config_database_backups(
+            cluster_id, encryption_enabled=encryption_enabled, passphrase=passphrase, request_options=request_options
+        )
         return _response.data
 
     def get_schedule_database_backups(
@@ -759,6 +808,62 @@ class AsyncDatabaseBackupsClient:
         asyncio.run(main())
         """
         _response = await self._raw_client.get_config_database_backups(cluster_id, request_options=request_options)
+        return _response.data
+
+    async def update_config_database_backups(
+        self,
+        cluster_id: str,
+        *,
+        encryption_enabled: bool,
+        passphrase: typing.Optional[str] = OMIT,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> BackupConfigUpdateResponseDto:
+        """
+        Enable or disable encryption of this cluster’s backups. When enabling, provide a passphrase; keep it safe, as it is required to restore the resulting backups.
+
+        Parameters
+        ----------
+        cluster_id : str
+            Database cluster ID
+
+        encryption_enabled : bool
+            Whether backups for this cluster should be encrypted at rest. When enabled, backups are encrypted with AES-256-CFB.
+
+        passphrase : typing.Optional[str]
+            Passphrase used to encrypt backups. Required when enabling encryption. Must be 12–256 printable ASCII characters (letters, digits, symbols) with no spaces. Store it securely — it is required to restore encrypted backups and cannot be recovered if lost.
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        BackupConfigUpdateResponseDto
+            Backup configuration update accepted
+
+        Examples
+        --------
+        import asyncio
+
+        from americancloud import AsyncAmericancloudApi
+
+        client = AsyncAmericancloudApi(
+            api_client_secret="YOUR_API_CLIENT_SECRET",
+            api_key="YOUR_API_KEY",
+        )
+
+
+        async def main() -> None:
+            await client.database_backups.update_config_database_backups(
+                cluster_id="123e4567-e89b-12d3-a456-426614174000",
+                encryption_enabled=True,
+            )
+
+
+        asyncio.run(main())
+        """
+        _response = await self._raw_client.update_config_database_backups(
+            cluster_id, encryption_enabled=encryption_enabled, passphrase=passphrase, request_options=request_options
+        )
         return _response.data
 
     async def get_schedule_database_backups(

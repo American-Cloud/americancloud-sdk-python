@@ -162,10 +162,10 @@ class DatabaseInfrastructureClient:
             Name for the backup repository.
 
         bucket : str
-            S3 bucket backups are stored in.
+            Name of the S3 bucket backups are stored in. Provide the bucket name only — no path or account/tenant prefix.
 
         endpoint : str
-            S3-compatible endpoint URL to use for the bucket.
+            Hostname of your S3-compatible endpoint (for example, "s3.example.com"), optionally with a port. Provide the host only — connections always use HTTPS.
 
         access_key_id : str
             S3 access key identifier with access to the bucket.
@@ -196,7 +196,7 @@ class DatabaseInfrastructureClient:
             user_cluster_id="123e4567-e89b-12d3-a456-426614174000",
             repo_name="primary-backup-repo",
             bucket="my-storage-bucket",
-            endpoint="https://s3.example.com",
+            endpoint="s3.example.com",
             access_key_id="AKIAIOSFODNN7EXAMPLE",
             access_key_secret="wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
         )
@@ -235,10 +235,10 @@ class DatabaseInfrastructureClient:
             Name for the backup repository.
 
         bucket : str
-            S3 bucket backups are stored in.
+            Name of the S3 bucket backups are stored in. Provide the bucket name only — no path or account/tenant prefix.
 
         endpoint : str
-            S3-compatible endpoint URL to use for the bucket.
+            Hostname of your S3-compatible endpoint (for example, "s3.example.com"), optionally with a port. Provide the host only — connections always use HTTPS.
 
         access_key_id : str
             S3 access key identifier with access to the bucket.
@@ -269,7 +269,7 @@ class DatabaseInfrastructureClient:
             user_cluster_id="123e4567-e89b-12d3-a456-426614174000",
             repo_name="primary-backup-repo",
             bucket="my-storage-bucket",
-            endpoint="https://s3.example.com",
+            endpoint="s3.example.com",
             access_key_id="AKIAIOSFODNN7EXAMPLE",
             access_key_secret="wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
         )
@@ -546,10 +546,10 @@ class AsyncDatabaseInfrastructureClient:
             Name for the backup repository.
 
         bucket : str
-            S3 bucket backups are stored in.
+            Name of the S3 bucket backups are stored in. Provide the bucket name only — no path or account/tenant prefix.
 
         endpoint : str
-            S3-compatible endpoint URL to use for the bucket.
+            Hostname of your S3-compatible endpoint (for example, "s3.example.com"), optionally with a port. Provide the host only — connections always use HTTPS.
 
         access_key_id : str
             S3 access key identifier with access to the bucket.
@@ -585,7 +585,7 @@ class AsyncDatabaseInfrastructureClient:
                 user_cluster_id="123e4567-e89b-12d3-a456-426614174000",
                 repo_name="primary-backup-repo",
                 bucket="my-storage-bucket",
-                endpoint="https://s3.example.com",
+                endpoint="s3.example.com",
                 access_key_id="AKIAIOSFODNN7EXAMPLE",
                 access_key_secret="wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
             )
@@ -627,10 +627,10 @@ class AsyncDatabaseInfrastructureClient:
             Name for the backup repository.
 
         bucket : str
-            S3 bucket backups are stored in.
+            Name of the S3 bucket backups are stored in. Provide the bucket name only — no path or account/tenant prefix.
 
         endpoint : str
-            S3-compatible endpoint URL to use for the bucket.
+            Hostname of your S3-compatible endpoint (for example, "s3.example.com"), optionally with a port. Provide the host only — connections always use HTTPS.
 
         access_key_id : str
             S3 access key identifier with access to the bucket.
@@ -666,7 +666,7 @@ class AsyncDatabaseInfrastructureClient:
                 user_cluster_id="123e4567-e89b-12d3-a456-426614174000",
                 repo_name="primary-backup-repo",
                 bucket="my-storage-bucket",
-                endpoint="https://s3.example.com",
+                endpoint="s3.example.com",
                 access_key_id="AKIAIOSFODNN7EXAMPLE",
                 access_key_secret="wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
             )

@@ -289,7 +289,7 @@ client.vms.reset_password_vms(
 <dl>
 <dd>
 
-**password:** `typing.Optional[str]` — Custom password to set for the VM. If not provided, a random password will be generated.
+**password:** `typing.Optional[str]` — Custom password to set for the VM. If not provided, a random password will be generated. May contain letters, digits, and symbols only (printable ASCII, no spaces).
     
 </dd>
 </dl>
@@ -7321,6 +7321,97 @@ client.database_backups.get_config_database_backups(
 </dl>
 </details>
 
+<details><summary><code>client.database_backups.<a href="src/americancloud/database_backups/client.py">update_config_database_backups</a>(...) -> BackupConfigUpdateResponseDto</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Enable or disable encryption of this cluster’s backups. When enabling, provide a passphrase; keep it safe, as it is required to restore the resulting backups.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from americancloud import AmericancloudApi
+from americancloud.environment import AmericancloudApiEnvironment
+
+client = AmericancloudApi(
+    api_key="<value>",
+    api_client_secret="<X-API-Client-Secret>",
+    environment=AmericancloudApiEnvironment.PRODUCTION,
+)
+
+client.database_backups.update_config_database_backups(
+    cluster_id="123e4567-e89b-12d3-a456-426614174000",
+    encryption_enabled=True,
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**cluster_id:** `str` — Database cluster ID
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**encryption_enabled:** `bool` — Whether backups for this cluster should be encrypted at rest. When enabled, backups are encrypted with AES-256-CFB.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**passphrase:** `typing.Optional[str]` — Passphrase used to encrypt backups. Required when enabling encryption. Must be 12–256 printable ASCII characters (letters, digits, symbols) with no spaces. Store it securely — it is required to restore encrypted backups and cannot be recovered if lost.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.database_backups.<a href="src/americancloud/database_backups/client.py">get_schedule_database_backups</a>(...) -> BackupScheduleListResponseDto</code></summary>
 <dl>
 <dd>
@@ -8269,7 +8360,7 @@ client.database_infrastructure.create_backup_repo_database_infrastructure(
     user_cluster_id="123e4567-e89b-12d3-a456-426614174000",
     repo_name="primary-backup-repo",
     bucket="my-storage-bucket",
-    endpoint="https://s3.example.com",
+    endpoint="s3.example.com",
     access_key_id="AKIAIOSFODNN7EXAMPLE",
     access_key_secret="wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
 )
@@ -8304,7 +8395,7 @@ client.database_infrastructure.create_backup_repo_database_infrastructure(
 <dl>
 <dd>
 
-**bucket:** `str` — S3 bucket backups are stored in.
+**bucket:** `str` — Name of the S3 bucket backups are stored in. Provide the bucket name only — no path or account/tenant prefix.
     
 </dd>
 </dl>
@@ -8312,7 +8403,7 @@ client.database_infrastructure.create_backup_repo_database_infrastructure(
 <dl>
 <dd>
 
-**endpoint:** `str` — S3-compatible endpoint URL to use for the bucket.
+**endpoint:** `str` — Hostname of your S3-compatible endpoint (for example, "s3.example.com"), optionally with a port. Provide the host only — connections always use HTTPS.
     
 </dd>
 </dl>
@@ -8382,7 +8473,7 @@ client.database_infrastructure.update_backup_repo_database_infrastructure(
     user_cluster_id="123e4567-e89b-12d3-a456-426614174000",
     repo_name="primary-backup-repo",
     bucket="my-storage-bucket",
-    endpoint="https://s3.example.com",
+    endpoint="s3.example.com",
     access_key_id="AKIAIOSFODNN7EXAMPLE",
     access_key_secret="wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
 )
@@ -8417,7 +8508,7 @@ client.database_infrastructure.update_backup_repo_database_infrastructure(
 <dl>
 <dd>
 
-**bucket:** `str` — S3 bucket backups are stored in.
+**bucket:** `str` — Name of the S3 bucket backups are stored in. Provide the bucket name only — no path or account/tenant prefix.
     
 </dd>
 </dl>
@@ -8425,7 +8516,7 @@ client.database_infrastructure.update_backup_repo_database_infrastructure(
 <dl>
 <dd>
 
-**endpoint:** `str` — S3-compatible endpoint URL to use for the bucket.
+**endpoint:** `str` — Hostname of your S3-compatible endpoint (for example, "s3.example.com"), optionally with a port. Provide the host only — connections always use HTTPS.
     
 </dd>
 </dl>
