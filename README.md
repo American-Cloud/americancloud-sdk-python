@@ -4,6 +4,8 @@ Typed Python client for the [American Cloud](https://americancloud.com) public A
 
 This SDK is auto-generated from the OpenAPI specification using [Fern](https://buildwithfern.com). It targets American Cloud API **`v1`** — see [`VERSIONING.md`](./VERSIONING.md) for how SDK releases track the API.
 
+![Listing regions and VMs with the American Cloud Python SDK](https://raw.githubusercontent.com/American-Cloud/americancloud-sdk-python/master/.demo/sdk-firstcall-python.gif)
+
 ## Installation
 
 ```sh
@@ -79,6 +81,14 @@ client = AmericancloudApi(
 
 - **Full reference + code samples**: [americancloud.docs.buildwithfern.com](https://americancloud.docs.buildwithfern.com)
 - **Interactive Swagger UI**: [api.americancloud.com/api-v1](https://api.americancloud.com/api-v1)
+
+## Guides
+
+Narrative walkthroughs on the American Cloud docs site:
+
+- [Python SDK quickstart](https://americancloud.com/docs/sdks/python) — install, authenticate, estimate cost, then create a VM (sync and async), with error handling and pagination
+- [SDKs & Terraform overview](https://americancloud.com/docs/sdks/overview) — when to reach for an SDK, Terraform, or the MCP server
+- [Deploy with AI](https://americancloud.com/docs/deploy-with-ai/overview) — let an AI assistant build and ship to American Cloud
 
 ## Versioning
 
