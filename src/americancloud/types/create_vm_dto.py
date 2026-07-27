@@ -35,7 +35,7 @@ class CreateVmDto(UniversalBaseModel):
 
     network: typing.Optional[str] = pydantic.Field(default=None)
     """
-    UUID of a pre-existing network to attach the VM to. Omit to have an isolated network auto-created for the VM (post-create access is then configured via `networkAccess`).
+    UUID of a pre-existing network to attach the VM to. Omit to have an isolated network auto-created for the VM (post-create access is then configured via `networkAccess`). An auto-created network is deleted with the VM once its last VM is removed; a network you supply is not.
     """
 
     subscription_period: typing_extensions.Annotated[

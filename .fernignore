@@ -12,3 +12,4 @@ VERSIONING.md
 pyproject.toml
 CONTRIBUTING.md
 src/americancloud/py.typed
+.demo/

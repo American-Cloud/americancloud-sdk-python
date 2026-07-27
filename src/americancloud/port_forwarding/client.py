@@ -82,6 +82,7 @@ class PortForwardingClient:
         protocol: CreatePortForwardingRuleDtoProtocol,
         vm_id: str,
         open_firewall: typing.Optional[str] = OMIT,
+        tier_id: typing.Optional[str] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> PortForwardingRuleResponseDto:
         """
@@ -104,6 +105,9 @@ class PortForwardingClient:
 
         open_firewall : typing.Optional[str]
             When `true`, automatically creates a matching firewall rule alongside the port forwarding rule.
+
+        tier_id : typing.Optional[str]
+            For a public IP reserved in a VPC, the VPC tier the rule applies to. A VPC IP is not bound to any single tier, so the rule must target one. You only need to set this when the VM has interfaces in more than one tier of the VPC — otherwise the tier is determined automatically from the VM. Ignored for IPs reserved in an isolated network.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -136,6 +140,7 @@ class PortForwardingClient:
             protocol=protocol,
             vm_id=vm_id,
             open_firewall=open_firewall,
+            tier_id=tier_id,
             request_options=request_options,
         )
         return _response.data
@@ -247,6 +252,7 @@ class AsyncPortForwardingClient:
         protocol: CreatePortForwardingRuleDtoProtocol,
         vm_id: str,
         open_firewall: typing.Optional[str] = OMIT,
+        tier_id: typing.Optional[str] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> PortForwardingRuleResponseDto:
         """
@@ -269,6 +275,9 @@ class AsyncPortForwardingClient:
 
         open_firewall : typing.Optional[str]
             When `true`, automatically creates a matching firewall rule alongside the port forwarding rule.
+
+        tier_id : typing.Optional[str]
+            For a public IP reserved in a VPC, the VPC tier the rule applies to. A VPC IP is not bound to any single tier, so the rule must target one. You only need to set this when the VM has interfaces in more than one tier of the VPC — otherwise the tier is determined automatically from the VM. Ignored for IPs reserved in an isolated network.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -309,6 +318,7 @@ class AsyncPortForwardingClient:
             protocol=protocol,
             vm_id=vm_id,
             open_firewall=open_firewall,
+            tier_id=tier_id,
             request_options=request_options,
         )
         return _response.data

@@ -117,7 +117,7 @@ class VmsClient:
             Subscription period
 
         network : typing.Optional[str]
-            UUID of a pre-existing network to attach the VM to. Omit to have an isolated network auto-created for the VM (post-create access is then configured via `networkAccess`).
+            UUID of a pre-existing network to attach the VM to. Omit to have an isolated network auto-created for the VM (post-create access is then configured via `networkAccess`). An auto-created network is deleted with the VM once its last VM is removed; a network you supply is not.
 
         tags : typing.Optional[typing.Sequence[str]]
             List of tags to add to the VM
@@ -292,6 +292,8 @@ class VmsClient:
 
     def delete_vms(self, id: str, *, request_options: typing.Optional[RequestOptions] = None) -> None:
         """
+        Deletes the virtual machine. If its network was auto-created and no other VMs remain on it, that network is also deleted and its public IPs released; networks you created explicitly are left untouched.
+
         Parameters
         ----------
         id : str
@@ -359,7 +361,7 @@ class VmsClient:
             Subscription period
 
         network : typing.Optional[str]
-            UUID of a pre-existing network to attach the VM to. Omit to have an isolated network auto-created for the VM (post-create access is then configured via `networkAccess`).
+            UUID of a pre-existing network to attach the VM to. Omit to have an isolated network auto-created for the VM (post-create access is then configured via `networkAccess`). An auto-created network is deleted with the VM once its last VM is removed; a network you supply is not.
 
         tags : typing.Optional[typing.Sequence[str]]
             List of tags to add to the VM
@@ -768,7 +770,7 @@ class AsyncVmsClient:
             Subscription period
 
         network : typing.Optional[str]
-            UUID of a pre-existing network to attach the VM to. Omit to have an isolated network auto-created for the VM (post-create access is then configured via `networkAccess`).
+            UUID of a pre-existing network to attach the VM to. Omit to have an isolated network auto-created for the VM (post-create access is then configured via `networkAccess`). An auto-created network is deleted with the VM once its last VM is removed; a network you supply is not.
 
         tags : typing.Optional[typing.Sequence[str]]
             List of tags to add to the VM
@@ -975,6 +977,8 @@ class AsyncVmsClient:
 
     async def delete_vms(self, id: str, *, request_options: typing.Optional[RequestOptions] = None) -> None:
         """
+        Deletes the virtual machine. If its network was auto-created and no other VMs remain on it, that network is also deleted and its public IPs released; networks you created explicitly are left untouched.
+
         Parameters
         ----------
         id : str
@@ -1050,7 +1054,7 @@ class AsyncVmsClient:
             Subscription period
 
         network : typing.Optional[str]
-            UUID of a pre-existing network to attach the VM to. Omit to have an isolated network auto-created for the VM (post-create access is then configured via `networkAccess`).
+            UUID of a pre-existing network to attach the VM to. Omit to have an isolated network auto-created for the VM (post-create access is then configured via `networkAccess`). An auto-created network is deleted with the VM once its last VM is removed; a network you supply is not.
 
         tags : typing.Optional[typing.Sequence[str]]
             List of tags to add to the VM
