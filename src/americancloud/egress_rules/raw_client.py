@@ -160,10 +160,10 @@ class RawEgressRulesClient:
             End of the port range the rule applies to.
 
         source_cidr_list : typing.Optional[str]
-            Source CIDR within the guest network CIDR. Omit to allow the entire network.
+            Source CIDR within the network's CIDR — which senders inside the network the rule matches. Omit to match the entire network.
 
         dest_cidr_list : typing.Optional[str]
-            Destination CIDR the traffic is allowed to reach. Defaults to `0.0.0.0/0`.
+            Destination CIDR the rule matches — where the outbound traffic is headed. Defaults to `0.0.0.0/0` (anywhere). Whether matching traffic is permitted or blocked depends on the network: see `action` on the created rule.
 
         network_id : typing.Optional[str]
             Identifier of the network the egress rule applies to.
@@ -491,10 +491,10 @@ class RawEgressRulesClient:
             ID of the egress rule
 
         source_cidr_list : typing.Optional[str]
-            Source CIDR within the guest network CIDR.
+            Source CIDR within the network's CIDR — which senders inside the network the rule matches.
 
         dest_cidr_list : typing.Optional[str]
-            Destination CIDR the traffic is allowed to reach.
+            Destination CIDR the rule matches — where the outbound traffic is headed.
 
         start_port : typing.Optional[int]
             Start of the port range the rule applies to.
@@ -823,10 +823,10 @@ class AsyncRawEgressRulesClient:
             End of the port range the rule applies to.
 
         source_cidr_list : typing.Optional[str]
-            Source CIDR within the guest network CIDR. Omit to allow the entire network.
+            Source CIDR within the network's CIDR — which senders inside the network the rule matches. Omit to match the entire network.
 
         dest_cidr_list : typing.Optional[str]
-            Destination CIDR the traffic is allowed to reach. Defaults to `0.0.0.0/0`.
+            Destination CIDR the rule matches — where the outbound traffic is headed. Defaults to `0.0.0.0/0` (anywhere). Whether matching traffic is permitted or blocked depends on the network: see `action` on the created rule.
 
         network_id : typing.Optional[str]
             Identifier of the network the egress rule applies to.
@@ -1154,10 +1154,10 @@ class AsyncRawEgressRulesClient:
             ID of the egress rule
 
         source_cidr_list : typing.Optional[str]
-            Source CIDR within the guest network CIDR.
+            Source CIDR within the network's CIDR — which senders inside the network the rule matches.
 
         dest_cidr_list : typing.Optional[str]
-            Destination CIDR the traffic is allowed to reach.
+            Destination CIDR the rule matches — where the outbound traffic is headed.
 
         start_port : typing.Optional[int]
             Start of the port range the rule applies to.

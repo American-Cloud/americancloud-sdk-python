@@ -59,10 +59,13 @@ class VmResponseDto(UniversalBaseModel):
     """
 
     subscription_period: typing_extensions.Annotated[
-        str,
+        typing.Optional[str],
         FieldMetadata(alias="subscriptionPeriod"),
-        pydantic.Field(alias="subscriptionPeriod", description="Billing cadence applied to this VM."),
-    ]
+        pydantic.Field(
+            alias="subscriptionPeriod",
+            description="Billing cadence applied to this VM. Absent for a few moments after the VM is created, while the billing term is still being recorded. Poll until it appears.",
+        ),
+    ] = None
     image: str = pydantic.Field()
     """
     Image label the VM was provisioned from. References /v1/compute/images.

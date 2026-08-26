@@ -7,6 +7,7 @@ import typing_extensions
 from ..core.pydantic_utilities import IS_PYDANTIC_V2, UniversalBaseModel
 from ..core.serialization import FieldMetadata
 from .api_error_dto_message import ApiErrorDtoMessage
+from .blocking_snapshot_dto import BlockingSnapshotDto
 from .validation_error_item_dto import ValidationErrorItemDto
 
 
@@ -24,9 +25,19 @@ class ApiErrorDto(UniversalBaseModel):
     Short HTTP error label.
     """
 
+    code: typing.Optional[str] = pydantic.Field(default=None)
+    """
+    Machine-readable reason for the error. Match on this value rather than on `message`, which can be reworded at any time. Present on the errors that have more than one cause for the same status code; omitted otherwise.
+    """
+
     errors: typing.Optional[typing.List[ValidationErrorItemDto]] = pydantic.Field(default=None)
     """
     Per-field validation details. Present on 400 responses produced by request-body validation; omitted otherwise.
+    """
+
+    snapshots: typing.Optional[typing.List[BlockingSnapshotDto]] = pydantic.Field(default=None)
+    """
+    The snapshots that block a delete. Present on a 409 whose `code` is `volume_has_snapshots`; omitted otherwise.
     """
 
     if IS_PYDANTIC_V2:

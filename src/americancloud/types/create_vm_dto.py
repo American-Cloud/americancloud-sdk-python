@@ -14,7 +14,7 @@ from .vm_specs_dto import VmSpecsDto
 class CreateVmDto(UniversalBaseModel):
     name: str = pydantic.Field()
     """
-    VM name
+    VM name. It must be 1 to 63 characters, start with a letter, end with a letter or a digit, and hold only letters, digits and hyphens.
     """
 
     region: str = pydantic.Field()
@@ -63,7 +63,7 @@ class CreateVmDto(UniversalBaseModel):
         FieldMetadata(alias="networkAccess"),
         pydantic.Field(
             alias="networkAccess",
-            description="Optional network access configuration applied after the VM is created. Only honored when no `network` is provided (i.e. an isolated network is auto-created). Creates an egress allow-all rule (if requested) and adds port forwarding + firewall rules for the requested inbound ports against the network's public IP.",
+            description="Optional network access configuration applied after the VM is created. Only honored when no `network` is provided (i.e. an isolated network is auto-created). Applies the requested outbound traffic setting and adds port forwarding + firewall rules for the requested inbound ports against the network's public IP.",
         ),
     ] = None
 

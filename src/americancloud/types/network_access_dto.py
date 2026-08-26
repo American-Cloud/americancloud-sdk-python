@@ -15,7 +15,7 @@ class NetworkAccessDto(UniversalBaseModel):
         FieldMetadata(alias="allowEgressAll"),
         pydantic.Field(
             alias="allowEgressAll",
-            description="Allow all outbound traffic from the VM. New isolated networks deny outbound by default.",
+            description="Allow all outbound traffic from the VM, so it can reach the internet. Set to `false` to block all outbound traffic instead.",
         ),
     ]
     inbound_ports: typing_extensions.Annotated[

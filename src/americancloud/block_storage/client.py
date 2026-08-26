@@ -158,7 +158,7 @@ class BlockStorageClient:
         self, id: str, *, request_options: typing.Optional[RequestOptions] = None
     ) -> VolumeDeletionResponseDto:
         """
-        Deletes a block storage volume. This operation cannot be undone.
+        Deletes a block storage volume. This operation cannot be undone. Delete any snapshots of the volume before you delete the volume.
 
         Parameters
         ----------
@@ -556,7 +556,7 @@ class AsyncBlockStorageClient:
         self, id: str, *, request_options: typing.Optional[RequestOptions] = None
     ) -> VolumeDeletionResponseDto:
         """
-        Deletes a block storage volume. This operation cannot be undone.
+        Deletes a block storage volume. This operation cannot be undone. Delete any snapshots of the volume before you delete the volume.
 
         Parameters
         ----------

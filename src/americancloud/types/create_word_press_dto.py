@@ -14,7 +14,7 @@ class CreateWordPressDto(UniversalBaseModel):
         FieldMetadata(alias="packageLabel"),
         pydantic.Field(alias="packageLabel", description="Package label to use for the WordPress instance"),
     ]
-    domain: typing.Optional[typing.Dict[str, typing.Any]] = pydantic.Field(default=None)
+    domain: typing.Optional[str] = pydantic.Field(default=None)
     """
     Optional custom domain for the WordPress site
     """

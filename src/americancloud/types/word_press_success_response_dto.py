@@ -4,6 +4,7 @@ import typing
 
 import pydantic
 from ..core.pydantic_utilities import IS_PYDANTIC_V2, UniversalBaseModel
+from .word_press_success_response_dto_status import WordPressSuccessResponseDtoStatus
 
 
 class WordPressSuccessResponseDto(UniversalBaseModel):
@@ -15,6 +16,16 @@ class WordPressSuccessResponseDto(UniversalBaseModel):
     message: typing.Optional[str] = pydantic.Field(default=None)
     """
     Human-readable result message.
+    """
+
+    id: typing.Optional[str] = pydantic.Field(default=None)
+    """
+    Identifier of the WordPress instance that was created. Use it to poll the instance while it is being set up.
+    """
+
+    status: typing.Optional[WordPressSuccessResponseDtoStatus] = pydantic.Field(default=None)
+    """
+    State of the new instance. Creation is asynchronous, so a successful request returns `provisioning` and the site becomes `active` once it is ready.
     """
 
     if IS_PYDANTIC_V2:

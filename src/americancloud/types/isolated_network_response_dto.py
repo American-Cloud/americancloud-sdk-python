@@ -7,6 +7,7 @@ import pydantic
 import typing_extensions
 from ..core.pydantic_utilities import IS_PYDANTIC_V2, UniversalBaseModel
 from ..core.serialization import FieldMetadata
+from .isolated_network_response_dto_default_egress_policy import IsolatedNetworkResponseDtoDefaultEgressPolicy
 from .isolated_network_response_dto_status import IsolatedNetworkResponseDtoStatus
 
 
@@ -60,6 +61,14 @@ class IsolatedNetworkResponseDto(UniversalBaseModel):
         typing.Optional[str],
         FieldMetadata(alias="aclType"),
         pydantic.Field(alias="aclType", description="Type of the ACL list"),
+    ] = None
+    default_egress_policy: typing_extensions.Annotated[
+        typing.Optional[IsolatedNetworkResponseDtoDefaultEgressPolicy],
+        FieldMetadata(alias="defaultEgressPolicy"),
+        pydantic.Field(
+            alias="defaultEgressPolicy",
+            description="How outbound traffic is treated when this network has no egress rules. `allow` means all outbound traffic is permitted and each egress rule blocks what it matches; `deny` means all outbound traffic is blocked and each egress rule permits what it matches. Fixed when the network is created and cannot be changed afterwards. Omitted when unknown.",
+        ),
     ] = None
 
     if IS_PYDANTIC_V2:

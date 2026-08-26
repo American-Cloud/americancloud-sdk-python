@@ -5,6 +5,7 @@ import typing
 from ..core.client_wrapper import AsyncClientWrapper, SyncClientWrapper
 from ..core.request_options import RequestOptions
 from ..types.bandwidth_dto import BandwidthDto
+from ..types.change_package_estimate_dto import ChangePackageEstimateDto
 from ..types.cost_estimate_response_dto import CostEstimateResponseDto
 from ..types.max_instances_dto import MaxInstancesDto
 from ..types.nameservers_dto import NameserversDto
@@ -68,7 +69,7 @@ class WordpressClient:
         self,
         *,
         package_label: str,
-        domain: typing.Optional[typing.Dict[str, typing.Any]] = OMIT,
+        domain: typing.Optional[str] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> WordPressSuccessResponseDto:
         """
@@ -79,7 +80,7 @@ class WordpressClient:
         package_label : str
             Package label to use for the WordPress instance
 
-        domain : typing.Optional[typing.Dict[str, typing.Any]]
+        domain : typing.Optional[str]
             Optional custom domain for the WordPress site
 
         request_options : typing.Optional[RequestOptions]
@@ -140,7 +141,7 @@ class WordpressClient:
         self,
         *,
         package_label: str,
-        domain: typing.Optional[typing.Dict[str, typing.Any]] = OMIT,
+        domain: typing.Optional[str] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> CostEstimateResponseDto:
         """
@@ -151,7 +152,7 @@ class WordpressClient:
         package_label : str
             Package label to use for the WordPress instance
 
-        domain : typing.Optional[typing.Dict[str, typing.Any]]
+        domain : typing.Optional[str]
             Optional custom domain for the WordPress site
 
         request_options : typing.Optional[RequestOptions]
@@ -381,6 +382,42 @@ class WordpressClient:
         _response = self._raw_client.get_nameservers_wordpress(request_options=request_options)
         return _response.data
 
+    def get_change_package_estimate_wordpress(
+        self, *, package_label: str, request_options: typing.Optional[RequestOptions] = None
+    ) -> ChangePackageEstimateDto:
+        """
+        Returns the prorated charge for moving to a different package, without changing anything. The charge covers the remainder of the current billing period and reflects any account discount.
+
+        Parameters
+        ----------
+        package_label : str
+            New package label to upgrade to
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        ChangePackageEstimateDto
+            Prorated cost of the plan change
+
+        Examples
+        --------
+        from americancloud import AmericancloudApi
+
+        client = AmericancloudApi(
+            api_client_secret="YOUR_API_CLIENT_SECRET",
+            api_key="YOUR_API_KEY",
+        )
+        client.wordpress.get_change_package_estimate_wordpress(
+            package_label="wordpress-25",
+        )
+        """
+        _response = self._raw_client.get_change_package_estimate_wordpress(
+            package_label=package_label, request_options=request_options
+        )
+        return _response.data
+
     def change_package_wordpress(
         self, *, package_label: str, request_options: typing.Optional[RequestOptions] = None
     ) -> WordPressSuccessResponseDto:
@@ -583,7 +620,7 @@ class AsyncWordpressClient:
         self,
         *,
         package_label: str,
-        domain: typing.Optional[typing.Dict[str, typing.Any]] = OMIT,
+        domain: typing.Optional[str] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> WordPressSuccessResponseDto:
         """
@@ -594,7 +631,7 @@ class AsyncWordpressClient:
         package_label : str
             Package label to use for the WordPress instance
 
-        domain : typing.Optional[typing.Dict[str, typing.Any]]
+        domain : typing.Optional[str]
             Optional custom domain for the WordPress site
 
         request_options : typing.Optional[RequestOptions]
@@ -671,7 +708,7 @@ class AsyncWordpressClient:
         self,
         *,
         package_label: str,
-        domain: typing.Optional[typing.Dict[str, typing.Any]] = OMIT,
+        domain: typing.Optional[str] = OMIT,
         request_options: typing.Optional[RequestOptions] = None,
     ) -> CostEstimateResponseDto:
         """
@@ -682,7 +719,7 @@ class AsyncWordpressClient:
         package_label : str
             Package label to use for the WordPress instance
 
-        domain : typing.Optional[typing.Dict[str, typing.Any]]
+        domain : typing.Optional[str]
             Optional custom domain for the WordPress site
 
         request_options : typing.Optional[RequestOptions]
@@ -976,6 +1013,50 @@ class AsyncWordpressClient:
         asyncio.run(main())
         """
         _response = await self._raw_client.get_nameservers_wordpress(request_options=request_options)
+        return _response.data
+
+    async def get_change_package_estimate_wordpress(
+        self, *, package_label: str, request_options: typing.Optional[RequestOptions] = None
+    ) -> ChangePackageEstimateDto:
+        """
+        Returns the prorated charge for moving to a different package, without changing anything. The charge covers the remainder of the current billing period and reflects any account discount.
+
+        Parameters
+        ----------
+        package_label : str
+            New package label to upgrade to
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        ChangePackageEstimateDto
+            Prorated cost of the plan change
+
+        Examples
+        --------
+        import asyncio
+
+        from americancloud import AsyncAmericancloudApi
+
+        client = AsyncAmericancloudApi(
+            api_client_secret="YOUR_API_CLIENT_SECRET",
+            api_key="YOUR_API_KEY",
+        )
+
+
+        async def main() -> None:
+            await client.wordpress.get_change_package_estimate_wordpress(
+                package_label="wordpress-25",
+            )
+
+
+        asyncio.run(main())
+        """
+        _response = await self._raw_client.get_change_package_estimate_wordpress(
+            package_label=package_label, request_options=request_options
+        )
         return _response.data
 
     async def change_package_wordpress(

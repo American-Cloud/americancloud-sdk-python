@@ -381,7 +381,7 @@ client.vms.get_vms(
 <dl>
 <dd>
 
-Deletes the virtual machine. If its network was auto-created and no other VMs remain on it, that network is also deleted and its public IPs released; networks you created explicitly are left untouched.
+Deletes the virtual machine. If its network was auto-created and no other VMs remain on it, that network is also deleted and its public IPs released; networks you created explicitly are left untouched. Delete any snapshots of the root disk before you delete the virtual machine.
 </dd>
 </dl>
 </dd>
@@ -936,7 +936,7 @@ client.vms.update_hostname_vms(
 <dl>
 <dd>
 
-**hostname:** `str` — The new hostname for the virtual machine
+**hostname:** `str` — The new hostname for the virtual machine. It must be 1 to 63 characters, start with a letter, end with a letter or a digit, and hold only letters, digits and hyphens.
     
 </dd>
 </dl>
@@ -4907,7 +4907,7 @@ client.egress_rules.create_egress_rules(
 <dl>
 <dd>
 
-**source_cidr_list:** `typing.Optional[str]` — Source CIDR within the guest network CIDR. Omit to allow the entire network.
+**source_cidr_list:** `typing.Optional[str]` — Source CIDR within the network's CIDR — which senders inside the network the rule matches. Omit to match the entire network.
     
 </dd>
 </dl>
@@ -4915,7 +4915,7 @@ client.egress_rules.create_egress_rules(
 <dl>
 <dd>
 
-**dest_cidr_list:** `typing.Optional[str]` — Destination CIDR the traffic is allowed to reach. Defaults to `0.0.0.0/0`.
+**dest_cidr_list:** `typing.Optional[str]` — Destination CIDR the rule matches — where the outbound traffic is headed. Defaults to `0.0.0.0/0` (anywhere). Whether matching traffic is permitted or blocked depends on the network: see `action` on the created rule.
     
 </dd>
 </dl>
@@ -5127,7 +5127,7 @@ client.egress_rules.update_egress_rules(
 <dl>
 <dd>
 
-**source_cidr_list:** `typing.Optional[str]` — Source CIDR within the guest network CIDR.
+**source_cidr_list:** `typing.Optional[str]` — Source CIDR within the network's CIDR — which senders inside the network the rule matches.
     
 </dd>
 </dl>
@@ -5135,7 +5135,7 @@ client.egress_rules.update_egress_rules(
 <dl>
 <dd>
 
-**dest_cidr_list:** `typing.Optional[str]` — Destination CIDR the traffic is allowed to reach.
+**dest_cidr_list:** `typing.Optional[str]` — Destination CIDR the rule matches — where the outbound traffic is headed.
     
 </dd>
 </dl>
@@ -11479,7 +11479,7 @@ client.block_storage.get_block_storage(
 <dl>
 <dd>
 
-Deletes a block storage volume. This operation cannot be undone.
+Deletes a block storage volume. This operation cannot be undone. Delete any snapshots of the volume before you delete the volume.
 </dd>
 </dl>
 </dd>
@@ -13137,6 +13137,80 @@ client.wordpress.get_nameservers_wordpress()
 </dl>
 </details>
 
+<details><summary><code>client.wordpress.<a href="src/americancloud/wordpress/client.py">get_change_package_estimate_wordpress</a>(...) -> ChangePackageEstimateDto</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns the prorated charge for moving to a different package, without changing anything. The charge covers the remainder of the current billing period and reflects any account discount.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from americancloud import AmericancloudApi
+from americancloud.environment import AmericancloudApiEnvironment
+
+client = AmericancloudApi(
+    api_key="<value>",
+    api_client_secret="<X-API-Client-Secret>",
+    environment=AmericancloudApiEnvironment.PRODUCTION,
+)
+
+client.wordpress.get_change_package_estimate_wordpress(
+    package_label="wordpress-25",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ChangePackageDto` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.wordpress.<a href="src/americancloud/wordpress/client.py">change_package_wordpress</a>(...) -> WordPressSuccessResponseDto</code></summary>
 <dl>
 <dd>
@@ -13191,7 +13265,7 @@ client.wordpress.change_package_wordpress(
 <dl>
 <dd>
 
-**package_label:** `str` — New package label to upgrade to
+**request:** `ChangePackageDto` 
     
 </dd>
 </dl>

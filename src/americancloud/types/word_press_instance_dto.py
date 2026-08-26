@@ -7,6 +7,7 @@ import pydantic
 import typing_extensions
 from ..core.pydantic_utilities import IS_PYDANTIC_V2, UniversalBaseModel
 from ..core.serialization import FieldMetadata
+from .word_press_instance_dto_status import WordPressInstanceDtoStatus
 
 
 class WordPressInstanceDto(UniversalBaseModel):
@@ -58,6 +59,20 @@ class WordPressInstanceDto(UniversalBaseModel):
     """
     Whether the WordPress instance is fully provisioned and ready to use.
     """
+
+    status: WordPressInstanceDtoStatus = pydantic.Field()
+    """
+    State of the instance. `provisioning` while the site is being set up, `active` once it is ready, `failed` if it could not be created.
+    """
+
+    failure_reason: typing_extensions.Annotated[
+        typing.Optional[str],
+        FieldMetadata(alias="failureReason"),
+        pydantic.Field(
+            alias="failureReason",
+            description="Why the instance could not be created. Present only when `status` is `failed`.",
+        ),
+    ] = None
 
     if IS_PYDANTIC_V2:
         model_config: typing.ClassVar[pydantic.ConfigDict] = pydantic.ConfigDict(extra="allow", frozen=True)  # type: ignore # Pydantic v2

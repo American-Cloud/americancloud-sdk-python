@@ -7,6 +7,7 @@ import pydantic
 import typing_extensions
 from ..core.pydantic_utilities import IS_PYDANTIC_V2, UniversalBaseModel
 from ..core.serialization import FieldMetadata
+from .egress_rule_response_dto_action import EgressRuleResponseDtoAction
 
 
 class EgressRuleResponseDto(UniversalBaseModel):
@@ -40,15 +41,23 @@ class EgressRuleResponseDto(UniversalBaseModel):
     Current lifecycle state of the rule.
     """
 
+    action: typing.Optional[EgressRuleResponseDtoAction] = pydantic.Field(default=None)
+    """
+    `allow` permits the traffic this rule matches; `deny` blocks it. Which one applies is set by the rule's network, not by the rule, and is the opposite of that network's `defaultEgressPolicy`. Omitted when unknown.
+    """
+
     source_cidr_list: typing_extensions.Annotated[
         str,
         FieldMetadata(alias="sourceCidrList"),
-        pydantic.Field(alias="sourceCidrList", description="Source CIDR within the guest network CIDR."),
+        pydantic.Field(alias="sourceCidrList", description="Source CIDR within the network's CIDR."),
     ]
     dest_cidr_list: typing_extensions.Annotated[
         typing.Optional[str],
         FieldMetadata(alias="destCidrList"),
-        pydantic.Field(alias="destCidrList", description="Destination CIDR the traffic is allowed to reach."),
+        pydantic.Field(
+            alias="destCidrList",
+            description="Destination CIDR this rule matches. Whether matching traffic is permitted or blocked depends on `action`.",
+        ),
     ] = None
     created_at: typing_extensions.Annotated[
         typing.Optional[dt.datetime],

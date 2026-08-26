@@ -99,7 +99,7 @@ class VmsClient:
         Parameters
         ----------
         name : str
-            VM name
+            VM name. It must be 1 to 63 characters, start with a letter, end with a letter or a digit, and hold only letters, digits and hyphens.
 
         region : str
             Region label
@@ -129,7 +129,7 @@ class VmsClient:
             Base64-encoded cloud-init userdata script (optional)
 
         network_access : typing.Optional[NetworkAccessDto]
-            Optional network access configuration applied after the VM is created. Only honored when no `network` is provided (i.e. an isolated network is auto-created). Creates an egress allow-all rule (if requested) and adds port forwarding + firewall rules for the requested inbound ports against the network's public IP.
+            Optional network access configuration applied after the VM is created. Only honored when no `network` is provided (i.e. an isolated network is auto-created). Applies the requested outbound traffic setting and adds port forwarding + firewall rules for the requested inbound ports against the network's public IP.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -292,7 +292,7 @@ class VmsClient:
 
     def delete_vms(self, id: str, *, request_options: typing.Optional[RequestOptions] = None) -> None:
         """
-        Deletes the virtual machine. If its network was auto-created and no other VMs remain on it, that network is also deleted and its public IPs released; networks you created explicitly are left untouched.
+        Deletes the virtual machine. If its network was auto-created and no other VMs remain on it, that network is also deleted and its public IPs released; networks you created explicitly are left untouched. Delete any snapshots of the root disk before you delete the virtual machine.
 
         Parameters
         ----------
@@ -343,7 +343,7 @@ class VmsClient:
         Parameters
         ----------
         name : str
-            VM name
+            VM name. It must be 1 to 63 characters, start with a letter, end with a letter or a digit, and hold only letters, digits and hyphens.
 
         region : str
             Region label
@@ -373,7 +373,7 @@ class VmsClient:
             Base64-encoded cloud-init userdata script (optional)
 
         network_access : typing.Optional[NetworkAccessDto]
-            Optional network access configuration applied after the VM is created. Only honored when no `network` is provided (i.e. an isolated network is auto-created). Creates an egress allow-all rule (if requested) and adds port forwarding + firewall rules for the requested inbound ports against the network's public IP.
+            Optional network access configuration applied after the VM is created. Only honored when no `network` is provided (i.e. an isolated network is auto-created). Applies the requested outbound traffic setting and adds port forwarding + firewall rules for the requested inbound ports against the network's public IP.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -605,7 +605,7 @@ class VmsClient:
             ID of the virtual machine
 
         hostname : str
-            The new hostname for the virtual machine
+            The new hostname for the virtual machine. It must be 1 to 63 characters, start with a letter, end with a letter or a digit, and hold only letters, digits and hyphens.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -752,7 +752,7 @@ class AsyncVmsClient:
         Parameters
         ----------
         name : str
-            VM name
+            VM name. It must be 1 to 63 characters, start with a letter, end with a letter or a digit, and hold only letters, digits and hyphens.
 
         region : str
             Region label
@@ -782,7 +782,7 @@ class AsyncVmsClient:
             Base64-encoded cloud-init userdata script (optional)
 
         network_access : typing.Optional[NetworkAccessDto]
-            Optional network access configuration applied after the VM is created. Only honored when no `network` is provided (i.e. an isolated network is auto-created). Creates an egress allow-all rule (if requested) and adds port forwarding + firewall rules for the requested inbound ports against the network's public IP.
+            Optional network access configuration applied after the VM is created. Only honored when no `network` is provided (i.e. an isolated network is auto-created). Applies the requested outbound traffic setting and adds port forwarding + firewall rules for the requested inbound ports against the network's public IP.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -977,7 +977,7 @@ class AsyncVmsClient:
 
     async def delete_vms(self, id: str, *, request_options: typing.Optional[RequestOptions] = None) -> None:
         """
-        Deletes the virtual machine. If its network was auto-created and no other VMs remain on it, that network is also deleted and its public IPs released; networks you created explicitly are left untouched.
+        Deletes the virtual machine. If its network was auto-created and no other VMs remain on it, that network is also deleted and its public IPs released; networks you created explicitly are left untouched. Delete any snapshots of the root disk before you delete the virtual machine.
 
         Parameters
         ----------
@@ -1036,7 +1036,7 @@ class AsyncVmsClient:
         Parameters
         ----------
         name : str
-            VM name
+            VM name. It must be 1 to 63 characters, start with a letter, end with a letter or a digit, and hold only letters, digits and hyphens.
 
         region : str
             Region label
@@ -1066,7 +1066,7 @@ class AsyncVmsClient:
             Base64-encoded cloud-init userdata script (optional)
 
         network_access : typing.Optional[NetworkAccessDto]
-            Optional network access configuration applied after the VM is created. Only honored when no `network` is provided (i.e. an isolated network is auto-created). Creates an egress allow-all rule (if requested) and adds port forwarding + firewall rules for the requested inbound ports against the network's public IP.
+            Optional network access configuration applied after the VM is created. Only honored when no `network` is provided (i.e. an isolated network is auto-created). Applies the requested outbound traffic setting and adds port forwarding + firewall rules for the requested inbound ports against the network's public IP.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -1338,7 +1338,7 @@ class AsyncVmsClient:
             ID of the virtual machine
 
         hostname : str
-            The new hostname for the virtual machine
+            The new hostname for the virtual machine. It must be 1 to 63 characters, start with a letter, end with a letter or a digit, and hold only letters, digits and hyphens.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
