@@ -87,6 +87,7 @@ if typing.TYPE_CHECKING:
     from .network_access_dto import NetworkAccessDto
     from .network_acl_list_response_dto import NetworkAclListResponseDto
     from .network_acl_rule_response_dto import NetworkAclRuleResponseDto
+    from .object_storage_access_key_dto import ObjectStorageAccessKeyDto
     from .object_storage_success_response_dto import ObjectStorageSuccessResponseDto
     from .object_storage_unit_dto import ObjectStorageUnitDto
     from .operation_status_response_dto import OperationStatusResponseDto
@@ -214,6 +215,7 @@ _dynamic_imports: typing.Dict[str, str] = {
     "NetworkAccessDto": ".network_access_dto",
     "NetworkAclListResponseDto": ".network_acl_list_response_dto",
     "NetworkAclRuleResponseDto": ".network_acl_rule_response_dto",
+    "ObjectStorageAccessKeyDto": ".object_storage_access_key_dto",
     "ObjectStorageSuccessResponseDto": ".object_storage_success_response_dto",
     "ObjectStorageUnitDto": ".object_storage_unit_dto",
     "OperationStatusResponseDto": ".operation_status_response_dto",
@@ -365,6 +367,7 @@ __all__ = [
     "NetworkAccessDto",
     "NetworkAclListResponseDto",
     "NetworkAclRuleResponseDto",
+    "ObjectStorageAccessKeyDto",
     "ObjectStorageSuccessResponseDto",
     "ObjectStorageUnitDto",
     "OperationStatusResponseDto",

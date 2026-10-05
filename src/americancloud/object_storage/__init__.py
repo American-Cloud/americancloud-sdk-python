@@ -6,8 +6,13 @@ import typing
 from importlib import import_module
 
 if typing.TYPE_CHECKING:
-    from .types import ListBucketsObjectStorageResponse, ListUnitsObjectStorageResponse
+    from .types import (
+        ListAccessKeysObjectStorageResponse,
+        ListBucketsObjectStorageResponse,
+        ListUnitsObjectStorageResponse,
+    )
 _dynamic_imports: typing.Dict[str, str] = {
+    "ListAccessKeysObjectStorageResponse": ".types",
     "ListBucketsObjectStorageResponse": ".types",
     "ListUnitsObjectStorageResponse": ".types",
 }
@@ -34,4 +39,4 @@ def __dir__():
     return sorted(lazy_attrs)
 
 
-__all__ = ["ListBucketsObjectStorageResponse", "ListUnitsObjectStorageResponse"]
+__all__ = ["ListAccessKeysObjectStorageResponse", "ListBucketsObjectStorageResponse", "ListUnitsObjectStorageResponse"]

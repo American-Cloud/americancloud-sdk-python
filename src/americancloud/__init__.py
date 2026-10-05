@@ -86,6 +86,7 @@ if typing.TYPE_CHECKING:
         NetworkAccessDto,
         NetworkAclListResponseDto,
         NetworkAclRuleResponseDto,
+        ObjectStorageAccessKeyDto,
         ObjectStorageSuccessResponseDto,
         ObjectStorageUnitDto,
         OperationStatusResponseDto,
@@ -214,7 +215,11 @@ if typing.TYPE_CHECKING:
         ListListsNetworkAclsResponse,
         ListRulesNetworkAclsResponse,
     )
-    from .object_storage import ListBucketsObjectStorageResponse, ListUnitsObjectStorageResponse
+    from .object_storage import (
+        ListAccessKeysObjectStorageResponse,
+        ListBucketsObjectStorageResponse,
+        ListUnitsObjectStorageResponse,
+    )
     from .port_forwarding import CreatePortForwardingRuleDtoProtocol, ListPortForwardingResponse
     from .public_ips import ListByIsolatedNetworkPublicIpsResponse, ListByVpcPublicIpsResponse, ListPublicIpsResponse
     from .regions import ListRegionsResponse
@@ -318,6 +323,7 @@ _dynamic_imports: typing.Dict[str, str] = {
     "KubernetesNodeResponseRole": ".types",
     "KubernetesNodeRootVolume": ".types",
     "KubernetesPackageResponse": ".types",
+    "ListAccessKeysObjectStorageResponse": ".object_storage",
     "ListBlockStorageResponse": ".block_storage",
     "ListBucketsObjectStorageResponse": ".object_storage",
     "ListByIsolatedNetworkPublicIpsResponse": ".public_ips",
@@ -364,6 +370,7 @@ _dynamic_imports: typing.Dict[str, str] = {
     "NetworkAclListResponseDto": ".types",
     "NetworkAclRuleResponseDto": ".types",
     "NotFoundError": ".errors",
+    "ObjectStorageAccessKeyDto": ".types",
     "ObjectStorageSuccessResponseDto": ".types",
     "ObjectStorageUnitDto": ".types",
     "OperationStatusResponseDto": ".types",
@@ -561,6 +568,7 @@ __all__ = [
     "KubernetesNodeResponseRole",
     "KubernetesNodeRootVolume",
     "KubernetesPackageResponse",
+    "ListAccessKeysObjectStorageResponse",
     "ListBlockStorageResponse",
     "ListBucketsObjectStorageResponse",
     "ListByIsolatedNetworkPublicIpsResponse",
@@ -607,6 +615,7 @@ __all__ = [
     "NetworkAclListResponseDto",
     "NetworkAclRuleResponseDto",
     "NotFoundError",
+    "ObjectStorageAccessKeyDto",
     "ObjectStorageSuccessResponseDto",
     "ObjectStorageUnitDto",
     "OperationStatusResponseDto",

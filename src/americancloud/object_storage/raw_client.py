@@ -19,8 +19,10 @@ from ..errors.unauthorized_error import UnauthorizedError
 from ..types.access_key_dto import AccessKeyDto
 from ..types.api_error_dto import ApiErrorDto
 from ..types.cost_estimate_response_dto import CostEstimateResponseDto
+from ..types.object_storage_access_key_dto import ObjectStorageAccessKeyDto
 from ..types.object_storage_success_response_dto import ObjectStorageSuccessResponseDto
 from ..types.object_storage_unit_dto import ObjectStorageUnitDto
+from .types.list_access_keys_object_storage_response import ListAccessKeysObjectStorageResponse
 from .types.list_buckets_object_storage_response import ListBucketsObjectStorageResponse
 from .types.list_units_object_storage_response import ListUnitsObjectStorageResponse
 from pydantic import ValidationError
@@ -488,7 +490,7 @@ class RawObjectStorageClient:
         self, storage_unit_id: str, *, request_options: typing.Optional[RequestOptions] = None
     ) -> HttpResponse[AccessKeyDto]:
         """
-        Returns all access keys (access key and secret key pairs) for the specified storage unit
+        Returns the oldest access key and secret key pair of the specified storage unit. To see every access key, list the access keys of the storage unit.
 
         Parameters
         ----------
@@ -553,6 +555,342 @@ class RawObjectStorageClient:
                 )
             if _response.status_code == 404:
                 raise NotFoundError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 500:
+                raise InternalServerError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            _response_json = _response.json()
+        except JSONDecodeError:
+            raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response.text)
+        except ValidationError as e:
+            raise ParsingError(
+                status_code=_response.status_code, headers=dict(_response.headers), body=_response.json(), cause=e
+            )
+        raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
+
+    def list_access_keys_object_storage(
+        self,
+        storage_unit_id: str,
+        *,
+        page: typing.Optional[int] = None,
+        page_size: typing.Optional[int] = None,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> HttpResponse[ListAccessKeysObjectStorageResponse]:
+        """
+        Returns every access key of the storage unit, oldest first. All of the keys work at the same time, so you can move each client to a new key before you delete the old one.
+
+        Parameters
+        ----------
+        storage_unit_id : str
+            Storage unit ID (UID)
+
+        page : typing.Optional[int]
+            Page number, 1-indexed. Defaults to 1 when omitted.
+
+        page_size : typing.Optional[int]
+            Items per page. Defaults to 100 when omitted; server cap 500.
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        HttpResponse[ListAccessKeysObjectStorageResponse]
+
+        """
+        _response = self._client_wrapper.httpx_client.request(
+            f"api/v1/object-storage/units/{encode_path_param(storage_unit_id)}/access-keys",
+            method="GET",
+            params={
+                "page": page,
+                "pageSize": page_size,
+            },
+            request_options=request_options,
+        )
+        try:
+            if 200 <= _response.status_code < 300:
+                _data = typing.cast(
+                    ListAccessKeysObjectStorageResponse,
+                    parse_obj_as(
+                        type_=ListAccessKeysObjectStorageResponse,  # type: ignore
+                        object_=_response.json(),
+                    ),
+                )
+                return HttpResponse(response=_response, data=_data)
+            if _response.status_code == 400:
+                raise BadRequestError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 401:
+                raise UnauthorizedError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 403:
+                raise ForbiddenError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 404:
+                raise NotFoundError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 500:
+                raise InternalServerError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            _response_json = _response.json()
+        except JSONDecodeError:
+            raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response.text)
+        except ValidationError as e:
+            raise ParsingError(
+                status_code=_response.status_code, headers=dict(_response.headers), body=_response.json(), cause=e
+            )
+        raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
+
+    def create_access_key_object_storage(
+        self, storage_unit_id: str, *, label: str, request_options: typing.Optional[RequestOptions] = None
+    ) -> HttpResponse[ObjectStorageAccessKeyDto]:
+        """
+        Creates a new access key and secret key with the given label for the storage unit, and returns them. The existing keys continue to work. A storage unit can hold up to 10 access keys.
+
+        Parameters
+        ----------
+        storage_unit_id : str
+            Storage unit ID (UID)
+
+        label : str
+            A label that identifies the key, for example the application that uses it. The label must be 1 to 64 characters, start with a letter or a number, and hold only letters, numbers, single spaces, and . _ - : , / @ # ( ) + & '. It cannot be changed later.
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        HttpResponse[ObjectStorageAccessKeyDto]
+            The created access key
+        """
+        _response = self._client_wrapper.httpx_client.request(
+            f"api/v1/object-storage/units/{encode_path_param(storage_unit_id)}/access-keys",
+            method="POST",
+            json={
+                "label": label,
+            },
+            headers={
+                "content-type": "application/json",
+            },
+            request_options=request_options,
+            omit=OMIT,
+        )
+        try:
+            if 200 <= _response.status_code < 300:
+                _data = typing.cast(
+                    ObjectStorageAccessKeyDto,
+                    parse_obj_as(
+                        type_=ObjectStorageAccessKeyDto,  # type: ignore
+                        object_=_response.json(),
+                    ),
+                )
+                return HttpResponse(response=_response, data=_data)
+            if _response.status_code == 400:
+                raise BadRequestError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 401:
+                raise UnauthorizedError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 403:
+                raise ForbiddenError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 404:
+                raise NotFoundError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 409:
+                raise ConflictError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 500:
+                raise InternalServerError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            _response_json = _response.json()
+        except JSONDecodeError:
+            raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response.text)
+        except ValidationError as e:
+            raise ParsingError(
+                status_code=_response.status_code, headers=dict(_response.headers), body=_response.json(), cause=e
+            )
+        raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
+
+    def delete_access_key_object_storage(
+        self, storage_unit_id: str, access_key: str, *, request_options: typing.Optional[RequestOptions] = None
+    ) -> HttpResponse[None]:
+        """
+        Deletes the access key. Requests signed with the key fail after this call. The other keys of the storage unit continue to work. A storage unit always keeps at least one access key.
+
+        Parameters
+        ----------
+        storage_unit_id : str
+            Storage unit ID (UID)
+
+        access_key : str
+            The access key to delete
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        HttpResponse[None]
+        """
+        _response = self._client_wrapper.httpx_client.request(
+            f"api/v1/object-storage/units/{encode_path_param(storage_unit_id)}/access-keys/{encode_path_param(access_key)}",
+            method="DELETE",
+            request_options=request_options,
+        )
+        try:
+            if 200 <= _response.status_code < 300:
+                return HttpResponse(response=_response, data=None)
+            if _response.status_code == 400:
+                raise BadRequestError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 401:
+                raise UnauthorizedError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 403:
+                raise ForbiddenError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 404:
+                raise NotFoundError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 409:
+                raise ConflictError(
                     headers=dict(_response.headers),
                     body=typing.cast(
                         ApiErrorDto,
@@ -1464,7 +1802,7 @@ class AsyncRawObjectStorageClient:
         self, storage_unit_id: str, *, request_options: typing.Optional[RequestOptions] = None
     ) -> AsyncHttpResponse[AccessKeyDto]:
         """
-        Returns all access keys (access key and secret key pairs) for the specified storage unit
+        Returns the oldest access key and secret key pair of the specified storage unit. To see every access key, list the access keys of the storage unit.
 
         Parameters
         ----------
@@ -1529,6 +1867,342 @@ class AsyncRawObjectStorageClient:
                 )
             if _response.status_code == 404:
                 raise NotFoundError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 500:
+                raise InternalServerError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            _response_json = _response.json()
+        except JSONDecodeError:
+            raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response.text)
+        except ValidationError as e:
+            raise ParsingError(
+                status_code=_response.status_code, headers=dict(_response.headers), body=_response.json(), cause=e
+            )
+        raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
+
+    async def list_access_keys_object_storage(
+        self,
+        storage_unit_id: str,
+        *,
+        page: typing.Optional[int] = None,
+        page_size: typing.Optional[int] = None,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> AsyncHttpResponse[ListAccessKeysObjectStorageResponse]:
+        """
+        Returns every access key of the storage unit, oldest first. All of the keys work at the same time, so you can move each client to a new key before you delete the old one.
+
+        Parameters
+        ----------
+        storage_unit_id : str
+            Storage unit ID (UID)
+
+        page : typing.Optional[int]
+            Page number, 1-indexed. Defaults to 1 when omitted.
+
+        page_size : typing.Optional[int]
+            Items per page. Defaults to 100 when omitted; server cap 500.
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        AsyncHttpResponse[ListAccessKeysObjectStorageResponse]
+
+        """
+        _response = await self._client_wrapper.httpx_client.request(
+            f"api/v1/object-storage/units/{encode_path_param(storage_unit_id)}/access-keys",
+            method="GET",
+            params={
+                "page": page,
+                "pageSize": page_size,
+            },
+            request_options=request_options,
+        )
+        try:
+            if 200 <= _response.status_code < 300:
+                _data = typing.cast(
+                    ListAccessKeysObjectStorageResponse,
+                    parse_obj_as(
+                        type_=ListAccessKeysObjectStorageResponse,  # type: ignore
+                        object_=_response.json(),
+                    ),
+                )
+                return AsyncHttpResponse(response=_response, data=_data)
+            if _response.status_code == 400:
+                raise BadRequestError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 401:
+                raise UnauthorizedError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 403:
+                raise ForbiddenError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 404:
+                raise NotFoundError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 500:
+                raise InternalServerError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            _response_json = _response.json()
+        except JSONDecodeError:
+            raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response.text)
+        except ValidationError as e:
+            raise ParsingError(
+                status_code=_response.status_code, headers=dict(_response.headers), body=_response.json(), cause=e
+            )
+        raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
+
+    async def create_access_key_object_storage(
+        self, storage_unit_id: str, *, label: str, request_options: typing.Optional[RequestOptions] = None
+    ) -> AsyncHttpResponse[ObjectStorageAccessKeyDto]:
+        """
+        Creates a new access key and secret key with the given label for the storage unit, and returns them. The existing keys continue to work. A storage unit can hold up to 10 access keys.
+
+        Parameters
+        ----------
+        storage_unit_id : str
+            Storage unit ID (UID)
+
+        label : str
+            A label that identifies the key, for example the application that uses it. The label must be 1 to 64 characters, start with a letter or a number, and hold only letters, numbers, single spaces, and . _ - : , / @ # ( ) + & '. It cannot be changed later.
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        AsyncHttpResponse[ObjectStorageAccessKeyDto]
+            The created access key
+        """
+        _response = await self._client_wrapper.httpx_client.request(
+            f"api/v1/object-storage/units/{encode_path_param(storage_unit_id)}/access-keys",
+            method="POST",
+            json={
+                "label": label,
+            },
+            headers={
+                "content-type": "application/json",
+            },
+            request_options=request_options,
+            omit=OMIT,
+        )
+        try:
+            if 200 <= _response.status_code < 300:
+                _data = typing.cast(
+                    ObjectStorageAccessKeyDto,
+                    parse_obj_as(
+                        type_=ObjectStorageAccessKeyDto,  # type: ignore
+                        object_=_response.json(),
+                    ),
+                )
+                return AsyncHttpResponse(response=_response, data=_data)
+            if _response.status_code == 400:
+                raise BadRequestError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 401:
+                raise UnauthorizedError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 403:
+                raise ForbiddenError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 404:
+                raise NotFoundError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 409:
+                raise ConflictError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 500:
+                raise InternalServerError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            _response_json = _response.json()
+        except JSONDecodeError:
+            raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response.text)
+        except ValidationError as e:
+            raise ParsingError(
+                status_code=_response.status_code, headers=dict(_response.headers), body=_response.json(), cause=e
+            )
+        raise ApiError(status_code=_response.status_code, headers=dict(_response.headers), body=_response_json)
+
+    async def delete_access_key_object_storage(
+        self, storage_unit_id: str, access_key: str, *, request_options: typing.Optional[RequestOptions] = None
+    ) -> AsyncHttpResponse[None]:
+        """
+        Deletes the access key. Requests signed with the key fail after this call. The other keys of the storage unit continue to work. A storage unit always keeps at least one access key.
+
+        Parameters
+        ----------
+        storage_unit_id : str
+            Storage unit ID (UID)
+
+        access_key : str
+            The access key to delete
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        AsyncHttpResponse[None]
+        """
+        _response = await self._client_wrapper.httpx_client.request(
+            f"api/v1/object-storage/units/{encode_path_param(storage_unit_id)}/access-keys/{encode_path_param(access_key)}",
+            method="DELETE",
+            request_options=request_options,
+        )
+        try:
+            if 200 <= _response.status_code < 300:
+                return AsyncHttpResponse(response=_response, data=None)
+            if _response.status_code == 400:
+                raise BadRequestError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 401:
+                raise UnauthorizedError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 403:
+                raise ForbiddenError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 404:
+                raise NotFoundError(
+                    headers=dict(_response.headers),
+                    body=typing.cast(
+                        ApiErrorDto,
+                        parse_obj_as(
+                            type_=ApiErrorDto,  # type: ignore
+                            object_=_response.json(),
+                        ),
+                    ),
+                )
+            if _response.status_code == 409:
+                raise ConflictError(
                     headers=dict(_response.headers),
                     body=typing.cast(
                         ApiErrorDto,

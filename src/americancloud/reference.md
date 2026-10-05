@@ -10637,7 +10637,7 @@ client.object_storage.create_bucket_object_storage(
 <dl>
 <dd>
 
-Returns all access keys (access key and secret key pairs) for the specified storage unit
+Returns the oldest access key and secret key pair of the specified storage unit. To see every access key, list the access keys of the storage unit.
 </dd>
 </dl>
 </dd>
@@ -10680,6 +10680,262 @@ client.object_storage.get_keys_object_storage(
 <dd>
 
 **storage_unit_id:** `str` — Storage unit ID (UID)
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.object_storage.<a href="src/americancloud/object_storage/client.py">list_access_keys_object_storage</a>(...) -> ListAccessKeysObjectStorageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns every access key of the storage unit, oldest first. All of the keys work at the same time, so you can move each client to a new key before you delete the old one.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from americancloud import AmericancloudApi
+from americancloud.environment import AmericancloudApiEnvironment
+
+client = AmericancloudApi(
+    api_key="<value>",
+    api_client_secret="<X-API-Client-Secret>",
+    environment=AmericancloudApiEnvironment.PRODUCTION,
+)
+
+client.object_storage.list_access_keys_object_storage(
+    storage_unit_id="tenant$user",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**storage_unit_id:** `str` — Storage unit ID (UID)
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page:** `typing.Optional[int]` — Page number, 1-indexed. Defaults to 1 when omitted.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page_size:** `typing.Optional[int]` — Items per page. Defaults to 100 when omitted; server cap 500.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.object_storage.<a href="src/americancloud/object_storage/client.py">create_access_key_object_storage</a>(...) -> ObjectStorageAccessKeyDto</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a new access key and secret key with the given label for the storage unit, and returns them. The existing keys continue to work. A storage unit can hold up to 10 access keys.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from americancloud import AmericancloudApi
+from americancloud.environment import AmericancloudApiEnvironment
+
+client = AmericancloudApi(
+    api_key="<value>",
+    api_client_secret="<X-API-Client-Secret>",
+    environment=AmericancloudApiEnvironment.PRODUCTION,
+)
+
+client.object_storage.create_access_key_object_storage(
+    storage_unit_id="tenant$user",
+    label="ci-deploy",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**storage_unit_id:** `str` — Storage unit ID (UID)
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**label:** `str` — A label that identifies the key, for example the application that uses it. The label must be 1 to 64 characters, start with a letter or a number, and hold only letters, numbers, single spaces, and . _ - : , / @ # ( ) + & '. It cannot be changed later.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.object_storage.<a href="src/americancloud/object_storage/client.py">delete_access_key_object_storage</a>(...)</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes the access key. Requests signed with the key fail after this call. The other keys of the storage unit continue to work. A storage unit always keeps at least one access key.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from americancloud import AmericancloudApi
+from americancloud.environment import AmericancloudApiEnvironment
+
+client = AmericancloudApi(
+    api_key="<value>",
+    api_client_secret="<X-API-Client-Secret>",
+    environment=AmericancloudApiEnvironment.PRODUCTION,
+)
+
+client.object_storage.delete_access_key_object_storage(
+    storage_unit_id="tenant$user",
+    access_key="AKIAIOSFODNN7EXAMPLE",
+)
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**storage_unit_id:** `str` — Storage unit ID (UID)
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**access_key:** `str` — The access key to delete
     
 </dd>
 </dl>

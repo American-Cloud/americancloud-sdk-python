@@ -6,9 +6,11 @@ from ..core.client_wrapper import AsyncClientWrapper, SyncClientWrapper
 from ..core.request_options import RequestOptions
 from ..types.access_key_dto import AccessKeyDto
 from ..types.cost_estimate_response_dto import CostEstimateResponseDto
+from ..types.object_storage_access_key_dto import ObjectStorageAccessKeyDto
 from ..types.object_storage_success_response_dto import ObjectStorageSuccessResponseDto
 from ..types.object_storage_unit_dto import ObjectStorageUnitDto
 from .raw_client import AsyncRawObjectStorageClient, RawObjectStorageClient
+from .types.list_access_keys_object_storage_response import ListAccessKeysObjectStorageResponse
 from .types.list_buckets_object_storage_response import ListBucketsObjectStorageResponse
 from .types.list_units_object_storage_response import ListUnitsObjectStorageResponse
 
@@ -203,7 +205,7 @@ class ObjectStorageClient:
         self, storage_unit_id: str, *, request_options: typing.Optional[RequestOptions] = None
     ) -> AccessKeyDto:
         """
-        Returns all access keys (access key and secret key pairs) for the specified storage unit
+        Returns the oldest access key and secret key pair of the specified storage unit. To see every access key, list the access keys of the storage unit.
 
         Parameters
         ----------
@@ -231,6 +233,132 @@ class ObjectStorageClient:
         )
         """
         _response = self._raw_client.get_keys_object_storage(storage_unit_id, request_options=request_options)
+        return _response.data
+
+    def list_access_keys_object_storage(
+        self,
+        storage_unit_id: str,
+        *,
+        page: typing.Optional[int] = None,
+        page_size: typing.Optional[int] = None,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> ListAccessKeysObjectStorageResponse:
+        """
+        Returns every access key of the storage unit, oldest first. All of the keys work at the same time, so you can move each client to a new key before you delete the old one.
+
+        Parameters
+        ----------
+        storage_unit_id : str
+            Storage unit ID (UID)
+
+        page : typing.Optional[int]
+            Page number, 1-indexed. Defaults to 1 when omitted.
+
+        page_size : typing.Optional[int]
+            Items per page. Defaults to 100 when omitted; server cap 500.
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        ListAccessKeysObjectStorageResponse
+
+
+        Examples
+        --------
+        from americancloud import AmericancloudApi
+
+        client = AmericancloudApi(
+            api_client_secret="YOUR_API_CLIENT_SECRET",
+            api_key="YOUR_API_KEY",
+        )
+        client.object_storage.list_access_keys_object_storage(
+            storage_unit_id="tenant$user",
+        )
+        """
+        _response = self._raw_client.list_access_keys_object_storage(
+            storage_unit_id, page=page, page_size=page_size, request_options=request_options
+        )
+        return _response.data
+
+    def create_access_key_object_storage(
+        self, storage_unit_id: str, *, label: str, request_options: typing.Optional[RequestOptions] = None
+    ) -> ObjectStorageAccessKeyDto:
+        """
+        Creates a new access key and secret key with the given label for the storage unit, and returns them. The existing keys continue to work. A storage unit can hold up to 10 access keys.
+
+        Parameters
+        ----------
+        storage_unit_id : str
+            Storage unit ID (UID)
+
+        label : str
+            A label that identifies the key, for example the application that uses it. The label must be 1 to 64 characters, start with a letter or a number, and hold only letters, numbers, single spaces, and . _ - : , / @ # ( ) + & '. It cannot be changed later.
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        ObjectStorageAccessKeyDto
+            The created access key
+
+        Examples
+        --------
+        from americancloud import AmericancloudApi
+
+        client = AmericancloudApi(
+            api_client_secret="YOUR_API_CLIENT_SECRET",
+            api_key="YOUR_API_KEY",
+        )
+        client.object_storage.create_access_key_object_storage(
+            storage_unit_id="tenant$user",
+            label="ci-deploy",
+        )
+        """
+        _response = self._raw_client.create_access_key_object_storage(
+            storage_unit_id, label=label, request_options=request_options
+        )
+        return _response.data
+
+    def delete_access_key_object_storage(
+        self, storage_unit_id: str, access_key: str, *, request_options: typing.Optional[RequestOptions] = None
+    ) -> None:
+        """
+        Deletes the access key. Requests signed with the key fail after this call. The other keys of the storage unit continue to work. A storage unit always keeps at least one access key.
+
+        Parameters
+        ----------
+        storage_unit_id : str
+            Storage unit ID (UID)
+
+        access_key : str
+            The access key to delete
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        None
+
+        Examples
+        --------
+        from americancloud import AmericancloudApi
+
+        client = AmericancloudApi(
+            api_client_secret="YOUR_API_CLIENT_SECRET",
+            api_key="YOUR_API_KEY",
+        )
+        client.object_storage.delete_access_key_object_storage(
+            storage_unit_id="tenant$user",
+            access_key="AKIAIOSFODNN7EXAMPLE",
+        )
+        """
+        _response = self._raw_client.delete_access_key_object_storage(
+            storage_unit_id, access_key, request_options=request_options
+        )
         return _response.data
 
     def get_cost_estimate_object_storage(
@@ -612,7 +740,7 @@ class AsyncObjectStorageClient:
         self, storage_unit_id: str, *, request_options: typing.Optional[RequestOptions] = None
     ) -> AccessKeyDto:
         """
-        Returns all access keys (access key and secret key pairs) for the specified storage unit
+        Returns the oldest access key and secret key pair of the specified storage unit. To see every access key, list the access keys of the storage unit.
 
         Parameters
         ----------
@@ -648,6 +776,156 @@ class AsyncObjectStorageClient:
         asyncio.run(main())
         """
         _response = await self._raw_client.get_keys_object_storage(storage_unit_id, request_options=request_options)
+        return _response.data
+
+    async def list_access_keys_object_storage(
+        self,
+        storage_unit_id: str,
+        *,
+        page: typing.Optional[int] = None,
+        page_size: typing.Optional[int] = None,
+        request_options: typing.Optional[RequestOptions] = None,
+    ) -> ListAccessKeysObjectStorageResponse:
+        """
+        Returns every access key of the storage unit, oldest first. All of the keys work at the same time, so you can move each client to a new key before you delete the old one.
+
+        Parameters
+        ----------
+        storage_unit_id : str
+            Storage unit ID (UID)
+
+        page : typing.Optional[int]
+            Page number, 1-indexed. Defaults to 1 when omitted.
+
+        page_size : typing.Optional[int]
+            Items per page. Defaults to 100 when omitted; server cap 500.
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        ListAccessKeysObjectStorageResponse
+
+
+        Examples
+        --------
+        import asyncio
+
+        from americancloud import AsyncAmericancloudApi
+
+        client = AsyncAmericancloudApi(
+            api_client_secret="YOUR_API_CLIENT_SECRET",
+            api_key="YOUR_API_KEY",
+        )
+
+
+        async def main() -> None:
+            await client.object_storage.list_access_keys_object_storage(
+                storage_unit_id="tenant$user",
+            )
+
+
+        asyncio.run(main())
+        """
+        _response = await self._raw_client.list_access_keys_object_storage(
+            storage_unit_id, page=page, page_size=page_size, request_options=request_options
+        )
+        return _response.data
+
+    async def create_access_key_object_storage(
+        self, storage_unit_id: str, *, label: str, request_options: typing.Optional[RequestOptions] = None
+    ) -> ObjectStorageAccessKeyDto:
+        """
+        Creates a new access key and secret key with the given label for the storage unit, and returns them. The existing keys continue to work. A storage unit can hold up to 10 access keys.
+
+        Parameters
+        ----------
+        storage_unit_id : str
+            Storage unit ID (UID)
+
+        label : str
+            A label that identifies the key, for example the application that uses it. The label must be 1 to 64 characters, start with a letter or a number, and hold only letters, numbers, single spaces, and . _ - : , / @ # ( ) + & '. It cannot be changed later.
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        ObjectStorageAccessKeyDto
+            The created access key
+
+        Examples
+        --------
+        import asyncio
+
+        from americancloud import AsyncAmericancloudApi
+
+        client = AsyncAmericancloudApi(
+            api_client_secret="YOUR_API_CLIENT_SECRET",
+            api_key="YOUR_API_KEY",
+        )
+
+
+        async def main() -> None:
+            await client.object_storage.create_access_key_object_storage(
+                storage_unit_id="tenant$user",
+                label="ci-deploy",
+            )
+
+
+        asyncio.run(main())
+        """
+        _response = await self._raw_client.create_access_key_object_storage(
+            storage_unit_id, label=label, request_options=request_options
+        )
+        return _response.data
+
+    async def delete_access_key_object_storage(
+        self, storage_unit_id: str, access_key: str, *, request_options: typing.Optional[RequestOptions] = None
+    ) -> None:
+        """
+        Deletes the access key. Requests signed with the key fail after this call. The other keys of the storage unit continue to work. A storage unit always keeps at least one access key.
+
+        Parameters
+        ----------
+        storage_unit_id : str
+            Storage unit ID (UID)
+
+        access_key : str
+            The access key to delete
+
+        request_options : typing.Optional[RequestOptions]
+            Request-specific configuration.
+
+        Returns
+        -------
+        None
+
+        Examples
+        --------
+        import asyncio
+
+        from americancloud import AsyncAmericancloudApi
+
+        client = AsyncAmericancloudApi(
+            api_client_secret="YOUR_API_CLIENT_SECRET",
+            api_key="YOUR_API_KEY",
+        )
+
+
+        async def main() -> None:
+            await client.object_storage.delete_access_key_object_storage(
+                storage_unit_id="tenant$user",
+                access_key="AKIAIOSFODNN7EXAMPLE",
+            )
+
+
+        asyncio.run(main())
+        """
+        _response = await self._raw_client.delete_access_key_object_storage(
+            storage_unit_id, access_key, request_options=request_options
+        )
         return _response.data
 
     async def get_cost_estimate_object_storage(
