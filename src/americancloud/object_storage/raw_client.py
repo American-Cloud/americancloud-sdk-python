@@ -158,7 +158,7 @@ class RawObjectStorageClient:
         Parameters
         ----------
         name : str
-            Storage unit name. Alphanumeric characters only.
+            Storage unit name. Letters, numbers, hyphens, and underscores, up to 100 characters; must start and end with a letter or number. It cannot be changed later.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -390,7 +390,7 @@ class RawObjectStorageClient:
             Storage unit ID (UID)
 
         name : str
-            Bucket name. Lowercase letters, numbers, dots, and hyphens only; must start and end with a letter or number.
+            Bucket name. Lowercase letters, numbers, dots, and hyphens only; must start and end with a letter or number. It cannot hold two dots together or a dot next to a hyphen, and it cannot be an IP address.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -1470,7 +1470,7 @@ class AsyncRawObjectStorageClient:
         Parameters
         ----------
         name : str
-            Storage unit name. Alphanumeric characters only.
+            Storage unit name. Letters, numbers, hyphens, and underscores, up to 100 characters; must start and end with a letter or number. It cannot be changed later.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -1702,7 +1702,7 @@ class AsyncRawObjectStorageClient:
             Storage unit ID (UID)
 
         name : str
-            Bucket name. Lowercase letters, numbers, dots, and hyphens only; must start and end with a letter or number.
+            Bucket name. Lowercase letters, numbers, dots, and hyphens only; must start and end with a letter or number. It cannot hold two dots together or a dot next to a hyphen, and it cannot be an IP address.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.

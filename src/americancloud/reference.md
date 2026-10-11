@@ -10036,7 +10036,7 @@ client.kubernetes.cluster_power_kubernetes(
 <dl>
 <dd>
 
-Returns the kubeconfig file content for connecting to the cluster
+Returns the kubeconfig file content for connecting to the cluster. The kubeconfig grants full access to the cluster, so this requires Kubernetes manage access (a read-write API key).
 </dd>
 </dl>
 </dd>
@@ -10415,7 +10415,7 @@ client = AmericancloudApi(
 )
 
 client.object_storage.create_unit_object_storage(
-    name="storageunit01",
+    name="prod-assets",
 )
 
 ```
@@ -10432,7 +10432,7 @@ client.object_storage.create_unit_object_storage(
 <dl>
 <dd>
 
-**name:** `str` — Storage unit name. Alphanumeric characters only.
+**name:** `str` — Storage unit name. Letters, numbers, hyphens, and underscores, up to 100 characters; must start and end with a letter or number. It cannot be changed later.
     
 </dd>
 </dl>
@@ -10605,7 +10605,7 @@ client.object_storage.create_bucket_object_storage(
 <dl>
 <dd>
 
-**name:** `str` — Bucket name. Lowercase letters, numbers, dots, and hyphens only; must start and end with a letter or number.
+**name:** `str` — Bucket name. Lowercase letters, numbers, dots, and hyphens only; must start and end with a letter or number. It cannot hold two dots together or a dot next to a hyphen, and it cannot be an IP address.
     
 </dd>
 </dl>

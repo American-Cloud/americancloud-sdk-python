@@ -6,6 +6,7 @@ import pydantic
 from ..core.pydantic_utilities import IS_PYDANTIC_V2, UniversalBaseModel
 from .discount_applied_dto import DiscountAppliedDto
 from .estimates_dto import EstimatesDto
+from .metered_rate_dto import MeteredRateDto
 
 
 class CostEstimateResponseDto(UniversalBaseModel):
@@ -22,6 +23,11 @@ class CostEstimateResponseDto(UniversalBaseModel):
     billing_note: typing.Optional[str] = pydantic.Field(default=None)
     """
     Additional billing information or notes about pricing structure
+    """
+
+    metered: typing.Optional[MeteredRateDto] = pydantic.Field(default=None)
+    """
+    The usage rate, for a resource that is billed by usage (object storage only).
     """
 
     if IS_PYDANTIC_V2:

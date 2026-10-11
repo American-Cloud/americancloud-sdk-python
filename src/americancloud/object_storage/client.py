@@ -89,7 +89,7 @@ class ObjectStorageClient:
         Parameters
         ----------
         name : str
-            Storage unit name. Alphanumeric characters only.
+            Storage unit name. Letters, numbers, hyphens, and underscores, up to 100 characters; must start and end with a letter or number. It cannot be changed later.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -108,7 +108,7 @@ class ObjectStorageClient:
             api_key="YOUR_API_KEY",
         )
         client.object_storage.create_unit_object_storage(
-            name="storageunit01",
+            name="prod-assets",
         )
         """
         _response = self._raw_client.create_unit_object_storage(name=name, request_options=request_options)
@@ -173,7 +173,7 @@ class ObjectStorageClient:
             Storage unit ID (UID)
 
         name : str
-            Bucket name. Lowercase letters, numbers, dots, and hyphens only; must start and end with a letter or number.
+            Bucket name. Lowercase letters, numbers, dots, and hyphens only; must start and end with a letter or number. It cannot hold two dots together or a dot next to a hyphen, and it cannot be an IP address.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -600,7 +600,7 @@ class AsyncObjectStorageClient:
         Parameters
         ----------
         name : str
-            Storage unit name. Alphanumeric characters only.
+            Storage unit name. Letters, numbers, hyphens, and underscores, up to 100 characters; must start and end with a letter or number. It cannot be changed later.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -624,7 +624,7 @@ class AsyncObjectStorageClient:
 
         async def main() -> None:
             await client.object_storage.create_unit_object_storage(
-                name="storageunit01",
+                name="prod-assets",
             )
 
 
@@ -700,7 +700,7 @@ class AsyncObjectStorageClient:
             Storage unit ID (UID)
 
         name : str
-            Bucket name. Lowercase letters, numbers, dots, and hyphens only; must start and end with a letter or number.
+            Bucket name. Lowercase letters, numbers, dots, and hyphens only; must start and end with a letter or number. It cannot hold two dots together or a dot next to a hyphen, and it cannot be an IP address.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.

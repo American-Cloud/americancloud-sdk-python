@@ -439,7 +439,7 @@ class KubernetesClient:
         self, id: str, *, request_options: typing.Optional[RequestOptions] = None
     ) -> KubernetesConfigResponseDto:
         """
-        Returns the kubeconfig file content for connecting to the cluster
+        Returns the kubeconfig file content for connecting to the cluster. The kubeconfig grants full access to the cluster, so this requires Kubernetes manage access (a read-write API key).
 
         Parameters
         ----------
@@ -1054,7 +1054,7 @@ class AsyncKubernetesClient:
         self, id: str, *, request_options: typing.Optional[RequestOptions] = None
     ) -> KubernetesConfigResponseDto:
         """
-        Returns the kubeconfig file content for connecting to the cluster
+        Returns the kubeconfig file content for connecting to the cluster. The kubeconfig grants full access to the cluster, so this requires Kubernetes manage access (a read-write API key).
 
         Parameters
         ----------

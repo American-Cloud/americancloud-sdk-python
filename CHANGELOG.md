@@ -8,6 +8,54 @@ See [`VERSIONING.md`](./VERSIONING.md) for how SDK versions relate to the API ve
 
 ## [Unreleased]
 
+## [1.6.0] - 2026-10-10
+
+### Added
+
+- Object storage: `CostEstimateResponseDto.metered` (`Optional[MeteredRateDto]`)
+  on the estimate from `object_storage.get_cost_estimate_object_storage`. It
+  carries `rate_per_gb_month` (`base`, `discount`, `total`: the price of a GB
+  stored for a month, before and after any discount) and `minimum_gb`, the
+  storage that the monthly minimum covers. `None` on every other estimate.
+- The operations that can refuse a change to a managed Kubernetes cluster's
+  rules now document `409` with a `code`. `firewall_rules.delete_firewall_rules`,
+  `port_forwarding.delete_port_forwarding`, and `load_balancer_rules.update_load_balancer_rules`,
+  `delete_load_balancer_rules`, `assign_vms_load_balancer_rules` and
+  `remove_vms_load_balancer_rules` answer `kubernetes_managed_rule` when the rule
+  is one the cluster made on its address (the port 6443 load balancer rule, a
+  port 2222+ SSH forward, or a firewall rule that opens them). So do
+  `network_acls.delete_rule_network_acls`, when the rule lets TCP 6443 into a
+  tier that holds a cluster, and `network_acls.replace_list_network_acls`, when
+  the new list does not let it in. `public_ips.release_public_ips` answers
+  `kubernetes_cluster_address` for the cluster's address, and
+  `public_ips.change_source_nat_ip_public_ips` answers `kubernetes_source_nat` on the
+  cluster's network. `kubernetes.scale_cluster_kubernetes` and
+  `kubernetes.upgrade_cluster_kubernetes` answer `kubernetes_api_rule_missing`
+  when the cluster's port 6443 rule is already gone. In every case nothing
+  changed. Your own rules on the same address are not affected.
+- `public_ips.change_source_nat_ip_public_ips` and `network_acls.replace_list_network_acls`
+  document `400`: the address is not on the given network, or `network_id` is
+  not a UUID.
+
+### Changed
+
+- `kubernetes.get_cluster_config_kubernetes` needs Kubernetes manage access.
+  The kubeconfig grants full access to the cluster, so a read-only API key no
+  longer receives it and gets `403`. Use a read-write key for that call.
+- `vms.get_vms` and `kubernetes.get_cluster_kubernetes` find a resource right
+  after its create call returns, with status `CREATING` and the requested
+  specification. They previously answered `404` for some seconds.
+- A storage unit name may hold hyphens and underscores: letters, digits,
+  hyphens and underscores, up to 100 characters, starting and ending with a
+  letter or digit. The names `anonymous` and `RGW` followed by 17 digits are
+  reserved. A bucket name also refuses two dots together, a dot next to a
+  hyphen, and the form of an IP address. Each refusal is `400` with a message
+  that names the rule.
+- `block_storage.attach_block_storage` and `block_storage.detach_block_storage` answer `400` while the VM
+  starts, stops, or is otherwise between states, with a message that names
+  the state. A detach also works on a destroyed VM.
+- `vms.get_metrics_vms` returns samples up to the current minute.
+
 ## [1.5.0] - 2026-10-05
 
 ### Added
@@ -198,7 +246,8 @@ See [`VERSIONING.md`](./VERSIONING.md) for how SDK versions relate to the API ve
   networks, ACLs, firewall, port-forwarding, load-balancer and egress rules),
   public IPs, DNS, managed databases, Kubernetes, object storage, and WordPress.
 
-[Unreleased]: https://github.com/American-Cloud/americancloud-sdk-python/compare/v1.5.0...HEAD
+[Unreleased]: https://github.com/American-Cloud/americancloud-sdk-python/compare/v1.6.0...HEAD
+[1.6.0]: https://github.com/American-Cloud/americancloud-sdk-python/releases/tag/v1.6.0
 [1.5.0]: https://github.com/American-Cloud/americancloud-sdk-python/releases/tag/v1.5.0
 [1.4.0]: https://github.com/American-Cloud/americancloud-sdk-python/releases/tag/v1.4.0
 [1.3.3]: https://github.com/American-Cloud/americancloud-sdk-python/releases/tag/v1.3.3

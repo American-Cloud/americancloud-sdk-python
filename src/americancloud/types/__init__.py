@@ -82,6 +82,7 @@ if typing.TYPE_CHECKING:
     from .load_balancer_rule_response_dto import LoadBalancerRuleResponseDto
     from .marketplace_app_dto import MarketplaceAppDto
     from .max_instances_dto import MaxInstancesDto
+    from .metered_rate_dto import MeteredRateDto
     from .modify_backup_schedule_request_dto import ModifyBackupScheduleRequestDto
     from .nameservers_dto import NameserversDto
     from .network_access_dto import NetworkAccessDto
@@ -210,6 +211,7 @@ _dynamic_imports: typing.Dict[str, str] = {
     "LoadBalancerRuleResponseDto": ".load_balancer_rule_response_dto",
     "MarketplaceAppDto": ".marketplace_app_dto",
     "MaxInstancesDto": ".max_instances_dto",
+    "MeteredRateDto": ".metered_rate_dto",
     "ModifyBackupScheduleRequestDto": ".modify_backup_schedule_request_dto",
     "NameserversDto": ".nameservers_dto",
     "NetworkAccessDto": ".network_access_dto",
@@ -362,6 +364,7 @@ __all__ = [
     "LoadBalancerRuleResponseDto",
     "MarketplaceAppDto",
     "MaxInstancesDto",
+    "MeteredRateDto",
     "ModifyBackupScheduleRequestDto",
     "NameserversDto",
     "NetworkAccessDto",
