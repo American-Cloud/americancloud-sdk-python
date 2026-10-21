@@ -7414,7 +7414,7 @@ client.database_backups.update_config_database_backups(
 <dl>
 <dd>
 
-**passphrase:** `typing.Optional[str]` — Passphrase used to encrypt backups. Required when enabling encryption. Must be 12–256 printable ASCII characters (letters, digits, symbols) with no spaces. Store it securely — it is required to restore encrypted backups and cannot be recovered if lost.
+**passphrase:** `typing.Optional[str]` — Passphrase used to encrypt new backups. Required when enabling encryption. Send a new passphrase with encryption enabled to change it. Must be 12–256 printable ASCII characters (letters, digits, symbols) with no spaces. Earlier backups still restore after a change, and a restore does not ask for the passphrase.
     
 </dd>
 </dl>
@@ -9821,7 +9821,6 @@ client = AmericancloudApi(
 
 client.kubernetes.create_cluster_kubernetes(
     name="my-cluster",
-    package="my-package",
     region="us-west-0",
     version="1.28.4",
     control_nodes=1,
@@ -9900,7 +9899,6 @@ client = AmericancloudApi(
 
 client.kubernetes.get_cost_estimate_kubernetes(
     name="my-cluster",
-    package="my-package",
     region="us-west-0",
     version="1.28.4",
     control_nodes=1,
@@ -10160,7 +10158,7 @@ client.kubernetes.scale_cluster_kubernetes(
 <dl>
 <dd>
 
-**worker_nodes:** `typing.Optional[float]` — Number of worker nodes
+**worker_nodes:** `typing.Optional[float]` — Number of worker nodes: a whole number, 1 or more. Do not send it with autoscalingEnabled: true.
     
 </dd>
 </dl>
@@ -10176,7 +10174,7 @@ client.kubernetes.scale_cluster_kubernetes(
 <dl>
 <dd>
 
-**min_workers:** `typing.Optional[float]` — Minimum number of worker nodes when autoscaling is enabled
+**min_workers:** `typing.Optional[float]` — Minimum number of worker nodes when autoscaling is enabled: a whole number, 1 or more. Send it with autoscalingEnabled: true.
     
 </dd>
 </dl>
@@ -10184,7 +10182,7 @@ client.kubernetes.scale_cluster_kubernetes(
 <dl>
 <dd>
 
-**max_workers:** `typing.Optional[float]` — Maximum number of worker nodes when autoscaling is enabled
+**max_workers:** `typing.Optional[float]` — Maximum number of worker nodes when autoscaling is enabled: a whole number, greater than minWorkers. Send it with autoscalingEnabled: true.
     
 </dd>
 </dl>

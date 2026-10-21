@@ -8,6 +8,67 @@ See [`VERSIONING.md`](./VERSIONING.md) for how SDK versions relate to the API ve
 
 ## [Unreleased]
 
+## [1.7.0] - 2026-10-20
+
+### Added
+
+- Kubernetes: a cluster can use one package for its control-plane nodes and
+  another for its worker nodes. `kubernetes.create_cluster_kubernetes` and
+  `kubernetes.get_cost_estimate_kubernetes` take two new optional arguments,
+  `control_package` and `worker_package`. Each one overrides `package` for its
+  own node type.
+  - Pass `package` alone to use one package for every node, as before.
+  - Pass `package` and one override to change one node type.
+  - Pass `control_package` and `worker_package` without `package` to set both.
+  A request with all three answers `400`. The estimate prices each node type
+  at its own package. The first control node is free up to the price of one
+  worker; when the control package costs more, the first control node costs
+  the difference.
+- `KubernetesNodePool` has `control` and `worker` (`KubernetesNodeTypeSpec`:
+  `package`, `cpu_cores`, `memory_mb`), one for each node type. `package` is
+  `None` when the package of that node type is not known.
+
+### Changed
+
+- The `package` argument of `kubernetes.create_cluster_kubernetes` and
+  `kubernetes.get_cost_estimate_kubernetes` is optional. Code that passes it
+  works unchanged.
+- An expired card on file: a request that creates or changes billable
+  resources (`POST`, `PUT` and `PATCH` on the compute, Kubernetes, block
+  storage, snapshot, object storage, networking, database, WordPress, SSH key
+  and DNS operations) now raises `ApiError` with `status_code` `402` and
+  `code: payment_method_expired`, and nothing changes. A card counts as
+  expired from the first day of the month after its printed expiry month.
+  `GET` and `DELETE` still work.
+- `database_backups.update_config_database_backups` with
+  `encryption_enabled=True` and a new `passphrase` changes the passphrase of a
+  cluster that already encrypts its backups. Earlier backups still restore.
+- The README and the `Documentation` URL in the package metadata link to the
+  API reference at [americancloud.com/docs/api](https://americancloud.com/docs/api).
+
+### Deprecated
+
+These fields keep their values and describe the worker nodes only:
+
+- `KubernetesClusterResponse.package`: use `node_pool.worker.package` and
+  `node_pool.control.package`.
+- `KubernetesNodePool.cpu_cores` and `memory_mb`: use `node_pool.worker` and
+  `node_pool.control`.
+
+### Fixed
+
+- `kubernetes.list_packages_kubernetes` no longer lists a region where a
+  package is not offered, and leaves out a package that no region offers.
+- `control_nodes` and `worker_nodes` on `kubernetes.create_cluster_kubernetes`
+  and `kubernetes.get_cost_estimate_kubernetes`, and `worker_nodes`,
+  `min_workers` and `max_workers` on `kubernetes.scale_cluster_kubernetes`,
+  must be whole numbers of at least 1. Other values answer `400`, not `500`,
+  and an estimate is never negative.
+- `kubernetes.scale_cluster_kubernetes` answers `400` when the autoscaling
+  fields do not fit. With `autoscaling_enabled=True`, pass `min_workers` and
+  `max_workers`, with `max_workers` greater than `min_workers`, and no
+  `worker_nodes`.
+
 ## [1.6.0] - 2026-10-10
 
 ### Added
@@ -246,7 +307,8 @@ See [`VERSIONING.md`](./VERSIONING.md) for how SDK versions relate to the API ve
   networks, ACLs, firewall, port-forwarding, load-balancer and egress rules),
   public IPs, DNS, managed databases, Kubernetes, object storage, and WordPress.
 
-[Unreleased]: https://github.com/American-Cloud/americancloud-sdk-python/compare/v1.6.0...HEAD
+[Unreleased]: https://github.com/American-Cloud/americancloud-sdk-python/compare/v1.7.0...HEAD
+[1.7.0]: https://github.com/American-Cloud/americancloud-sdk-python/releases/tag/v1.7.0
 [1.6.0]: https://github.com/American-Cloud/americancloud-sdk-python/releases/tag/v1.6.0
 [1.5.0]: https://github.com/American-Cloud/americancloud-sdk-python/releases/tag/v1.5.0
 [1.4.0]: https://github.com/American-Cloud/americancloud-sdk-python/releases/tag/v1.4.0

@@ -228,11 +228,13 @@ class KubernetesClient:
         self,
         *,
         name: str,
-        package: str,
         region: str,
         version: str,
         control_nodes: float,
         worker_nodes: float,
+        package: typing.Optional[str] = OMIT,
+        control_package: typing.Optional[str] = OMIT,
+        worker_package: typing.Optional[str] = OMIT,
         description: typing.Optional[str] = OMIT,
         network_id: typing.Optional[str] = OMIT,
         keypair: typing.Optional[str] = OMIT,
@@ -246,9 +248,6 @@ class KubernetesClient:
         name : str
             Name of the cluster
 
-        package : str
-            Package label to use for the cluster
-
         region : str
             Region where to deploy the cluster
 
@@ -256,10 +255,19 @@ class KubernetesClient:
             Kubernetes version to use (semantic version)
 
         control_nodes : float
-            Number of control plane nodes
+            Number of control plane nodes: a whole number, 1 or more.
 
         worker_nodes : float
-            Number of worker nodes
+            Number of worker nodes: a whole number, 1 or more.
+
+        package : typing.Optional[str]
+            Package label to use for every node in the cluster. Use controlPackage or workerPackage to give one node type a different package. Required unless you send both controlPackage and workerPackage. Leave it out when you send both.
+
+        control_package : typing.Optional[str]
+            Package label for the control-plane nodes. Overrides package.
+
+        worker_package : typing.Optional[str]
+            Package label for the worker nodes. Overrides package.
 
         description : typing.Optional[str]
             Description of the cluster
@@ -288,7 +296,6 @@ class KubernetesClient:
         )
         client.kubernetes.create_cluster_kubernetes(
             name="my-cluster",
-            package="my-package",
             region="us-west-0",
             version="1.28.4",
             control_nodes=1.0,
@@ -297,11 +304,13 @@ class KubernetesClient:
         """
         _response = self._raw_client.create_cluster_kubernetes(
             name=name,
-            package=package,
             region=region,
             version=version,
             control_nodes=control_nodes,
             worker_nodes=worker_nodes,
+            package=package,
+            control_package=control_package,
+            worker_package=worker_package,
             description=description,
             network_id=network_id,
             keypair=keypair,
@@ -313,11 +322,13 @@ class KubernetesClient:
         self,
         *,
         name: str,
-        package: str,
         region: str,
         version: str,
         control_nodes: float,
         worker_nodes: float,
+        package: typing.Optional[str] = OMIT,
+        control_package: typing.Optional[str] = OMIT,
+        worker_package: typing.Optional[str] = OMIT,
         description: typing.Optional[str] = OMIT,
         network_id: typing.Optional[str] = OMIT,
         keypair: typing.Optional[str] = OMIT,
@@ -331,9 +342,6 @@ class KubernetesClient:
         name : str
             Name of the cluster
 
-        package : str
-            Package label to use for the cluster
-
         region : str
             Region where to deploy the cluster
 
@@ -341,10 +349,19 @@ class KubernetesClient:
             Kubernetes version to use (semantic version)
 
         control_nodes : float
-            Number of control plane nodes
+            Number of control plane nodes: a whole number, 1 or more.
 
         worker_nodes : float
-            Number of worker nodes
+            Number of worker nodes: a whole number, 1 or more.
+
+        package : typing.Optional[str]
+            Package label to use for every node in the cluster. Use controlPackage or workerPackage to give one node type a different package. Required unless you send both controlPackage and workerPackage. Leave it out when you send both.
+
+        control_package : typing.Optional[str]
+            Package label for the control-plane nodes. Overrides package.
+
+        worker_package : typing.Optional[str]
+            Package label for the worker nodes. Overrides package.
 
         description : typing.Optional[str]
             Description of the cluster
@@ -373,7 +390,6 @@ class KubernetesClient:
         )
         client.kubernetes.get_cost_estimate_kubernetes(
             name="my-cluster",
-            package="my-package",
             region="us-west-0",
             version="1.28.4",
             control_nodes=1.0,
@@ -382,11 +398,13 @@ class KubernetesClient:
         """
         _response = self._raw_client.get_cost_estimate_kubernetes(
             name=name,
-            package=package,
             region=region,
             version=version,
             control_nodes=control_nodes,
             worker_nodes=worker_nodes,
+            package=package,
+            control_package=control_package,
+            worker_package=worker_package,
             description=description,
             network_id=network_id,
             keypair=keypair,
@@ -488,16 +506,16 @@ class KubernetesClient:
             ID of the Kubernetes cluster
 
         worker_nodes : typing.Optional[float]
-            Number of worker nodes
+            Number of worker nodes: a whole number, 1 or more. Do not send it with autoscalingEnabled: true.
 
         autoscaling_enabled : typing.Optional[bool]
             Enable or disable autoscaling
 
         min_workers : typing.Optional[float]
-            Minimum number of worker nodes when autoscaling is enabled
+            Minimum number of worker nodes when autoscaling is enabled: a whole number, 1 or more. Send it with autoscalingEnabled: true.
 
         max_workers : typing.Optional[float]
-            Maximum number of worker nodes when autoscaling is enabled
+            Maximum number of worker nodes when autoscaling is enabled: a whole number, greater than minWorkers. Send it with autoscalingEnabled: true.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -819,11 +837,13 @@ class AsyncKubernetesClient:
         self,
         *,
         name: str,
-        package: str,
         region: str,
         version: str,
         control_nodes: float,
         worker_nodes: float,
+        package: typing.Optional[str] = OMIT,
+        control_package: typing.Optional[str] = OMIT,
+        worker_package: typing.Optional[str] = OMIT,
         description: typing.Optional[str] = OMIT,
         network_id: typing.Optional[str] = OMIT,
         keypair: typing.Optional[str] = OMIT,
@@ -837,9 +857,6 @@ class AsyncKubernetesClient:
         name : str
             Name of the cluster
 
-        package : str
-            Package label to use for the cluster
-
         region : str
             Region where to deploy the cluster
 
@@ -847,10 +864,19 @@ class AsyncKubernetesClient:
             Kubernetes version to use (semantic version)
 
         control_nodes : float
-            Number of control plane nodes
+            Number of control plane nodes: a whole number, 1 or more.
 
         worker_nodes : float
-            Number of worker nodes
+            Number of worker nodes: a whole number, 1 or more.
+
+        package : typing.Optional[str]
+            Package label to use for every node in the cluster. Use controlPackage or workerPackage to give one node type a different package. Required unless you send both controlPackage and workerPackage. Leave it out when you send both.
+
+        control_package : typing.Optional[str]
+            Package label for the control-plane nodes. Overrides package.
+
+        worker_package : typing.Optional[str]
+            Package label for the worker nodes. Overrides package.
 
         description : typing.Optional[str]
             Description of the cluster
@@ -884,7 +910,6 @@ class AsyncKubernetesClient:
         async def main() -> None:
             await client.kubernetes.create_cluster_kubernetes(
                 name="my-cluster",
-                package="my-package",
                 region="us-west-0",
                 version="1.28.4",
                 control_nodes=1.0,
@@ -896,11 +921,13 @@ class AsyncKubernetesClient:
         """
         _response = await self._raw_client.create_cluster_kubernetes(
             name=name,
-            package=package,
             region=region,
             version=version,
             control_nodes=control_nodes,
             worker_nodes=worker_nodes,
+            package=package,
+            control_package=control_package,
+            worker_package=worker_package,
             description=description,
             network_id=network_id,
             keypair=keypair,
@@ -912,11 +939,13 @@ class AsyncKubernetesClient:
         self,
         *,
         name: str,
-        package: str,
         region: str,
         version: str,
         control_nodes: float,
         worker_nodes: float,
+        package: typing.Optional[str] = OMIT,
+        control_package: typing.Optional[str] = OMIT,
+        worker_package: typing.Optional[str] = OMIT,
         description: typing.Optional[str] = OMIT,
         network_id: typing.Optional[str] = OMIT,
         keypair: typing.Optional[str] = OMIT,
@@ -930,9 +959,6 @@ class AsyncKubernetesClient:
         name : str
             Name of the cluster
 
-        package : str
-            Package label to use for the cluster
-
         region : str
             Region where to deploy the cluster
 
@@ -940,10 +966,19 @@ class AsyncKubernetesClient:
             Kubernetes version to use (semantic version)
 
         control_nodes : float
-            Number of control plane nodes
+            Number of control plane nodes: a whole number, 1 or more.
 
         worker_nodes : float
-            Number of worker nodes
+            Number of worker nodes: a whole number, 1 or more.
+
+        package : typing.Optional[str]
+            Package label to use for every node in the cluster. Use controlPackage or workerPackage to give one node type a different package. Required unless you send both controlPackage and workerPackage. Leave it out when you send both.
+
+        control_package : typing.Optional[str]
+            Package label for the control-plane nodes. Overrides package.
+
+        worker_package : typing.Optional[str]
+            Package label for the worker nodes. Overrides package.
 
         description : typing.Optional[str]
             Description of the cluster
@@ -977,7 +1012,6 @@ class AsyncKubernetesClient:
         async def main() -> None:
             await client.kubernetes.get_cost_estimate_kubernetes(
                 name="my-cluster",
-                package="my-package",
                 region="us-west-0",
                 version="1.28.4",
                 control_nodes=1.0,
@@ -989,11 +1023,13 @@ class AsyncKubernetesClient:
         """
         _response = await self._raw_client.get_cost_estimate_kubernetes(
             name=name,
-            package=package,
             region=region,
             version=version,
             control_nodes=control_nodes,
             worker_nodes=worker_nodes,
+            package=package,
+            control_package=control_package,
+            worker_package=worker_package,
             description=description,
             network_id=network_id,
             keypair=keypair,
@@ -1111,16 +1147,16 @@ class AsyncKubernetesClient:
             ID of the Kubernetes cluster
 
         worker_nodes : typing.Optional[float]
-            Number of worker nodes
+            Number of worker nodes: a whole number, 1 or more. Do not send it with autoscalingEnabled: true.
 
         autoscaling_enabled : typing.Optional[bool]
             Enable or disable autoscaling
 
         min_workers : typing.Optional[float]
-            Minimum number of worker nodes when autoscaling is enabled
+            Minimum number of worker nodes when autoscaling is enabled: a whole number, 1 or more. Send it with autoscalingEnabled: true.
 
         max_workers : typing.Optional[float]
-            Maximum number of worker nodes when autoscaling is enabled
+            Maximum number of worker nodes when autoscaling is enabled: a whole number, greater than minWorkers. Send it with autoscalingEnabled: true.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.

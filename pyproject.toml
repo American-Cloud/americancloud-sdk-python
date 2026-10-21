@@ -31,7 +31,7 @@ dependencies = [
 
 [project.urls]
 Homepage = "https://americancloud.com"
-Documentation = "https://americancloud.docs.buildwithfern.com"
+Documentation = "https://americancloud.com/docs/api"
 Repository = "https://github.com/American-Cloud/americancloud-sdk-python"
 Changelog = "https://github.com/American-Cloud/americancloud-sdk-python/blob/main/CHANGELOG.md"
 

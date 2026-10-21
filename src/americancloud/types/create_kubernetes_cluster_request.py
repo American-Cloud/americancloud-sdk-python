@@ -14,11 +14,23 @@ class CreateKubernetesClusterRequest(UniversalBaseModel):
     Name of the cluster
     """
 
-    package: str = pydantic.Field()
+    package: typing.Optional[str] = pydantic.Field(default=None)
     """
-    Package label to use for the cluster
+    Package label to use for every node in the cluster. Use controlPackage or workerPackage to give one node type a different package. Required unless you send both controlPackage and workerPackage. Leave it out when you send both.
     """
 
+    control_package: typing_extensions.Annotated[
+        typing.Optional[str],
+        FieldMetadata(alias="controlPackage"),
+        pydantic.Field(
+            alias="controlPackage", description="Package label for the control-plane nodes. Overrides package."
+        ),
+    ] = None
+    worker_package: typing_extensions.Annotated[
+        typing.Optional[str],
+        FieldMetadata(alias="workerPackage"),
+        pydantic.Field(alias="workerPackage", description="Package label for the worker nodes. Overrides package."),
+    ] = None
     region: str = pydantic.Field()
     """
     Region where to deploy the cluster
@@ -32,12 +44,12 @@ class CreateKubernetesClusterRequest(UniversalBaseModel):
     control_nodes: typing_extensions.Annotated[
         float,
         FieldMetadata(alias="controlNodes"),
-        pydantic.Field(alias="controlNodes", description="Number of control plane nodes"),
+        pydantic.Field(alias="controlNodes", description="Number of control plane nodes: a whole number, 1 or more."),
     ]
     worker_nodes: typing_extensions.Annotated[
         float,
         FieldMetadata(alias="workerNodes"),
-        pydantic.Field(alias="workerNodes", description="Number of worker nodes"),
+        pydantic.Field(alias="workerNodes", description="Number of worker nodes: a whole number, 1 or more."),
     ]
     description: typing.Optional[str] = pydantic.Field(default=None)
     """

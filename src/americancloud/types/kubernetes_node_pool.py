@@ -6,6 +6,7 @@ import pydantic
 import typing_extensions
 from ..core.pydantic_utilities import IS_PYDANTIC_V2, UniversalBaseModel
 from ..core.serialization import FieldMetadata
+from .kubernetes_node_type_spec import KubernetesNodeTypeSpec
 
 
 class KubernetesNodePool(UniversalBaseModel):
@@ -40,13 +41,28 @@ class KubernetesNodePool(UniversalBaseModel):
     cpu_cores: typing_extensions.Annotated[
         float,
         FieldMetadata(alias="cpuCores"),
-        pydantic.Field(alias="cpuCores", description="Number of virtual CPU cores allocated to each node."),
+        pydantic.Field(
+            alias="cpuCores",
+            description="Number of virtual CPU cores allocated to each worker node (deprecated, use worker.cpuCores, or control.cpuCores for a control-plane node).",
+        ),
     ]
     memory_mb: typing_extensions.Annotated[
         int,
         FieldMetadata(alias="memoryMb"),
-        pydantic.Field(alias="memoryMb", description="Memory allocated to each node, in megabytes."),
+        pydantic.Field(
+            alias="memoryMb",
+            description="Memory allocated to each worker node, in megabytes (deprecated, use worker.memoryMb, or control.memoryMb for a control-plane node).",
+        ),
     ]
+    control: KubernetesNodeTypeSpec = pydantic.Field()
+    """
+    Package and size of each control-plane node.
+    """
+
+    worker: KubernetesNodeTypeSpec = pydantic.Field()
+    """
+    Package and size of each worker node.
+    """
 
     if IS_PYDANTIC_V2:
         model_config: typing.ClassVar[pydantic.ConfigDict] = pydantic.ConfigDict(extra="allow", frozen=True)  # type: ignore # Pydantic v2

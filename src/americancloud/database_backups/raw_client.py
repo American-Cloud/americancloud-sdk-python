@@ -534,7 +534,7 @@ class RawDatabaseBackupsClient:
             Whether backups for this cluster should be encrypted at rest. When enabled, backups are encrypted with AES-256-CFB.
 
         passphrase : typing.Optional[str]
-            Passphrase used to encrypt backups. Required when enabling encryption. Must be 12–256 printable ASCII characters (letters, digits, symbols) with no spaces. Store it securely — it is required to restore encrypted backups and cannot be recovered if lost.
+            Passphrase used to encrypt new backups. Required when enabling encryption. Send a new passphrase with encryption enabled to change it. Must be 12–256 printable ASCII characters (letters, digits, symbols) with no spaces. Earlier backups still restore after a change, and a restore does not ask for the passphrase.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -1987,7 +1987,7 @@ class AsyncRawDatabaseBackupsClient:
             Whether backups for this cluster should be encrypted at rest. When enabled, backups are encrypted with AES-256-CFB.
 
         passphrase : typing.Optional[str]
-            Passphrase used to encrypt backups. Required when enabling encryption. Must be 12–256 printable ASCII characters (letters, digits, symbols) with no spaces. Store it securely — it is required to restore encrypted backups and cannot be recovered if lost.
+            Passphrase used to encrypt new backups. Required when enabling encryption. Send a new passphrase with encryption enabled to change it. Must be 12–256 printable ASCII characters (letters, digits, symbols) with no spaces. Earlier backups still restore after a change, and a restore does not ask for the passphrase.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.

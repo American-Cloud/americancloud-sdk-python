@@ -44,7 +44,7 @@ class KubernetesClusterResponse(UniversalBaseModel):
     ]
     package: str = pydantic.Field()
     """
-    Package label describing the per-node CPU/memory/disk preset.
+    Package label of the worker nodes (deprecated, use nodePool.control.package and nodePool.worker.package).
     """
 
     description: str = pydantic.Field()

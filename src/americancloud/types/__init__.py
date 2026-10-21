@@ -77,6 +77,7 @@ if typing.TYPE_CHECKING:
     from .kubernetes_node_response import KubernetesNodeResponse
     from .kubernetes_node_response_role import KubernetesNodeResponseRole
     from .kubernetes_node_root_volume import KubernetesNodeRootVolume
+    from .kubernetes_node_type_spec import KubernetesNodeTypeSpec
     from .kubernetes_package_response import KubernetesPackageResponse
     from .load_balancer_rule_instance_dto import LoadBalancerRuleInstanceDto
     from .load_balancer_rule_response_dto import LoadBalancerRuleResponseDto
@@ -206,6 +207,7 @@ _dynamic_imports: typing.Dict[str, str] = {
     "KubernetesNodeResponse": ".kubernetes_node_response",
     "KubernetesNodeResponseRole": ".kubernetes_node_response_role",
     "KubernetesNodeRootVolume": ".kubernetes_node_root_volume",
+    "KubernetesNodeTypeSpec": ".kubernetes_node_type_spec",
     "KubernetesPackageResponse": ".kubernetes_package_response",
     "LoadBalancerRuleInstanceDto": ".load_balancer_rule_instance_dto",
     "LoadBalancerRuleResponseDto": ".load_balancer_rule_response_dto",
@@ -359,6 +361,7 @@ __all__ = [
     "KubernetesNodeResponse",
     "KubernetesNodeResponseRole",
     "KubernetesNodeRootVolume",
+    "KubernetesNodeTypeSpec",
     "KubernetesPackageResponse",
     "LoadBalancerRuleInstanceDto",
     "LoadBalancerRuleResponseDto",
