@@ -296,6 +296,7 @@ class KubernetesClient:
         )
         client.kubernetes.create_cluster_kubernetes(
             name="my-cluster",
+            package="basic",
             region="us-west-0",
             version="1.28.4",
             control_nodes=1.0,
@@ -390,6 +391,7 @@ class KubernetesClient:
         )
         client.kubernetes.get_cost_estimate_kubernetes(
             name="my-cluster",
+            package="basic",
             region="us-west-0",
             version="1.28.4",
             control_nodes=1.0,
@@ -910,6 +912,7 @@ class AsyncKubernetesClient:
         async def main() -> None:
             await client.kubernetes.create_cluster_kubernetes(
                 name="my-cluster",
+                package="basic",
                 region="us-west-0",
                 version="1.28.4",
                 control_nodes=1.0,
@@ -1012,6 +1015,7 @@ class AsyncKubernetesClient:
         async def main() -> None:
             await client.kubernetes.get_cost_estimate_kubernetes(
                 name="my-cluster",
+                package="basic",
                 region="us-west-0",
                 version="1.28.4",
                 control_nodes=1.0,

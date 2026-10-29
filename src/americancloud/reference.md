@@ -9821,6 +9821,7 @@ client = AmericancloudApi(
 
 client.kubernetes.create_cluster_kubernetes(
     name="my-cluster",
+    package="basic",
     region="us-west-0",
     version="1.28.4",
     control_nodes=1,
@@ -9899,6 +9900,7 @@ client = AmericancloudApi(
 
 client.kubernetes.get_cost_estimate_kubernetes(
     name="my-cluster",
+    package="basic",
     region="us-west-0",
     version="1.28.4",
     control_nodes=1,
