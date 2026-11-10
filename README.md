@@ -16,7 +16,7 @@ pip install americancloud
 
 Every request carries an American Cloud **API token** in the `Authorization: Bearer` header. Create one at **[console.americancloud.com/api-tokens](https://console.americancloud.com/api-tokens)**. The token is shown once at creation — store it securely. If lost, revoke it and create a new one.
 
-Pass the token as `token`, or set `AMERICANCLOUD_API_TOKEN` and omit it. A token has the permissions you chose when you created it: start with the **Read-only** preset, or choose **Full access** to create, change and delete resources. `client.whoami.get_whoami()` returns the permissions the token has now.
+Pass the token as `token`, or set `AMERICANCLOUD_API_TOKEN` and omit it. A token has the permissions you chose when you created it: **Read-only** to list and price resources, **Full access** to create, change and delete them, or **Custom** to pick services one by one. `client.whoami.get_whoami()` returns the permissions the token has now.
 
 ## Quick start
 
@@ -75,6 +75,7 @@ Narrative walkthroughs on the American Cloud docs site:
 
 - [Python SDK quickstart](https://americancloud.com/docs/sdks/python) — install, authenticate, estimate cost, then create a VM (sync and async), with error handling and pagination
 - [SDKs & Terraform overview](https://americancloud.com/docs/sdks/overview) — when to reach for an SDK, Terraform, or the MCP server
+- [MCP server](https://americancloud.com/docs/mcp/overview) — manage the same resources from Claude, ChatGPT, Cursor, and other AI assistants
 - [Deploy with AI](https://americancloud.com/docs/deploy-with-ai/overview) — let an AI assistant build and ship to American Cloud
 
 ## Versioning
