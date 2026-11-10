@@ -62,8 +62,7 @@ class FirewallRulesClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.firewall_rules.list_firewall_rules(
             ip_id="123e4567-e89b-12d3-a456-426614174000",
@@ -119,8 +118,7 @@ class FirewallRulesClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.firewall_rules.create_firewall_rules(
             ip_id="123e4567-e89b-12d3-a456-426614174000",
@@ -158,8 +156,7 @@ class FirewallRulesClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.firewall_rules.delete_firewall_rules(
             rule_id="123e4567-e89b-12d3-a456-426614174000",
@@ -219,8 +216,7 @@ class AsyncFirewallRulesClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -284,8 +280,7 @@ class AsyncFirewallRulesClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -333,8 +328,7 @@ class AsyncFirewallRulesClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 

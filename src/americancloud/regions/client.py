@@ -53,8 +53,7 @@ class RegionsClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.regions.list_regions()
         """
@@ -81,8 +80,7 @@ class RegionsClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.regions.get_regions(
             id="123e4567-e89b-12d3-a456-426614174000",
@@ -111,8 +109,7 @@ class RegionsClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.regions.get_by_label_regions(
             label="sjc0",
@@ -168,8 +165,7 @@ class AsyncRegionsClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -204,8 +200,7 @@ class AsyncRegionsClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -244,8 +239,7 @@ class AsyncRegionsClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 

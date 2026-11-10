@@ -14,19 +14,9 @@ pip install americancloud
 
 ## Authentication
 
-Every request requires **both** parts of an American Cloud API key, sent as headers:
+Every request carries an American Cloud **API token** in the `Authorization: Bearer` header. Create one at **[console.americancloud.com/api-tokens](https://console.americancloud.com/api-tokens)**. The token is shown once at creation — store it securely. If lost, revoke it and create a new one.
 
-| Header | SDK option |
-|---|---|
-| `X-API-Client-ID` | `api_key` |
-| `X-API-Client-Secret` | `api_client_secret` |
-
-Create and manage keys at **[console.americancloud.com/api-keys](https://console.americancloud.com/api-keys)**. The client secret is shown once at creation — store it securely. If lost, revoke the key and create a new one.
-
-Each key is scoped at creation:
-
-- **`read-only`** — `GET` endpoints only
-- **`read-write`** — full access to all resource management endpoints
+Pass the token as `token`, or set `AMERICANCLOUD_API_TOKEN` and omit it. A token has the permissions you chose when you created it: start with the **Read-only** preset, or choose **Full access** to create, change and delete resources. `client.whoami.get_whoami()` returns the permissions the token has now.
 
 ## Quick start
 
@@ -37,8 +27,7 @@ import os
 from americancloud import AmericancloudApi
 
 client = AmericancloudApi(
-    api_key=os.environ["AMERICANCLOUD_API_CLIENT_ID"],
-    api_client_secret=os.environ["AMERICANCLOUD_API_CLIENT_SECRET"],
+    token=os.environ["AMERICANCLOUD_API_TOKEN"],
 )
 
 vms = client.vms.list_vms()
@@ -54,8 +43,7 @@ from americancloud import AsyncAmericancloudApi
 
 async def main():
     client = AsyncAmericancloudApi(
-        api_key=os.environ["AMERICANCLOUD_API_CLIENT_ID"],
-        api_client_secret=os.environ["AMERICANCLOUD_API_CLIENT_SECRET"],
+        token=os.environ["AMERICANCLOUD_API_TOKEN"],
     )
     vms = await client.vms.list_vms()
     print(vms)
@@ -71,8 +59,7 @@ The SDK targets the American Cloud production API at **`https://api.americanclou
 
 ```python
 client = AmericancloudApi(
-    api_key="...",
-    api_client_secret="...",
+    token="...",
     base_url="https://your-custom-endpoint.example.com",
 )
 ```

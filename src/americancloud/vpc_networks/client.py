@@ -60,8 +60,7 @@ class VpcNetworksClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.vpc_networks.list_vpc_networks()
         """
@@ -107,8 +106,7 @@ class VpcNetworksClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.vpc_networks.create_vpc_networks(
             name="production-vpc",
@@ -143,8 +141,7 @@ class VpcNetworksClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.vpc_networks.get_vpc_networks(
             id="123e4567-e89b-12d3-a456-426614174000",
@@ -186,8 +183,7 @@ class VpcNetworksClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.vpc_networks.update_vpc_networks(
             id="123e4567-e89b-12d3-a456-426614174000",
@@ -217,8 +213,7 @@ class VpcNetworksClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.vpc_networks.delete_vpc_networks(
             id="123e4567-e89b-12d3-a456-426614174000",
@@ -266,8 +261,7 @@ class VpcNetworksClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.vpc_networks.get_cost_estimate_vpc_networks(
             name="production-vpc",
@@ -325,8 +319,7 @@ class VpcNetworksClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.vpc_networks.create_tier_vpc_networks(
             name="web-tier",
@@ -373,8 +366,7 @@ class VpcNetworksClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.vpc_networks.get_tier_vpc_networks(
             id="123e4567-e89b-12d3-a456-426614174000",
@@ -423,8 +415,7 @@ class VpcNetworksClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.vpc_networks.update_tier_vpc_networks(
             id="123e4567-e89b-12d3-a456-426614174000",
@@ -462,8 +453,7 @@ class VpcNetworksClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.vpc_networks.delete_tier_vpc_networks(
             id="123e4567-e89b-12d3-a456-426614174000",
@@ -499,8 +489,7 @@ class VpcNetworksClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.vpc_networks.restart_tier_vpc_networks(
             id="123e4567-e89b-12d3-a456-426614174000",
@@ -529,8 +518,7 @@ class VpcNetworksClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.vpc_networks.restart_vpc_networks(
             id="123e4567-e89b-12d3-a456-426614174000",
@@ -586,8 +574,7 @@ class AsyncVpcNetworksClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -643,8 +630,7 @@ class AsyncVpcNetworksClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -687,8 +673,7 @@ class AsyncVpcNetworksClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -738,8 +723,7 @@ class AsyncVpcNetworksClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -777,8 +761,7 @@ class AsyncVpcNetworksClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -834,8 +817,7 @@ class AsyncVpcNetworksClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -901,8 +883,7 @@ class AsyncVpcNetworksClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -957,8 +938,7 @@ class AsyncVpcNetworksClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -1015,8 +995,7 @@ class AsyncVpcNetworksClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -1062,8 +1041,7 @@ class AsyncVpcNetworksClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -1107,8 +1085,7 @@ class AsyncVpcNetworksClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -1145,8 +1122,7 @@ class AsyncVpcNetworksClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 

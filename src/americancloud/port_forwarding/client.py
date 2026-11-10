@@ -61,8 +61,7 @@ class PortForwardingClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.port_forwarding.list_port_forwarding(
             ip_id="123e4567-e89b-12d3-a456-426614174000",
@@ -122,8 +121,7 @@ class PortForwardingClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.port_forwarding.create_port_forwarding(
             ip_id="123e4567-e89b-12d3-a456-426614174000",
@@ -164,8 +162,7 @@ class PortForwardingClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.port_forwarding.delete_port_forwarding(
             rule_id="123e4567-e89b-12d3-a456-426614174000",
@@ -225,8 +222,7 @@ class AsyncPortForwardingClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -294,8 +290,7 @@ class AsyncPortForwardingClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -346,8 +341,7 @@ class AsyncPortForwardingClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 

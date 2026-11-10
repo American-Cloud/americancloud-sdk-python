@@ -64,8 +64,7 @@ class DatabaseBackupsClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.database_backups.set_active_repo_database_backups(
             cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -99,8 +98,7 @@ class DatabaseBackupsClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.database_backups.list_database_backups(
             cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -154,8 +152,7 @@ class DatabaseBackupsClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.database_backups.trigger_database_backups(
             cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -199,8 +196,7 @@ class DatabaseBackupsClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.database_backups.get_config_database_backups(
             cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -244,8 +240,7 @@ class DatabaseBackupsClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.database_backups.update_config_database_backups(
             cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -290,8 +285,7 @@ class DatabaseBackupsClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.database_backups.get_schedule_database_backups(
             cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -346,8 +340,7 @@ class DatabaseBackupsClient:
         from americancloud import AmericancloudApi, BackupScheduleItemDto
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.database_backups.create_schedule_database_backups(
             cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -414,8 +407,7 @@ class DatabaseBackupsClient:
         from americancloud import AmericancloudApi, BackupScheduleItemDto
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.database_backups.update_schedule_database_backups(
             cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -466,8 +458,7 @@ class DatabaseBackupsClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.database_backups.delete_schedule_database_backups(
             cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -508,8 +499,7 @@ class DatabaseBackupsClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.database_backups.get_policy_database_backups(
             cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -545,8 +535,7 @@ class DatabaseBackupsClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.database_backups.get_database_backups(
             cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -581,8 +570,7 @@ class DatabaseBackupsClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.database_backups.delete_database_backups(
             cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -635,8 +623,7 @@ class AsyncDatabaseBackupsClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -678,8 +665,7 @@ class AsyncDatabaseBackupsClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -741,8 +727,7 @@ class AsyncDatabaseBackupsClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -794,8 +779,7 @@ class AsyncDatabaseBackupsClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -847,8 +831,7 @@ class AsyncDatabaseBackupsClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -901,8 +884,7 @@ class AsyncDatabaseBackupsClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -965,8 +947,7 @@ class AsyncDatabaseBackupsClient:
         from americancloud import AsyncAmericancloudApi, BackupScheduleItemDto
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -1041,8 +1022,7 @@ class AsyncDatabaseBackupsClient:
         from americancloud import AsyncAmericancloudApi, BackupScheduleItemDto
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -1101,8 +1081,7 @@ class AsyncDatabaseBackupsClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -1151,8 +1130,7 @@ class AsyncDatabaseBackupsClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -1196,8 +1174,7 @@ class AsyncDatabaseBackupsClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -1242,8 +1219,7 @@ class AsyncDatabaseBackupsClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 

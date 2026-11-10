@@ -47,8 +47,7 @@ class DatabaseOperationsClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.database_operations.get_status_database_operations(
             correlation_id="123e4567-e89b-12d3-a456-426614174000",
@@ -99,8 +98,7 @@ class AsyncDatabaseOperationsClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 

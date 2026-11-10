@@ -68,8 +68,7 @@ class ObjectStorageClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.object_storage.list_units_object_storage(
             usage=False,
@@ -104,8 +103,7 @@ class ObjectStorageClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.object_storage.create_unit_object_storage(
             name="prod-assets",
@@ -149,8 +147,7 @@ class ObjectStorageClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.object_storage.list_buckets_object_storage(
             storage_unit_id="tenant$user",
@@ -188,8 +185,7 @@ class ObjectStorageClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.object_storage.create_bucket_object_storage(
             storage_unit_id="tenant$user",
@@ -205,7 +201,7 @@ class ObjectStorageClient:
         self, storage_unit_id: str, *, request_options: typing.Optional[RequestOptions] = None
     ) -> AccessKeyDto:
         """
-        Returns the oldest access key and secret key pair of the specified storage unit. To see every access key, list the access keys of the storage unit.
+        Returns the oldest access key and secret key pair of the specified storage unit. To see every access key, list the access keys of the storage unit. Requires the object storage manage permission.
 
         Parameters
         ----------
@@ -225,8 +221,7 @@ class ObjectStorageClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.object_storage.get_keys_object_storage(
             storage_unit_id="tenant$user",
@@ -270,8 +265,7 @@ class ObjectStorageClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.object_storage.list_access_keys_object_storage(
             storage_unit_id="tenant$user",
@@ -309,8 +303,7 @@ class ObjectStorageClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.object_storage.create_access_key_object_storage(
             storage_unit_id="tenant$user",
@@ -348,8 +341,7 @@ class ObjectStorageClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.object_storage.delete_access_key_object_storage(
             storage_unit_id="tenant$user",
@@ -382,8 +374,7 @@ class ObjectStorageClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.object_storage.get_cost_estimate_object_storage()
         """
@@ -425,8 +416,7 @@ class ObjectStorageClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.object_storage.set_user_quota_object_storage(
             storage_unit_id="tenant$user",
@@ -461,8 +451,7 @@ class ObjectStorageClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.object_storage.delete_unit_object_storage(
             storage_unit_id="tenant$user",
@@ -506,8 +495,7 @@ class ObjectStorageClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.object_storage.delete_bucket_object_storage(
             storage_unit_id="tenant$user",
@@ -573,8 +561,7 @@ class AsyncObjectStorageClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -617,8 +604,7 @@ class AsyncObjectStorageClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -670,8 +656,7 @@ class AsyncObjectStorageClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -717,8 +702,7 @@ class AsyncObjectStorageClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -740,7 +724,7 @@ class AsyncObjectStorageClient:
         self, storage_unit_id: str, *, request_options: typing.Optional[RequestOptions] = None
     ) -> AccessKeyDto:
         """
-        Returns the oldest access key and secret key pair of the specified storage unit. To see every access key, list the access keys of the storage unit.
+        Returns the oldest access key and secret key pair of the specified storage unit. To see every access key, list the access keys of the storage unit. Requires the object storage manage permission.
 
         Parameters
         ----------
@@ -762,8 +746,7 @@ class AsyncObjectStorageClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -815,8 +798,7 @@ class AsyncObjectStorageClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -862,8 +844,7 @@ class AsyncObjectStorageClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -909,8 +890,7 @@ class AsyncObjectStorageClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -951,8 +931,7 @@ class AsyncObjectStorageClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -1002,8 +981,7 @@ class AsyncObjectStorageClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -1046,8 +1024,7 @@ class AsyncObjectStorageClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -1099,8 +1076,7 @@ class AsyncObjectStorageClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 

@@ -73,8 +73,7 @@ class DatabasesClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.databases.list_databases()
         """
@@ -150,8 +149,7 @@ class DatabasesClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.databases.create_databases(
             db_cluster_name="production-db",
@@ -223,8 +221,7 @@ class DatabasesClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.databases.get_cost_estimate_databases(
             offering_id="123e4567-e89b-12d3-a456-426614174000",
@@ -263,8 +260,7 @@ class DatabasesClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.databases.get_databases(
             cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -297,8 +293,7 @@ class DatabasesClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.databases.delete_databases(
             cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -329,8 +324,7 @@ class DatabasesClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.databases.get_status_databases(
             cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -343,7 +337,7 @@ class DatabasesClient:
         self, cluster_id: str, *, include_password: str, request_options: typing.Optional[RequestOptions] = None
     ) -> ConnectionInfoResponseDto:
         """
-        Returns connection details for the database cluster.
+        Returns connection details for the database cluster. Requires the database manage permission.
 
         Parameters
         ----------
@@ -365,8 +359,7 @@ class DatabasesClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.databases.get_connection_databases(
             cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -400,8 +393,7 @@ class DatabasesClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.databases.get_operations_databases(
             cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -432,8 +424,7 @@ class DatabasesClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.databases.start_databases(
             cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -464,8 +455,7 @@ class DatabasesClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.databases.stop_databases(
             cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -509,8 +499,7 @@ class DatabasesClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.databases.resize_databases(
             cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -558,8 +547,7 @@ class DatabasesClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.databases.modify_load_balancer_databases(
             cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -599,8 +587,7 @@ class DatabasesClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.databases.delete_load_balancer_databases(
             cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -663,8 +650,7 @@ class AsyncDatabasesClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -748,8 +734,7 @@ class AsyncDatabasesClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -829,8 +814,7 @@ class AsyncDatabasesClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -877,8 +861,7 @@ class AsyncDatabasesClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -919,8 +902,7 @@ class AsyncDatabasesClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -959,8 +941,7 @@ class AsyncDatabasesClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -979,7 +960,7 @@ class AsyncDatabasesClient:
         self, cluster_id: str, *, include_password: str, request_options: typing.Optional[RequestOptions] = None
     ) -> ConnectionInfoResponseDto:
         """
-        Returns connection details for the database cluster.
+        Returns connection details for the database cluster. Requires the database manage permission.
 
         Parameters
         ----------
@@ -1003,8 +984,7 @@ class AsyncDatabasesClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -1046,8 +1026,7 @@ class AsyncDatabasesClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -1086,8 +1065,7 @@ class AsyncDatabasesClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -1126,8 +1104,7 @@ class AsyncDatabasesClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -1179,8 +1156,7 @@ class AsyncDatabasesClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -1236,8 +1212,7 @@ class AsyncDatabasesClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -1285,8 +1260,7 @@ class AsyncDatabasesClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 

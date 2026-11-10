@@ -490,7 +490,7 @@ class RawObjectStorageClient:
         self, storage_unit_id: str, *, request_options: typing.Optional[RequestOptions] = None
     ) -> HttpResponse[AccessKeyDto]:
         """
-        Returns the oldest access key and secret key pair of the specified storage unit. To see every access key, list the access keys of the storage unit.
+        Returns the oldest access key and secret key pair of the specified storage unit. To see every access key, list the access keys of the storage unit. Requires the object storage manage permission.
 
         Parameters
         ----------
@@ -1802,7 +1802,7 @@ class AsyncRawObjectStorageClient:
         self, storage_unit_id: str, *, request_options: typing.Optional[RequestOptions] = None
     ) -> AsyncHttpResponse[AccessKeyDto]:
         """
-        Returns the oldest access key and secret key pair of the specified storage unit. To see every access key, list the access keys of the storage unit.
+        Returns the oldest access key and secret key pair of the specified storage unit. To see every access key, list the access keys of the storage unit. Requires the object storage manage permission.
 
         Parameters
         ----------

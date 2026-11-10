@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+import os
 import typing
 
 import httpx
+from .core.api_error import ApiError
 from .core.client_wrapper import AsyncClientWrapper, SyncClientWrapper
 from .core.logging import LogConfig, Logger
 from .environment import AmericancloudApiEnvironment
@@ -35,6 +37,7 @@ if typing.TYPE_CHECKING:
     from .vm_packages.client import AsyncVmPackagesClient, VmPackagesClient
     from .vms.client import AsyncVmsClient, VmsClient
     from .vpc_networks.client import AsyncVpcNetworksClient, VpcNetworksClient
+    from .whoami.client import AsyncWhoamiClient, WhoamiClient
     from .wordpress.client import AsyncWordpressClient, WordpressClient
 
 
@@ -56,8 +59,7 @@ class AmericancloudApi:
 
 
 
-    api_client_secret : str
-    api_key : str
+    token : typing.Optional[typing.Union[str, typing.Callable[[], str]]]
     headers : typing.Optional[typing.Dict[str, str]]
         Additional headers to send with every request.
 
@@ -81,8 +83,7 @@ class AmericancloudApi:
     from americancloud import AmericancloudApi
 
     client = AmericancloudApi(
-        api_client_secret="YOUR_API_CLIENT_SECRET",
-        api_key="YOUR_API_KEY",
+        token="YOUR_TOKEN",
     )
     """
 
@@ -91,8 +92,7 @@ class AmericancloudApi:
         *,
         base_url: typing.Optional[str] = None,
         environment: AmericancloudApiEnvironment = AmericancloudApiEnvironment.PRODUCTION,
-        api_client_secret: str,
-        api_key: str,
+        token: typing.Optional[typing.Union[str, typing.Callable[[], str]]] = os.getenv("AMERICANCLOUD_API_TOKEN"),
         headers: typing.Optional[typing.Dict[str, str]] = None,
         timeout: typing.Optional[float] = None,
         max_retries: typing.Optional[int] = None,
@@ -104,10 +104,13 @@ class AmericancloudApi:
             timeout if timeout is not None else 60 if httpx_client is None else httpx_client.timeout.read
         )
         _defaulted_max_retries = max_retries if max_retries is not None else 2
+        if token is None:
+            raise ApiError(
+                body="The client must be instantiated be either passing in token or setting AMERICANCLOUD_API_TOKEN"
+            )
         self._client_wrapper = SyncClientWrapper(
             base_url=_get_base_url(base_url=base_url, environment=environment),
-            api_client_secret=api_client_secret,
-            api_key=api_key,
+            token=token,
             headers=headers,
             httpx_client=httpx_client
             if httpx_client is not None
@@ -143,6 +146,7 @@ class AmericancloudApi:
         self._ssh_keys: typing.Optional[SshKeysClient] = None
         self._block_storage: typing.Optional[BlockStorageClient] = None
         self._snapshots: typing.Optional[SnapshotsClient] = None
+        self._whoami: typing.Optional[WhoamiClient] = None
         self._wordpress: typing.Optional[WordpressClient] = None
 
     @property
@@ -346,6 +350,14 @@ class AmericancloudApi:
         return self._snapshots
 
     @property
+    def whoami(self):
+        if self._whoami is None:
+            from .whoami.client import WhoamiClient  # noqa: E402
+
+            self._whoami = WhoamiClient(client_wrapper=self._client_wrapper)
+        return self._whoami
+
+    @property
     def wordpress(self):
         if self._wordpress is None:
             from .wordpress.client import WordpressClient  # noqa: E402
@@ -390,10 +402,12 @@ class AsyncAmericancloudApi:
 
 
 
-    api_client_secret : str
-    api_key : str
+    token : typing.Optional[typing.Union[str, typing.Callable[[], str]]]
     headers : typing.Optional[typing.Dict[str, str]]
         Additional headers to send with every request.
+
+    async_token : typing.Optional[typing.Callable[[], typing.Awaitable[str]]]
+        An async callable that returns a bearer token. Use this when token acquisition involves async I/O (e.g., refreshing tokens via an async HTTP client). When provided, this is used instead of the synchronous token for async requests.
 
     timeout : typing.Optional[float]
         The timeout to be used, in seconds, for requests. By default the timeout is 60 seconds, unless a custom httpx client is used, in which case this default is not enforced.
@@ -415,8 +429,7 @@ class AsyncAmericancloudApi:
     from americancloud import AsyncAmericancloudApi
 
     client = AsyncAmericancloudApi(
-        api_client_secret="YOUR_API_CLIENT_SECRET",
-        api_key="YOUR_API_KEY",
+        token="YOUR_TOKEN",
     )
     """
 
@@ -425,9 +438,9 @@ class AsyncAmericancloudApi:
         *,
         base_url: typing.Optional[str] = None,
         environment: AmericancloudApiEnvironment = AmericancloudApiEnvironment.PRODUCTION,
-        api_client_secret: str,
-        api_key: str,
+        token: typing.Optional[typing.Union[str, typing.Callable[[], str]]] = os.getenv("AMERICANCLOUD_API_TOKEN"),
         headers: typing.Optional[typing.Dict[str, str]] = None,
+        async_token: typing.Optional[typing.Callable[[], typing.Awaitable[str]]] = None,
         timeout: typing.Optional[float] = None,
         max_retries: typing.Optional[int] = None,
         follow_redirects: typing.Optional[bool] = True,
@@ -438,11 +451,15 @@ class AsyncAmericancloudApi:
             timeout if timeout is not None else 60 if httpx_client is None else httpx_client.timeout.read
         )
         _defaulted_max_retries = max_retries if max_retries is not None else 2
+        if token is None:
+            raise ApiError(
+                body="The client must be instantiated be either passing in token or setting AMERICANCLOUD_API_TOKEN"
+            )
         self._client_wrapper = AsyncClientWrapper(
             base_url=_get_base_url(base_url=base_url, environment=environment),
-            api_client_secret=api_client_secret,
-            api_key=api_key,
+            token=token,
             headers=headers,
+            async_token=async_token,
             httpx_client=httpx_client
             if httpx_client is not None
             else _make_default_async_client(timeout=_defaulted_timeout, follow_redirects=follow_redirects),
@@ -475,6 +492,7 @@ class AsyncAmericancloudApi:
         self._ssh_keys: typing.Optional[AsyncSshKeysClient] = None
         self._block_storage: typing.Optional[AsyncBlockStorageClient] = None
         self._snapshots: typing.Optional[AsyncSnapshotsClient] = None
+        self._whoami: typing.Optional[AsyncWhoamiClient] = None
         self._wordpress: typing.Optional[AsyncWordpressClient] = None
 
     @property
@@ -676,6 +694,14 @@ class AsyncAmericancloudApi:
 
             self._snapshots = AsyncSnapshotsClient(client_wrapper=self._client_wrapper)
         return self._snapshots
+
+    @property
+    def whoami(self):
+        if self._whoami is None:
+            from .whoami.client import AsyncWhoamiClient  # noqa: E402
+
+            self._whoami = AsyncWhoamiClient(client_wrapper=self._client_wrapper)
+        return self._whoami
 
     @property
     def wordpress(self):

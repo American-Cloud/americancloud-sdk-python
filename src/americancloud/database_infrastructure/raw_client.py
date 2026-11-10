@@ -650,7 +650,7 @@ class RawDatabaseInfrastructureClient:
             Backup repository name
 
         include_credentials : typing.Optional[str]
-            Include repository credentials in response (default: false)
+            Include repository credentials in response (default: false). The credentials require the database manage permission.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -1493,7 +1493,7 @@ class AsyncRawDatabaseInfrastructureClient:
             Backup repository name
 
         include_credentials : typing.Optional[str]
-            Include repository credentials in response (default: false)
+            Include repository credentials in response (default: false). The credentials require the database manage permission.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.

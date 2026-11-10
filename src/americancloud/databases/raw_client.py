@@ -761,7 +761,7 @@ class RawDatabasesClient:
         self, cluster_id: str, *, include_password: str, request_options: typing.Optional[RequestOptions] = None
     ) -> HttpResponse[ConnectionInfoResponseDto]:
         """
-        Returns connection details for the database cluster.
+        Returns connection details for the database cluster. Requires the database manage permission.
 
         Parameters
         ----------
@@ -2251,7 +2251,7 @@ class AsyncRawDatabasesClient:
         self, cluster_id: str, *, include_password: str, request_options: typing.Optional[RequestOptions] = None
     ) -> AsyncHttpResponse[ConnectionInfoResponseDto]:
         """
-        Returns connection details for the database cluster.
+        Returns connection details for the database cluster. Requires the database manage permission.
 
         Parameters
         ----------

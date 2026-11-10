@@ -8,6 +8,7 @@ from importlib import import_module
 if typing.TYPE_CHECKING:
     from .types import (
         AccessKeyDto,
+        AccountUserSummaryDto,
         ApiErrorDto,
         ApiErrorDtoMessage,
         AssignVmsToLoadBalancerRuleDto,
@@ -129,6 +130,11 @@ if typing.TYPE_CHECKING:
         VpcTierResponseDtoStatus,
         WebsiteInfoDto,
         WebsitesDto,
+        WhoamiAccountDto,
+        WhoamiAppDto,
+        WhoamiDto,
+        WhoamiDtoKind,
+        WhoamiTokenDto,
         WordPressInstanceDto,
         WordPressInstanceDtoStatus,
         WordPressPackageDto,
@@ -172,6 +178,7 @@ if typing.TYPE_CHECKING:
         vm_packages,
         vms,
         vpc_networks,
+        whoami,
         wordpress,
     )
     from ._default_clients import DefaultAioHttpClient, DefaultAsyncHttpxClient
@@ -233,6 +240,7 @@ if typing.TYPE_CHECKING:
     from .wordpress import ListPackagesWordpressResponse, ListUpgradePackagesWordpressResponse
 _dynamic_imports: typing.Dict[str, str] = {
     "AccessKeyDto": ".types",
+    "AccountUserSummaryDto": ".types",
     "AmericancloudApi": ".client",
     "AmericancloudApiEnvironment": ".environment",
     "ApiErrorDto": ".types",
@@ -421,6 +429,11 @@ _dynamic_imports: typing.Dict[str, str] = {
     "VpcTierResponseDtoStatus": ".types",
     "WebsiteInfoDto": ".types",
     "WebsitesDto": ".types",
+    "WhoamiAccountDto": ".types",
+    "WhoamiAppDto": ".types",
+    "WhoamiDto": ".types",
+    "WhoamiDtoKind": ".types",
+    "WhoamiTokenDto": ".types",
     "WordPressInstanceDto": ".types",
     "WordPressInstanceDtoStatus": ".types",
     "WordPressPackageDto": ".types",
@@ -453,6 +466,7 @@ _dynamic_imports: typing.Dict[str, str] = {
     "vm_packages": ".vm_packages",
     "vms": ".vms",
     "vpc_networks": ".vpc_networks",
+    "whoami": ".whoami",
     "wordpress": ".wordpress",
 }
 
@@ -480,6 +494,7 @@ def __dir__():
 
 __all__ = [
     "AccessKeyDto",
+    "AccountUserSummaryDto",
     "AmericancloudApi",
     "AmericancloudApiEnvironment",
     "ApiErrorDto",
@@ -668,6 +683,11 @@ __all__ = [
     "VpcTierResponseDtoStatus",
     "WebsiteInfoDto",
     "WebsitesDto",
+    "WhoamiAccountDto",
+    "WhoamiAppDto",
+    "WhoamiDto",
+    "WhoamiDtoKind",
+    "WhoamiTokenDto",
     "WordPressInstanceDto",
     "WordPressInstanceDtoStatus",
     "WordPressPackageDto",
@@ -700,5 +720,6 @@ __all__ = [
     "vm_packages",
     "vms",
     "vpc_networks",
+    "whoami",
     "wordpress",
 ]

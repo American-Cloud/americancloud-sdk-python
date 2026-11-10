@@ -64,8 +64,7 @@ class LoadBalancerRulesClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.load_balancer_rules.list_load_balancer_rules(
             ip_id="123e4567-e89b-12d3-a456-426614174000",
@@ -129,8 +128,7 @@ class LoadBalancerRulesClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.load_balancer_rules.create_load_balancer_rules(
             ip_id="123e4567-e89b-12d3-a456-426614174000",
@@ -198,8 +196,7 @@ class LoadBalancerRulesClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.load_balancer_rules.update_load_balancer_rules(
             rule_id="123e4567-e89b-12d3-a456-426614174000",
@@ -237,8 +234,7 @@ class LoadBalancerRulesClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.load_balancer_rules.delete_load_balancer_rules(
             rule_id="123e4567-e89b-12d3-a456-426614174000",
@@ -286,8 +282,7 @@ class LoadBalancerRulesClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.load_balancer_rules.list_instances_load_balancer_rules(
             rule_id="123e4567-e89b-12d3-a456-426614174000",
@@ -322,8 +317,7 @@ class LoadBalancerRulesClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.load_balancer_rules.assign_vms_load_balancer_rules(
             rule_id="123e4567-e89b-12d3-a456-426614174000",
@@ -359,8 +353,7 @@ class LoadBalancerRulesClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.load_balancer_rules.remove_vms_load_balancer_rules(
             rule_id="123e4567-e89b-12d3-a456-426614174000",
@@ -423,8 +416,7 @@ class AsyncLoadBalancerRulesClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -496,8 +488,7 @@ class AsyncLoadBalancerRulesClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -573,8 +564,7 @@ class AsyncLoadBalancerRulesClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -620,8 +610,7 @@ class AsyncLoadBalancerRulesClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -677,8 +666,7 @@ class AsyncLoadBalancerRulesClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -721,8 +709,7 @@ class AsyncLoadBalancerRulesClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -766,8 +753,7 @@ class AsyncLoadBalancerRulesClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 

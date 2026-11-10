@@ -65,8 +65,7 @@ class DatabaseInfrastructureClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.database_infrastructure.list_database_infrastructure()
         """
@@ -96,8 +95,7 @@ class DatabaseInfrastructureClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.database_infrastructure.get_database_infrastructure(
             user_cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -128,8 +126,7 @@ class DatabaseInfrastructureClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.database_infrastructure.list_backup_repos_database_infrastructure(
             user_cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -189,8 +186,7 @@ class DatabaseInfrastructureClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.database_infrastructure.create_backup_repo_database_infrastructure(
             user_cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -262,8 +258,7 @@ class DatabaseInfrastructureClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.database_infrastructure.update_backup_repo_database_infrastructure(
             user_cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -304,7 +299,7 @@ class DatabaseInfrastructureClient:
             Backup repository name
 
         include_credentials : typing.Optional[str]
-            Include repository credentials in response (default: false)
+            Include repository credentials in response (default: false). The credentials require the database manage permission.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -319,8 +314,7 @@ class DatabaseInfrastructureClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.database_infrastructure.get_backup_repo_database_infrastructure(
             user_cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -365,8 +359,7 @@ class DatabaseInfrastructureClient:
         from americancloud import AmericancloudApi
 
         client = AmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
         client.database_infrastructure.delete_backup_repo_database_infrastructure(
             user_cluster_id="123e4567-e89b-12d3-a456-426614174000",
@@ -427,8 +420,7 @@ class AsyncDatabaseInfrastructureClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -466,8 +458,7 @@ class AsyncDatabaseInfrastructureClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -506,8 +497,7 @@ class AsyncDatabaseInfrastructureClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -575,8 +565,7 @@ class AsyncDatabaseInfrastructureClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -656,8 +645,7 @@ class AsyncDatabaseInfrastructureClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -704,7 +692,7 @@ class AsyncDatabaseInfrastructureClient:
             Backup repository name
 
         include_credentials : typing.Optional[str]
-            Include repository credentials in response (default: false)
+            Include repository credentials in response (default: false). The credentials require the database manage permission.
 
         request_options : typing.Optional[RequestOptions]
             Request-specific configuration.
@@ -721,8 +709,7 @@ class AsyncDatabaseInfrastructureClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 
@@ -775,8 +762,7 @@ class AsyncDatabaseInfrastructureClient:
         from americancloud import AsyncAmericancloudApi
 
         client = AsyncAmericancloudApi(
-            api_client_secret="YOUR_API_CLIENT_SECRET",
-            api_key="YOUR_API_KEY",
+            token="YOUR_TOKEN",
         )
 
 

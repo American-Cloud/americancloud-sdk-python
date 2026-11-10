@@ -17,8 +17,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -97,8 +96,7 @@ from americancloud import AmericancloudApi, VmSpecsDto
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -166,8 +164,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -258,8 +255,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -326,8 +322,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -400,8 +395,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -474,8 +468,7 @@ from americancloud import AmericancloudApi, VmSpecsDto
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -557,8 +550,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -649,8 +641,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -739,8 +730,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -830,8 +820,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -904,8 +893,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -987,8 +975,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -1057,8 +1044,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -1123,8 +1109,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -1183,8 +1168,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -1244,8 +1228,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -1310,8 +1293,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -1370,8 +1352,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -1431,8 +1412,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -1513,8 +1493,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -1573,8 +1552,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -1634,8 +1612,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -1700,8 +1677,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -1793,8 +1769,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -1853,8 +1828,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -1929,8 +1903,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -1989,8 +1962,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -2050,8 +2022,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -2130,8 +2101,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -2192,8 +2162,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -2252,8 +2221,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -2328,8 +2296,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -2402,8 +2369,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -2464,8 +2430,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -2581,8 +2546,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -2664,8 +2628,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -2763,8 +2726,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -2846,8 +2808,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -2915,8 +2876,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -2976,8 +2936,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -3056,8 +3015,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -3132,8 +3090,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -3208,8 +3165,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -3284,8 +3240,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -3344,8 +3299,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -3418,8 +3372,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -3482,8 +3435,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -3565,8 +3517,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -3648,8 +3599,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -3709,8 +3659,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -3785,8 +3734,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -3887,8 +3835,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -3948,8 +3895,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -4024,8 +3970,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -4136,8 +4081,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -4197,8 +4141,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -4273,8 +4216,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -4393,8 +4335,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -4493,8 +4434,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -4567,8 +4507,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -4651,8 +4590,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -4722,8 +4660,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -4794,8 +4731,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -4860,8 +4796,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -4960,8 +4895,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -5036,8 +4970,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -5096,8 +5029,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -5188,8 +5120,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -5249,8 +5180,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -5315,8 +5245,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -5392,8 +5321,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -5468,8 +5396,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -5528,8 +5455,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -5588,8 +5514,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -5664,8 +5589,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -5800,8 +5724,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -5860,8 +5783,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -5934,8 +5856,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -6018,8 +5939,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -6106,8 +6026,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -6263,8 +6182,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -6363,8 +6281,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -6437,8 +6354,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -6497,8 +6413,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -6552,7 +6467,7 @@ client.databases.get_status_databases(
 <dl>
 <dd>
 
-Returns connection details for the database cluster.
+Returns connection details for the database cluster. Requires the database manage permission.
 </dd>
 </dl>
 </dd>
@@ -6571,8 +6486,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -6640,8 +6554,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -6700,8 +6613,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -6760,8 +6672,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -6834,8 +6745,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -6911,8 +6821,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -6996,8 +6905,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -7066,8 +6974,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -7135,8 +7042,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -7195,8 +7101,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -7300,8 +7205,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -7374,8 +7278,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -7451,8 +7354,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -7527,8 +7429,7 @@ from americancloud import AmericancloudApi, BackupScheduleItemDto
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -7605,8 +7506,7 @@ from americancloud import AmericancloudApi, BackupScheduleItemDto
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -7683,8 +7583,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -7752,8 +7651,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -7820,8 +7718,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -7889,8 +7786,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -7973,8 +7869,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -8047,8 +7942,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -8122,8 +8016,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -8187,8 +8080,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -8253,8 +8145,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -8313,8 +8204,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -8373,8 +8263,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -8486,8 +8375,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -8599,8 +8487,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -8639,7 +8526,7 @@ client.database_infrastructure.get_backup_repo_database_infrastructure(
 <dl>
 <dd>
 
-**include_credentials:** `typing.Optional[str]` — Include repository credentials in response (default: false)
+**include_credentials:** `typing.Optional[str]` — Include repository credentials in response (default: false). The credentials require the database manage permission.
     
 </dd>
 </dl>
@@ -8676,8 +8563,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -8768,8 +8654,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -8829,8 +8714,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -8895,8 +8779,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -8955,8 +8838,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -9016,8 +8898,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -9092,8 +8973,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -9211,8 +9091,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -9348,8 +9227,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -9449,8 +9327,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -9525,8 +9402,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -9591,8 +9467,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -9671,8 +9546,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -9740,8 +9614,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -9814,8 +9687,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -9893,8 +9765,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -9972,8 +9843,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -10055,8 +9925,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -10129,8 +9998,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -10235,8 +10103,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -10319,8 +10186,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -10409,8 +10275,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -10483,8 +10348,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -10573,8 +10437,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -10637,7 +10500,7 @@ client.object_storage.create_bucket_object_storage(
 <dl>
 <dd>
 
-Returns the oldest access key and secret key pair of the specified storage unit. To see every access key, list the access keys of the storage unit.
+Returns the oldest access key and secret key pair of the specified storage unit. To see every access key, list the access keys of the storage unit. Requires the object storage manage permission.
 </dd>
 </dl>
 </dd>
@@ -10656,8 +10519,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -10730,8 +10592,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -10820,8 +10681,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -10903,8 +10763,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -10986,8 +10845,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -11050,8 +10908,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -11140,8 +10997,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -11214,8 +11070,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -11293,8 +11148,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -11373,8 +11227,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -11441,8 +11294,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -11516,8 +11368,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -11604,8 +11455,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -11680,8 +11530,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -11754,8 +11603,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -11828,8 +11676,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -11904,8 +11751,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -11987,8 +11833,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -12061,8 +11906,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -12144,8 +11988,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -12235,8 +12078,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -12315,8 +12157,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -12391,8 +12232,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -12465,8 +12305,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -12539,8 +12378,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -12615,8 +12453,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -12642,6 +12479,70 @@ client.snapshots.revert_snapshots(
     
 </dd>
 </dl>
+
+<dl>
+<dd>
+
+**request_options:** `typing.Optional[RequestOptions]` — Request-specific configuration.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## whoami
+<details><summary><code>client.whoami.<a href="src/americancloud/whoami/client.py">get_whoami</a>() -> WhoamiDto</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns the kind of credential, the account, and the permissions that the credential has now. For an API token, also its name, last four characters, expiry and last use.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```python
+from americancloud import AmericancloudApi
+from americancloud.environment import AmericancloudApiEnvironment
+
+client = AmericancloudApi(
+    token="<token>",
+    environment=AmericancloudApiEnvironment.PRODUCTION,
+)
+
+client.whoami.get_whoami()
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
 
 <dl>
 <dd>
@@ -12690,8 +12591,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -12754,8 +12654,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -12828,8 +12727,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -12892,8 +12790,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -12966,8 +12863,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -13040,8 +12936,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -13104,8 +12999,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -13168,8 +13062,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -13232,8 +13125,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -13296,8 +13188,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -13360,8 +13251,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -13424,8 +13314,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -13498,8 +13387,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -13572,8 +13460,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -13652,8 +13539,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
@@ -13716,8 +13602,7 @@ from americancloud import AmericancloudApi
 from americancloud.environment import AmericancloudApiEnvironment
 
 client = AmericancloudApi(
-    api_key="<value>",
-    api_client_secret="<X-API-Client-Secret>",
+    token="<token>",
     environment=AmericancloudApiEnvironment.PRODUCTION,
 )
 
